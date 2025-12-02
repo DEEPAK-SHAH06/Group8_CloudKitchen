@@ -19,7 +19,7 @@ public class MySqlConnection implements Databasee{
         try{
             String password = "Shyam1122"; 
             String username = "root";
-            String database = "hello";
+            String database = "CloudKitchen";
             Connection connection;
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database,username,password);
             

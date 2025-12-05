@@ -8,14 +8,14 @@ package view;
  *
  * @author Asus
  */
-public class forgetpass extends javax.swing.JFrame {
+public class Resetpassword extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(forgetpass.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Resetpassword.class.getName());
 
     /**
-     * Creates new form forgetpass
+     * Creates new form Resetpassword
      */
-    public forgetpass() {
+    public Resetpassword() {
         initComponents();
     }
 
@@ -28,34 +28,29 @@ public class forgetpass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Buttoon = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        code = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        emailField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Serif", 3, 17)); // NOI18N
-        jLabel2.setText("Forget Password?");
+        Buttoon.setBackground(new java.awt.Color(218, 41, 41));
+        Buttoon.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        Buttoon.setText("Verify");
+        Buttoon.addActionListener(this::ButtoonActionPerformed);
+        getContentPane().add(Buttoon);
+        Buttoon.setBounds(330, 293, 75, 30);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
+        jLabel2.setText("Enter Your Code: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(460, 310, 130, 25);
+        jLabel2.setBounds(320, 210, 110, 18);
 
-        jLabel3.setFont(new java.awt.Font("Serif", 2, 12)); // NOI18N
-        jLabel3.setText("Please enter your registered email address we will get back to you with");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(350, 340, 380, 16);
-
-        jLabel4.setFont(new java.awt.Font("Serif", 2, 12)); // NOI18N
-        jLabel4.setText("          the reset password link and confirmation OTP thanks.");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(360, 350, 300, 17);
-
-        emailField.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
-        emailField.setText("    E-mail Or Username");
-        emailField.setBorder(new javax.swing.border.AbstractBorder() {
+        code.setBackground(new java.awt.Color(204, 204, 204));
+        code.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -64,16 +59,27 @@ public class forgetpass extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 30, 30);
             }
         });
-        getContentPane().add(emailField);
-        emailField.setBounds(450, 390, 160, 30);
+        getContentPane().add(code);
+        code.setBounds(280, 250, 170, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass (1).jpeg"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel3.setText("Resend Code");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(330, 340, 80, 16);
+
+        jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("CheckBox.icon.checkmarkColor"));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1050, 750);
+        jLabel1.setBounds(6, 0, 714, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtoonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtoonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,14 +103,14 @@ public class forgetpass extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new forgetpass().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Resetpassword().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField emailField;
+    private javax.swing.JButton Buttoon;
+    private javax.swing.JTextField code;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

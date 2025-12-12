@@ -30,22 +30,36 @@ public class kitchenDash extends javax.swing.JFrame {
     private void initComponents() {
 
         kitchenIcon = new javax.swing.JLabel();
-        backgroundImage = new javax.swing.JLabel();
+        markAsready = new javax.swing.JButton();
+        startCooking = new javax.swing.JButton();
         kitchenPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        startCooking = new javax.swing.JButton();
-        markAsready = new javax.swing.JButton();
+        backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         kitchenIcon.setBackground(new java.awt.Color(255, 255, 255));
         kitchenIcon.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         kitchenIcon.setForeground(new java.awt.Color(0, 0, 0));
-        kitchenIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon_1.png"))); // NOI18N
+        kitchenIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/k-icon.png"))); // NOI18N
         kitchenIcon.setToolTipText("");
+        getContentPane().add(kitchenIcon);
+        kitchenIcon.setBounds(420, 60, 360, 100);
 
-        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kitchen1.jpg"))); // NOI18N
-        backgroundImage.setText("jLabel1");
+        markAsready.setBackground(new java.awt.Color(255, 0, 51));
+        markAsready.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        markAsready.setForeground(new java.awt.Color(255, 255, 255));
+        markAsready.setText("Mark as ready");
+        getContentPane().add(markAsready);
+        markAsready.setBounds(900, 630, 170, 50);
+
+        startCooking.setBackground(new java.awt.Color(51, 51, 255));
+        startCooking.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        startCooking.setForeground(new java.awt.Color(255, 255, 255));
+        startCooking.setText("Start cooking");
+        getContentPane().add(startCooking);
+        startCooking.setBounds(710, 630, 160, 50);
 
         kitchenPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         kitchenPane.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,50 +107,13 @@ public class kitchenDash extends javax.swing.JFrame {
             table.getColumnModel().getColumn(0).setMaxWidth(122);
         }
 
-        startCooking.setBackground(new java.awt.Color(51, 51, 255));
-        startCooking.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        startCooking.setForeground(new java.awt.Color(255, 255, 255));
-        startCooking.setText("Start cooking");
+        getContentPane().add(kitchenPane);
+        kitchenPane.setBounds(180, 210, 850, 370);
 
-        markAsready.setBackground(new java.awt.Color(255, 0, 51));
-        markAsready.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        markAsready.setForeground(new java.awt.Color(255, 255, 255));
-        markAsready.setText("Mark as ready");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(kitchenPane, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(710, 710, 710)
-                .addComponent(startCooking, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(420, 420, 420)
-                .addComponent(kitchenIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(backgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 1287, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(900, 900, 900)
-                .addComponent(markAsready, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(kitchenPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(630, 630, 630)
-                .addComponent(startCooking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(kitchenIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(backgroundImage, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(630, 630, 630)
-                .addComponent(markAsready, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kitchen.jpg"))); // NOI18N
+        backgroundImage.setText("jLabel1");
+        getContentPane().add(backgroundImage);
+        backgroundImage.setBounds(0, 0, 1287, 789);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

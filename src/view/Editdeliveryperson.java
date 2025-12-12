@@ -8,14 +8,14 @@ package view;
  *
  * @author Limbu Mbg Sujata
  */
-public class Adddeliveryperson extends javax.swing.JFrame {
+public class Editdeliveryperson extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Adddeliveryperson.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Editdeliveryperson.class.getName());
 
     /**
      * Creates new form NewJFrame
      */
-    public Adddeliveryperson() {
+    public Editdeliveryperson() {
         initComponents();
     }
 
@@ -48,7 +48,6 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -89,9 +88,9 @@ public class Adddeliveryperson extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Add Delivery Person");
+        jLabel1.setText("Edit Delivery Person Information");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(430, 90, 480, 80);
+        jLabel1.setBounds(310, 90, 737, 80);
 
         Logout.setBackground(new java.awt.Color(0, 51, 255));
         Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -103,7 +102,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Add.setBackground(new java.awt.Color(255, 51, 51));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("Add");
+        Add.setText("Edit");
         Add.addActionListener(this::AddActionPerformed);
         getContentPane().add(Add);
         Add.setBounds(610, 630, 90, 40);
@@ -207,7 +206,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Adddeliveryperson().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Editdeliveryperson().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

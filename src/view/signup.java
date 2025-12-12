@@ -37,6 +37,9 @@ public class signup extends javax.swing.JFrame {
         Signup = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -51,34 +54,31 @@ public class signup extends javax.swing.JFrame {
 
         Username.setBackground(new java.awt.Color(255, 255, 255));
         Username.setForeground(new java.awt.Color(0, 0, 0));
-        Username.setText("                username");
         Username.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Username.addActionListener(this::UsernameActionPerformed);
         jPanel1.add(Username);
-        Username.setBounds(804, 143, 175, 28);
+        Username.setBounds(880, 280, 200, 30);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Sign up");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(857, 62, 64, 25);
+        jLabel2.setBounds(910, 150, 140, 60);
 
         Email.setBackground(new java.awt.Color(255, 255, 255));
         Email.setForeground(new java.awt.Color(0, 0, 0));
-        Email.setText("                 email");
         Email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Email.addActionListener(this::EmailActionPerformed);
         jPanel1.add(Email);
-        Email.setBounds(804, 195, 175, 30);
+        Email.setBounds(880, 330, 200, 30);
 
         Password.setBackground(new java.awt.Color(255, 255, 255));
         Password.setForeground(new java.awt.Color(0, 0, 0));
-        Password.setText("                 password");
         Password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Password.addActionListener(this::PasswordActionPerformed);
         jPanel1.add(Password);
-        Password.setBounds(804, 243, 175, 28);
+        Password.setBounds(880, 380, 200, 30);
 
         Signup.setBackground(new java.awt.Color(255, 51, 51));
         Signup.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -86,21 +86,39 @@ public class signup extends javax.swing.JFrame {
         Signup.setText("sign up");
         Signup.addActionListener(this::SignupActionPerformed);
         jPanel1.add(Signup);
-        Signup.setBounds(858, 289, 79, 27);
+        Signup.setBounds(950, 450, 79, 30);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Already have an account ?");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(760, 340, 150, 16);
+        jLabel3.setBounds(870, 530, 150, 16);
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 255));
         jLabel4.setText("login here.");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(910, 340, 60, 16);
+        jLabel4.setBounds(1010, 530, 60, 16);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Username");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(780, 286, 80, 20);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("E-mail");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(810, 340, 50, 16);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Password");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(790, 380, 80, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1272, 789);
+        jPanel1.setBounds(0, 0, 1290, 780);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,9 +170,12 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JButton Signup;
     private javax.swing.JTextField Username;
     private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

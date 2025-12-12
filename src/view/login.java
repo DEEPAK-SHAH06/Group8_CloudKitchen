@@ -33,13 +33,15 @@ public class login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         login = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
-        email = new javax.swing.JTextField();
+        Password = new javax.swing.JTextField();
+        Login = new javax.swing.JButton();
+        Email = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        signuplink = new javax.swing.JLabel();
+        Logincombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        loginCombo = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -53,62 +55,75 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(image);
         image.setBounds(0, 0, 440, 789);
 
-        login.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        login.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         login.setForeground(new java.awt.Color(0, 0, 0));
         login.setText("login");
         jPanel1.add(login);
-        login.setBounds(726, 47, 94, 32);
+        login.setBounds(800, 170, 130, 47);
 
-        password.setBackground(new java.awt.Color(255, 255, 255));
-        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password.setForeground(new java.awt.Color(0, 0, 0));
-        password.setText("                   password");
-        password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        password.addActionListener(this::passwordActionPerformed);
-        jPanel1.add(password);
-        password.setBounds(680, 200, 221, 34);
+        Password.setBackground(new java.awt.Color(255, 255, 255));
+        Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Password.setForeground(new java.awt.Color(0, 0, 0));
+        Password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Password.addActionListener(this::PasswordActionPerformed);
+        jPanel1.add(Password);
+        Password.setBounds(760, 340, 221, 34);
 
-        loginButton.setBackground(new java.awt.Color(255, 0, 0));
-        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        loginButton.setForeground(new java.awt.Color(255, 255, 255));
-        loginButton.setText("login");
-        loginButton.addActionListener(this::loginButtonActionPerformed);
-        jPanel1.add(loginButton);
-        loginButton.setBounds(750, 300, 79, 31);
+        Login.setBackground(new java.awt.Color(255, 0, 0));
+        Login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Login.setForeground(new java.awt.Color(255, 255, 255));
+        Login.setText("login");
+        Login.addActionListener(this::LoginActionPerformed);
+        jPanel1.add(Login);
+        Login.setBounds(830, 400, 79, 31);
 
-        email.setBackground(new java.awt.Color(255, 255, 255));
-        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        email.setForeground(new java.awt.Color(0, 0, 0));
-        email.setText("                    E-mail");
-        email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        email.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        email.addActionListener(this::emailActionPerformed);
-        jPanel1.add(email);
-        email.setBounds(680, 140, 221, 34);
+        Email.setBackground(new java.awt.Color(255, 255, 255));
+        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Email.setForeground(new java.awt.Color(0, 0, 0));
+        Email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Email.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Email.addActionListener(this::EmailActionPerformed);
+        jPanel1.add(Email);
+        Email.setBounds(760, 280, 221, 34);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("forget password ?");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(740, 360, 123, 16);
+        jLabel1.setBounds(830, 470, 123, 20);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Don't have an accouunt?");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(700, 390, 140, 16);
+        jLabel2.setBounds(780, 510, 160, 20);
 
-        jLabel3.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel3.setText("login here.");
+        signuplink.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        signuplink.setForeground(new java.awt.Color(51, 51, 255));
+        signuplink.setText("login here.");
+        jPanel1.add(signuplink);
+        signuplink.setBounds(940, 510, 80, 20);
+
+        Logincombo.setBackground(new java.awt.Color(255, 255, 255));
+        Logincombo.setForeground(new java.awt.Color(0, 0, 0));
+        Logincombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user", "kitchen" }));
+        Logincombo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Logincombo.addActionListener(this::LogincomboActionPerformed);
+        jPanel1.add(Logincombo);
+        Logincombo.setBounds(1157, 6, 110, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("E-mail ");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(840, 390, 80, 16);
+        jLabel3.setBounds(690, 280, 60, 30);
 
-        loginCombo.setBackground(new java.awt.Color(255, 255, 255));
-        loginCombo.setForeground(new java.awt.Color(0, 0, 0));
-        loginCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user", "kitchen" }));
-        loginCombo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        loginCombo.addActionListener(this::loginComboActionPerformed);
-        jPanel1.add(loginCombo);
-        loginCombo.setBounds(1174, 6, 93, 24);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Password");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(670, 340, 80, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1290, 789);
@@ -116,21 +131,21 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_PasswordActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginButtonActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
 
-    private void loginComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginComboActionPerformed
+    private void LogincomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogincomboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginComboActionPerformed
+    }//GEN-LAST:event_LogincomboActionPerformed
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    }//GEN-LAST:event_EmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,15 +173,17 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
+    private javax.swing.JTextField Email;
+    private javax.swing.JButton Login;
+    private javax.swing.JComboBox<String> Logincombo;
+    private javax.swing.JTextField Password;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel login;
-    private javax.swing.JButton loginButton;
-    private javax.swing.JComboBox<String> loginCombo;
-    private javax.swing.JTextField password;
+    private javax.swing.JLabel signuplink;
     // End of variables declaration//GEN-END:variables
 }

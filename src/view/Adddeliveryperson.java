@@ -34,19 +34,21 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Logout = new javax.swing.JButton();
         Add = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         Staftname = new javax.swing.JTextField();
         Vechiletype = new javax.swing.JTextField();
         Phone = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Password = new javax.swing.JTextField();
         Shift = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -85,8 +87,15 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(410, 570, 110, 30);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Add Delivery Person");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(430, 80, 480, 80);
+
         Logout.setBackground(new java.awt.Color(0, 51, 255));
         Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Logout.setForeground(new java.awt.Color(255, 255, 255));
         Logout.setText("Log out");
         getContentPane().add(Logout);
         Logout.setBounds(1140, 20, 100, 31);
@@ -97,15 +106,23 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Add.setText("Add");
         Add.addActionListener(this::AddActionPerformed);
         getContentPane().add(Add);
-        Add.setBounds(860, 620, 76, 30);
+        Add.setBounds(610, 630, 90, 40);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Shift");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(460, 510, 40, 25);
 
         Staftname.setBackground(new java.awt.Color(204, 204, 204));
+        Staftname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Staftname.setForeground(new java.awt.Color(0, 0, 0));
         Staftname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Staftname);
         Staftname.setBounds(530, 250, 290, 40);
 
         Vechiletype.setBackground(new java.awt.Color(204, 204, 204));
+        Vechiletype.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Vechiletype.setForeground(new java.awt.Color(0, 0, 0));
         Vechiletype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Vechiletype.addActionListener(this::VechiletypeActionPerformed);
@@ -113,47 +130,45 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Vechiletype.setBounds(530, 560, 290, 40);
 
         Phone.setBackground(new java.awt.Color(204, 204, 204));
+        Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Phone.setForeground(new java.awt.Color(0, 0, 0));
         Phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Phone);
         Phone.setBounds(530, 310, 290, 40);
 
         Email.setBackground(new java.awt.Color(204, 204, 204));
+        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Email.setForeground(new java.awt.Color(0, 0, 0));
         Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Email);
         Email.setBounds(530, 370, 290, 40);
 
         Password.setBackground(new java.awt.Color(204, 204, 204));
+        Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Password.setForeground(new java.awt.Color(0, 0, 0));
         Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Password);
         Password.setBounds(530, 440, 290, 40);
 
         Shift.setBackground(new java.awt.Color(204, 204, 204));
+        Shift.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Shift.setForeground(new java.awt.Color(0, 0, 0));
         Shift.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Shift.addActionListener(this::ShiftActionPerformed);
         getContentPane().add(Shift);
         Shift.setBounds(530, 500, 290, 40);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Add Delivery Person");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 80, 350, 48);
-
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
         addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         getContentPane().add(addimage);
-        addimage.setBounds(300, 180, 720, 490);
+        addimage.setBounds(300, 210, 720, 490);
 
         brackgroundimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminImage.jpg"))); // NOI18N
         brackgroundimage.setText("jLabel1");
         brackgroundimage.setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().add(brackgroundimage);
-        brackgroundimage.setBounds(0, 0, 1273, 789);
+        brackgroundimage.setBounds(0, 0, 1270, 780);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,6 +227,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

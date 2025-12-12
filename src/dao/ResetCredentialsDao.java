@@ -6,8 +6,8 @@ package dao;
 
 
 
-import database.MySqlConnection;
-import java.sql.*;
+//import database.MySqlConnection;
+//import java.sql.*;
 
 /**
  *
@@ -15,8 +15,8 @@ import java.sql.*;
  */
 public class ResetCredentialsDao {
     
-
-    
+//    esko code login dao ma xa, update method bhitra.... 
+//    
 //    MySqlConnection mysql = new MySqlConnection();
 //
 //    

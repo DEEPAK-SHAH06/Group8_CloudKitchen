@@ -95,12 +95,12 @@ public class SignUp extends javax.swing.JFrame {
         loginlink.setForeground(new java.awt.Color(51, 51, 255));
         loginlink.setText("login here.");
         jPanel1.add(loginlink);
-        loginlink.setBounds(970, 390, 70, 17);
+        loginlink.setBounds(970, 390, 80, 17);
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         username.setText("username");
         jPanel1.add(username);
-        username.setBounds(740, 170, 83, 22);
+        username.setBounds(740, 170, 90, 22);
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         email.setText("email");
@@ -110,7 +110,7 @@ public class SignUp extends javax.swing.JFrame {
         password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         password.setText("password");
         jPanel1.add(password);
-        password.setBounds(750, 290, 77, 22);
+        password.setBounds(750, 290, 90, 22);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1273, 789);

@@ -28,39 +28,40 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        Logout = new javax.swing.JButton();
-        Add = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        Edit = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
         Staftname = new javax.swing.JTextField();
-        Vechiletype = new javax.swing.JTextField();
         Phone = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Password = new javax.swing.JTextField();
         Shift = new javax.swing.JTextField();
+        Vechiletype = new javax.swing.JTextField();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Edit Delivery Person Information");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(310, 90, 737, 80);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Satf_name");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(420, 250, 90, 30);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Phone");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 320, 50, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -86,11 +87,25 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(410, 570, 110, 30);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Edit Delivery Person Information");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(310, 90, 737, 80);
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Phone");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(450, 320, 50, 25);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Shift");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(460, 510, 40, 25);
+
+        Edit.setBackground(new java.awt.Color(255, 51, 51));
+        Edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Edit.setForeground(new java.awt.Color(255, 255, 255));
+        Edit.setText("Edit");
+        Edit.addActionListener(this::EditActionPerformed);
+        getContentPane().add(Edit);
+        Edit.setBounds(610, 630, 90, 40);
 
         Logout.setBackground(new java.awt.Color(0, 51, 255));
         Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,34 +114,12 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         getContentPane().add(Logout);
         Logout.setBounds(1140, 20, 100, 31);
 
-        Add.setBackground(new java.awt.Color(255, 51, 51));
-        Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("Edit");
-        Add.addActionListener(this::AddActionPerformed);
-        getContentPane().add(Add);
-        Add.setBounds(610, 630, 90, 40);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Shift");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 510, 40, 25);
-
         Staftname.setBackground(new java.awt.Color(204, 204, 204));
         Staftname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Staftname.setForeground(new java.awt.Color(0, 0, 0));
         Staftname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Staftname);
         Staftname.setBounds(530, 250, 290, 40);
-
-        Vechiletype.setBackground(new java.awt.Color(204, 204, 204));
-        Vechiletype.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Vechiletype.setForeground(new java.awt.Color(0, 0, 0));
-        Vechiletype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Vechiletype.addActionListener(this::VechiletypeActionPerformed);
-        getContentPane().add(Vechiletype);
-        Vechiletype.setBounds(530, 560, 290, 40);
 
         Phone.setBackground(new java.awt.Color(204, 204, 204));
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -157,6 +150,14 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         getContentPane().add(Shift);
         Shift.setBounds(530, 500, 290, 40);
 
+        Vechiletype.setBackground(new java.awt.Color(204, 204, 204));
+        Vechiletype.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Vechiletype.setForeground(new java.awt.Color(0, 0, 0));
+        Vechiletype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Vechiletype.addActionListener(this::VechiletypeActionPerformed);
+        getContentPane().add(Vechiletype);
+        Vechiletype.setBounds(530, 560, 290, 40);
+
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
         addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -180,9 +181,9 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ShiftActionPerformed
 
-    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddActionPerformed
+    }//GEN-LAST:event_EditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +211,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add;
+    private javax.swing.JButton Edit;
     private javax.swing.JTextField Email;
     private javax.swing.JButton Logout;
     private javax.swing.JTextField Password;

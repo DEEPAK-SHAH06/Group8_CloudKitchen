@@ -41,6 +41,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         Logout.setBackground(new java.awt.Color(0, 51, 255));
@@ -115,7 +116,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         brackgroundimage.setText("jLabel1");
         brackgroundimage.setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().add(brackgroundimage);
-        brackgroundimage.setBounds(0, 0, 1270, 789);
+        brackgroundimage.setBounds(0, 0, 1270, 790);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

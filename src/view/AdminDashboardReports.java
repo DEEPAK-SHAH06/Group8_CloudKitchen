@@ -8,14 +8,14 @@ package view;
  *
  * @author hp
  */
-public class AdminDashboardManageOrder extends javax.swing.JFrame {
+public class AdminDashboardReports extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboardManageOrder.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboardReports.class.getName());
 
     /**
      * Creates new form AdminDashboardManageOrder
      */
-    public AdminDashboardManageOrder() {
+    public AdminDashboardReports() {
         initComponents();
     }
 
@@ -47,16 +47,14 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1273, 789));
@@ -121,9 +119,9 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sitka Text", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("        Order_Id");
+        jLabel4.setText("    Report_Id");
         jLabel4.setOpaque(true);
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 30));
 
@@ -135,9 +133,9 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("     Customer_Id");
+        jLabel5.setText("    Date Range");
         jLabel5.setOpaque(true);
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 30));
 
@@ -149,9 +147,9 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 2, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("   Total Amount");
+        jLabel6.setText("   Total Order");
         jLabel6.setOpaque(true);
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 30));
 
@@ -163,9 +161,9 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("     Order Time");
+        jLabel7.setText("   Total Revenue");
         jLabel7.setOpaque(true);
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 30));
 
@@ -177,9 +175,9 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("     Order Status");
+        jLabel8.setText("  Most Sold Items");
         jLabel8.setOpaque(true);
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, 130, 30));
 
@@ -193,28 +191,15 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jSeparator1.setMaximumSize(new java.awt.Dimension(32767, 8));
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(440, 280, 120, 20);
+        jSeparator1.setBounds(780, 280, 120, 20);
 
-        jButton6.setBackground(new java.awt.Color(0, 204, 0));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Assign to Kitchen");
-        jPanel1.add(jButton6);
-        jButton6.setBounds(420, 690, 140, 27);
-
-        jButton7.setBackground(new java.awt.Color(255, 0, 51));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Cancel Orders");
-        jPanel1.add(jButton7);
-        jButton7.setBounds(570, 690, 118, 27);
-
-        jButton8.setBackground(new java.awt.Color(102, 51, 0));
+        jButton8.setBackground(new java.awt.Color(102, 102, 102));
+        jButton8.setFont(new java.awt.Font("Serif", 2, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Save Changes");
+        jButton8.setText("Export  as CSV");
         jButton8.addActionListener(this::jButton8ActionPerformed);
         jPanel1.add(jButton8);
-        jButton8.setBounds(700, 690, 110, 23);
+        jButton8.setBounds(980, 610, 120, 26);
 
         jButton9.setBackground(new java.awt.Color(51, 153, 255));
         jButton9.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
@@ -223,6 +208,16 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         jButton9.addActionListener(this::jButton9ActionPerformed);
         jPanel1.add(jButton9);
         jButton9.setBounds(1070, 30, 80, 27);
+
+        jButton10.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        jButton10.setText("< Back");
+        jButton10.setBorder(null);
+        jButton10.setBorderPainted(false);
+        jButton10.setContentAreaFilled(false);
+        jButton10.setFocusPainted(false);
+        jButton10.addActionListener(this::jButton10ActionPerformed);
+        jPanel1.add(jButton10);
+        jButton10.setBounds(30, 20, 53, 24);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Serif", 2, 14)); // NOI18N
@@ -264,6 +259,10 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,17 +285,16 @@ public class AdminDashboardManageOrder extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AdminDashboardManageOrder().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AdminDashboardReports().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;

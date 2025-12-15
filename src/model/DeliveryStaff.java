@@ -10,4 +10,67 @@ package model;
  */
 public class DeliveryStaff {
     
+    private int deliveryStaff_id;
+    private String deliveryStaff_name;
+    private String deliveryStaff_email;
+    private String deliveryStaff_password;
+    private Shift shift;
+
+    private enum Shift{
+        MORNING, EVENING, NIGHT
+    }
+
+    public int getDeliveryStaff_id() {
+        return deliveryStaff_id;
+    }
+
+    public void setDeliveryStaff_id(int deliveryStaff_id) {
+        this.deliveryStaff_id = deliveryStaff_id;
+    }
+
+    public String getDeliveryStaff_name() {
+        return deliveryStaff_name;
+    }
+
+    public void setDeliveryStaff_name(String deliveryStaff_name) {
+        this.deliveryStaff_name = deliveryStaff_name;
+    }
+
+    public String getDeliveryStaff_email() {
+        return deliveryStaff_email;
+    }
+
+    public void setDeliveryStaff_email(String deliveryStaff_email) {
+        this.deliveryStaff_email = deliveryStaff_email;
+    }
+
+    public String getDeliveryStaff_password() {
+        return deliveryStaff_password;
+    }
+
+    public void setDeliveryStaff_password(String deliveryStaff_password) {
+        this.deliveryStaff_password = deliveryStaff_password;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
+    }
+
+    public DeliveryStaff(int deliveryStaff_id, String deliveryStaff_name, String deliveryStaff_email,
+            String deliveryStaff_password, DeliveryStaff.Shift shift) {
+        this.deliveryStaff_id = deliveryStaff_id;
+        this.deliveryStaff_name = deliveryStaff_name;
+        this.deliveryStaff_email = deliveryStaff_email;
+        this.deliveryStaff_password = deliveryStaff_password;
+        this.shift = shift;
+    }
+
+
+    
+
 }
+

@@ -3,8 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Asus/OneDrive/Desktop/Group8_CloudKitchen/Group8_CloudKitchen/src/view/Homepageafterlogin.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Desktop/Group8_CloudKitchen/Group8_CloudKitchen/src/view/DashBoard.java</file>
+=======
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/Users.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/Customers.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/database/MySqlConnection.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/Kitchen.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/Order.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/Reports.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/DeliveryStaff.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/controller/UserController.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/OTPVerifyPage.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/forgetpassword.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/demo.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/SignUp.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/controller/LoginController.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/dao/ResetCredentialsDao.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/dao/LoginDao.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/dao/DefaultUsers.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/login.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/dao/SignUpDao.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/model/OTPStore.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/utils/EmailSender.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/MainPage.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/KitchenDashboard.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/DeliveryDashboard.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/view/ResetPassword.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/group8_cloudkitchen/Group8_CloudKitchen.java</file>
+            <file>file:/Users/deepakshah/NetBeansProjects/Group8_CloudKitchen/src/database/Databasee.java</file>
+>>>>>>> 55f926032b484c37099da5976d2e57e20fce5be1
         </group>
     </open-files>
 </project-private>

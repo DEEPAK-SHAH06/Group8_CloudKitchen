@@ -24,9 +24,9 @@ public class MySqlConnection implements Databasee{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database,username,password);
             
             if(connection == null){
-                System.out.println("Not connection");
+                System.out.println("Unsuccessfull connection");
             }else{
-                System.out.println("Successfull");
+                System.out.println("Connection Successfull");
             }
             System.out.println(database);
             return connection;

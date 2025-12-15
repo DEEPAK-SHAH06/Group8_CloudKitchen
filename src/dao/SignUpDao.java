@@ -1,0 +1,64 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package dao;
+
+import database.MySqlConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Users;
+
+/**
+ *
+ * @author deepakshah
+ */
+public class SignUpDao {
+
+    MySqlConnection mysql = new MySqlConnection();
+
+    public void signUp(Users user) {
+
+        Connection conn = mysql.openConnection();
+        String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, "USER"); // automatically assign USER role
+
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("SIGNUP ERROR: " + e.getMessage());
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
+
+    public boolean checkExists(Users user) {
+
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT * FROM users WHERE username=? OR email=?";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            ResultSet result = pstm.executeQuery();
+
+            return result.next();
+
+        } catch (SQLException e) {
+            System.out.println("CHECK EXISTS ERROR: " + e.getMessage());
+        } finally {
+            mysql.closeConnection(conn);
+        }
+
+        return false;
+    }
+}

@@ -28,9 +28,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -41,18 +41,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/WhatsApp Image 2025-12-03 at 18.08.32_88123ff1.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setForeground(new java.awt.Color(255, 51, 51));
         jPanel1.setLayout(null);
 
         label1.setText("Admin Dashboard");
         jPanel1.add(label1);
         label1.setBounds(270, 60, 100, 90);
-
-        jLabel1.setText("> Back");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 20, 37, 70);
 
         jButton1.setBackground(new java.awt.Color(0, 255, 255));
         jButton1.setText("Log out");
@@ -82,24 +84,38 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel1.add(jButton7);
         jButton7.setBounds(10, 200, 120, 20);
 
+        jButton8.setForeground(new java.awt.Color(102, 255, 102));
         jButton8.setText("Add");
         jButton8.addActionListener(this::jButton8ActionPerformed);
         jPanel1.add(jButton8);
         jButton8.setBounds(360, 540, 60, 23);
 
+        jButton9.setForeground(new java.awt.Color(255, 51, 255));
         jButton9.setText("Edit");
         jButton9.addActionListener(this::jButton9ActionPerformed);
         jPanel1.add(jButton9);
         jButton9.setBounds(430, 540, 50, 23);
 
+        jButton10.setForeground(new java.awt.Color(255, 51, 51));
         jButton10.setText("Delete");
         jPanel1.add(jButton10);
         jButton10.setBounds(490, 540, 70, 23);
 
+        jButton11.setForeground(new java.awt.Color(153, 0, 153));
         jButton11.setText("Save Changes");
         jButton11.addActionListener(this::jButton11ActionPerformed);
         jPanel1.add(jButton11);
         jButton11.setBounds(570, 540, 110, 23);
+
+        jButton2.setForeground(new java.awt.Color(51, 51, 255));
+        jButton2.setText("Back");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(10, 50, 75, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/WhatsApp Image 2025-12-03 at 18.08.32_88123ff1.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 740, 580);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,12 +123,12 @@ public class AdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -172,6 +188,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -180,6 +197,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables

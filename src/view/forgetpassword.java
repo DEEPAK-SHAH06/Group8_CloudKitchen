@@ -4,6 +4,14 @@
  */
 package view;
 
+<<<<<<< HEAD
+=======
+import java.net.URLEncoder;
+import javax.swing.JOptionPane;
+import model.OTPStore;
+import utils.EmailSender;
+
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 /**
  *
  * @author Asus
@@ -30,8 +38,13 @@ public class forgetpassword extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         Email = new javax.swing.JTextField();
         sendbutton = new javax.swing.JButton();
+=======
+        txtEmail = new javax.swing.JTextField();
+        btnSendCode = new javax.swing.JButton();
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -41,17 +54,30 @@ public class forgetpassword extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         jLabel2.setText("Forget password ?");
         getContentPane().add(jLabel2);
+<<<<<<< HEAD
         jLabel2.setBounds(300, 210, 120, 18);
+=======
+        jLabel2.setBounds(300, 210, 130, 16);
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 9)); // NOI18N
         jLabel3.setText("Please enter your registered email address we will get back to you with");
         getContentPane().add(jLabel3);
+<<<<<<< HEAD
         jLabel3.setBounds(220, 230, 310, 16);
 
         Email.setBackground(new java.awt.Color(224, 216, 216));
         Email.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         Email.setText("    Email or Username");
         Email.setBorder(new javax.swing.border.AbstractBorder() {
+=======
+        jLabel3.setBounds(200, 230, 350, 20);
+
+        txtEmail.setBackground(new java.awt.Color(224, 216, 216));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        txtEmail.setText("    Email or Username");
+        txtEmail.setBorder(new javax.swing.border.AbstractBorder() {
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -60,6 +86,7 @@ public class forgetpassword extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 30, 30);
             }
         });
+<<<<<<< HEAD
         Email.addActionListener(this::EmailActionPerformed);
         getContentPane().add(Email);
         Email.setBounds(300, 270, 130, 30);
@@ -71,11 +98,29 @@ public class forgetpassword extends javax.swing.JFrame {
         sendbutton.setBorder(null);
         getContentPane().add(sendbutton);
         sendbutton.setBounds(320, 310, 90, 30);
+=======
+        txtEmail.addActionListener(this::txtEmailActionPerformed);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(300, 280, 130, 30);
+
+        btnSendCode.setBackground(new java.awt.Color(227, 38, 38));
+        btnSendCode.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        btnSendCode.setForeground(new java.awt.Color(255, 255, 255));
+        btnSendCode.setText("Send code");
+        btnSendCode.setBorder(null);
+        btnSendCode.addActionListener(this::btnSendCodeActionPerformed);
+        getContentPane().add(btnSendCode);
+        btnSendCode.setBounds(320, 330, 90, 30);
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 9)); // NOI18N
         jLabel4.setText("the reset password link and confirmation OTP thanks.");
         getContentPane().add(jLabel4);
+<<<<<<< HEAD
         jLabel4.setBounds(250, 240, 230, 13);
+=======
+        jLabel4.setBounds(250, 250, 250, 11);
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -85,9 +130,34 @@ public class forgetpassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
+=======
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnSendCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendCodeActionPerformed
+        // TODO add your handling code here:
+        try {
+        String email = txtEmail.getText().trim();
+        String code = OTPStore.generateOTPAndSaveForEmail(email); // your OTP saving logic
+        String resetLink = "http://your-app/reset?email=" + URLEncoder.encode(email, "UTF-8") + "&code=" + code;
+
+        String subject = "Password reset code";
+        String body = "Your reset code: " + code + "\nReset link: " + resetLink;
+
+        utils.EmailSender.sendEmail(email, subject, body);
+        JOptionPane.showMessageDialog(this, "Code sent. Check your email.");
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Failed to send email: " + ex.getMessage());
+    }
+
+    }//GEN-LAST:event_btnSendCodeActionPerformed
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 
     /**
      * @param args the command line arguments
@@ -115,11 +185,24 @@ public class forgetpassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JTextField Email;
+=======
+    private javax.swing.JButton btnSendCode;
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+<<<<<<< HEAD
     private javax.swing.JButton sendbutton;
     // End of variables declaration//GEN-END:variables
+=======
+    private javax.swing.JTextField txtEmail;
+    // End of variables declaration//GEN-END:variables
+
+
+
+    
+>>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 }

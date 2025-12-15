@@ -47,7 +47,7 @@ public class signup extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup1.jpg"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.jpg"))); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image);
         image.setBounds(0, 0, 526, 789);

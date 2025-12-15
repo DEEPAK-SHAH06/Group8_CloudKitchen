@@ -50,7 +50,7 @@ public class login extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1273, 440));
         jPanel1.setLayout(null);
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login2.jpg"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.jpg"))); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image);
         image.setBounds(0, 0, 440, 789);

@@ -61,7 +61,7 @@ public class DashBoard extends javax.swing.JFrame {
         Signup = new javax.swing.JButton();
         Cart = new javax.swing.JButton();
         Login = new javax.swing.JButton();
-        Categories = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -281,19 +281,10 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel1.add(Login);
         Login.setBounds(1160, 20, 90, 40);
 
-        Categories.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        Categories.setText("         Categories");
-        Categories.setBorder(new javax.swing.border.AbstractBorder() {
-            @Override
-            public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
-                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
-                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(java.awt.Color.GRAY);
-                g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
-            }
-        });
-        jPanel1.add(Categories);
-        Categories.setBounds(850, 32, 220, 40);
+        jComboBox1.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Categories", "Indian", "Itely", "Japneses", "Chinese" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(840, 32, 210, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,11 +345,11 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cart;
-    private javax.swing.JTextField Categories;
     private javax.swing.JButton Login;
     private javax.swing.JTextField Search;
     private javax.swing.JButton Signup;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

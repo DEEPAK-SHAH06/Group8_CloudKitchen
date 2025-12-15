@@ -43,6 +43,25 @@ public class Homepageafterlogin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,11 +106,11 @@ public class Homepageafterlogin extends javax.swing.JFrame {
         jPanel1.add(Search);
         Search.setBounds(320, 50, 480, 40);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("       Welcome Users");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(1260, 50, 180, 25);
+        jLabel3.setBounds(1100, 50, 210, 33);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hamburger12.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -135,23 +154,144 @@ public class Homepageafterlogin extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cart.png"))); // NOI18N
         jPanel1.add(jButton2);
-        jButton2.setBounds(1150, 50, 30, 30);
+        jButton2.setBounds(1080, 50, 30, 30);
+
+        Logout.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        Logout.setText("Logout");
+        Logout.setBorder(new javax.swing.border.AbstractBorder() {
+            @Override
+            public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(java.awt.Color.GRAY);
+                g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
+            }
+        });
+        jPanel1.add(Logout);
+        Logout.setBounds(1310, 50, 90, 30);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("                   Ham Burger  ");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(50, 460, 220, 20);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Rs 450");
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(140, 470, 60, 30);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Tomato Pizza");
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(490, 460, 110, 20);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Rs 350");
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(510, 470, 60, 30);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Fried Chicken");
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(850, 460, 110, 20);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Rs 690");
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(870, 470, 60, 30);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Biryani");
+        jPanel1.add(jLabel18);
+        jLabel18.setBounds(1220, 460, 70, 30);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("490");
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(1230, 480, 43, 20);
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Fried Rice\n");
+        jPanel1.add(jLabel20);
+        jLabel20.setBounds(120, 740, 80, 20);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Rs 150");
+        jPanel1.add(jLabel21);
+        jLabel21.setBounds(130, 750, 60, 30);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Momo");
+        jPanel1.add(jLabel22);
+        jLabel22.setBounds(500, 740, 60, 20);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Rs 250");
+        jPanel1.add(jLabel23);
+        jLabel23.setBounds(500, 756, 43, 20);
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Sushi");
+        jPanel1.add(jLabel24);
+        jLabel24.setBounds(880, 740, 43, 16);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Rs 300");
+        jPanel1.add(jLabel25);
+        jLabel25.setBounds(880, 750, 60, 30);
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Chicken Curry");
+        jPanel1.add(jLabel26);
+        jLabel26.setBounds(1180, 740, 120, 20);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Rs 250");
+        jPanel1.add(jLabel27);
+        jLabel27.setBounds(1210, 750, 60, 30);
+
+        jLabel28.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Menu");
+        jPanel1.add(jLabel28);
+        jLabel28.setBounds(20, 220, 90, 43);
+
+        jComboBox1.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "      Categories", "Indian", "Itely", "japanese", "chinese" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(830, 52, 210, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1593, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,13 +341,32 @@ public class Homepageafterlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Logout;
     private javax.swing.JTextField Search;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

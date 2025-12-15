@@ -529,19 +529,27 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="Categories">
+        <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe Print" size="14" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="         Categories"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.border.AbstractBorder() {&#xd;&#xa;    @Override&#xd;&#xa;    public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {&#xd;&#xa;        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;&#xd;&#xa;        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);&#xd;&#xa;        g2.setColor(java.awt.Color.GRAY);&#xd;&#xa;        g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="       Categories"/>
+                <StringItem index="1" value="Indian"/>
+                <StringItem index="2" value="Itely"/>
+                <StringItem index="3" value="Japneses"/>
+                <StringItem index="4" value="Chinese"/>
+              </StringArray>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="850" y="32" width="220" height="40"/>
+              <AbsoluteConstraints x="840" y="32" width="210" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

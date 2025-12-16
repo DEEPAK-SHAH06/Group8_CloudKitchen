@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
-import view.MainPage;
+import view.DashBoard;
 import view.login;
 
 /**
@@ -53,7 +53,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(loginView, "Login Successful!");
 
                 // Open Dashboard
-                MainPage dashboard = new MainPage();
+                DashBoard dashboard = new DashBoard();
                 dashboard.setVisible(true);
 
                 // Close login window

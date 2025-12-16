@@ -41,5 +41,28 @@ public class LoginDao {
 
         return false;
     }
+    
+    
+    
+    public boolean updatePassword(String email, String newPassword) {
+        
+        Connection con = mysql.openConnection();
+    
+        String sql = "UPDATE users SET password=? WHERE email=?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, newPassword);
+            ps.setString(2, email);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+    }
+}
+
+    
 }
 

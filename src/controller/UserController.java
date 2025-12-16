@@ -6,6 +6,11 @@ package controller;
 
 import dao.LoginDao;
 import dao.SignUpDao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import model.Users;
+import view.SignUp;
 
 /**
  *
@@ -18,7 +23,7 @@ public class UserController {
    
     public UserController(SignUp userView){
         this.userView = userView;
-        userView.AddUserListener(new AddActionListner());
+        userView.AddUserListener(new AddActionListener());
     }
     
     public void open(){
@@ -27,33 +32,38 @@ public class UserController {
     public void close(){
         this.userView.dispose();
     }
-    
-    class AddActionListener implement ActionListener{
-        
-        @Override 
-        public void actionPerformed(ActionEvent ex){
+
+    class AddActionListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent ex) {
             
             try{
-                public Users handleLogin(String email, String password, String role) {
-
-                 if (email.isEmpty() || password.isEmpty() || role.isEmpty()) {
-                    System.out.println("Please fill all fields!");
-                    return null;
+                
+                String username = userView.getUsernameText().getText();
+                String email = userView.getEmailText().getText();
+                String password = userView.getPasswordText().getText();
+                
+                Users users = new Users(username, email, password);
+                boolean check = signupdao.checkExists(users);
+                if (check) {
+                    JOptionPane.showConfirmDialog(userView, "Duplicated user");
+                } else {
+                    signupdao.signUp(users);
+                    JOptionPane.showMessageDialog(userView, "Successfull");
+//                    Login lc = new Login();
+//                    LoginController log = new LoginController(lc);
+//                    log.close();
+//                    log.open();
                 }
-
-                Users loggedUser = loginDao.login(email, password, role);
-
-                if (loggedUser == null) {
-                     System.out.println("Invalid credentials or wrong role selected!");
-                    return null;
-                }
-
-                return loggedUser;
+           
+            }catch(Exception e){
+                System.out.println(e);
             }
-            }
-            
-        }
-        
+     }
     }
     
+    
+    
 }
+    
+

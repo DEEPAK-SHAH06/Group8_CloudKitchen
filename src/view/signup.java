@@ -10,10 +10,9 @@ import java.awt.event.ActionListener;
  *
  * @author Limbu Mbg Sujata
  */
-public class signup extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(signup.class.getName());
 public class SignUp extends javax.swing.JFrame {
+    
+   
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SignUp.class.getName());
 
@@ -58,7 +57,7 @@ public class SignUp extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.jpg"))); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image);
-        image.setBounds(0, 0, 528, 17);
+        image.setBounds(0, 0, 528, 789);
 
         usernameText.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         usernameText.addActionListener(this::usernameTextActionPerformed);
@@ -196,4 +195,4 @@ public class SignUp extends javax.swing.JFrame {
     }
 
 }
-}
+

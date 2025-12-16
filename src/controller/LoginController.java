@@ -4,34 +4,19 @@
  */
 package controller;
 
-<<<<<<< HEAD
-=======
+
 import dao.LoginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
 import view.MainPage;
->>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
 import view.login;
 
 /**
  *
 <<<<<<< HEAD
- * @author Limbu Mbg Sujata
- */
-public class LoginController {
 
-    public LoginController(login loginView) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void open() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-}
-=======
  * @author deepakshah
  */
 public class LoginController {
@@ -88,4 +73,4 @@ public class LoginController {
     }
 
 
->>>>>>> 5c0f012051cac98326ce28636a2a6ba075c3f7f6
+

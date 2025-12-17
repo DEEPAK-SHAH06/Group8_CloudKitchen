@@ -12,9 +12,9 @@ public class Customers {
     
     private int customer_id;
 
-    private String username;
-    private String email;
-    private String password;
+    private Users username;
+    private Users email;
+    private Users password;
     private long phone;
     private String address;
     
@@ -25,22 +25,22 @@ public class Customers {
     public void setCustomer_id(int customer_id) {
         this.customer_id = customer_id;
     }
-    public String getUsername() {
+    public Users getUsername() {
         return username;
     }
-    public void setUsername(String username) {
+    public void setUsername(Users username) {
         this.username = username;
     }
-    public String getEmail() {
+    public Users getEmail() {
         return email;
     }
-    public void setEmail(String email) {
+    public void setEmail(Users email) {
         this.email = email;
     }
-    public String getPassword() {
+    public Users getPassword() {
         return password;
     }
-    public void setPassword(String password) {
+    public void setPassword(Users password) {
         this.password = password;
     }
     public long getPhone() {
@@ -55,7 +55,7 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
-    public Customers(String username, String email, String password, long phone, String address) {
+    public Customers(Users username, Users email, Users password, long phone, String address) {
         this.username = username;
         this.email = email;
         this.password = password;

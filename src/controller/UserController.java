@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
 import view.SignUp;
+import view.login;
 
 /**
  *
@@ -50,10 +51,10 @@ public class UserController {
                 } else {
                     signupdao.signUp(users);
                     JOptionPane.showMessageDialog(userView, "Successfull");
-//                    Login lc = new Login();
-//                    LoginController log = new LoginController(lc);
-//                    log.close();
-//                    log.open();
+                    login lc = new login();
+                    LoginController log = new LoginController(lc);
+                    log.close();
+                    log.open();
                 }
            
             }catch(Exception e){

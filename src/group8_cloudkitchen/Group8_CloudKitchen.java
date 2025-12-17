@@ -8,13 +8,19 @@ package group8_cloudkitchen;
  *
  * @author deepakshah
  */
+import view.login;
+import controller.LoginController;
 public class Group8_CloudKitchen {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         // TODO code application logic here
+        login loginView = new login();
+        LoginController loginCOntroller = new LoginController(loginView);
+        loginView.setVisible(true);
     }
     
 }

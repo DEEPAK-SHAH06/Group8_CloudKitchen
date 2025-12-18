@@ -18,7 +18,13 @@ public class Order {
     private LocalDateTime orderTime;
 
     private OrderStatus orderStatus;
-    private enum OrderStatus{
+
+    public Order() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+    public enum OrderStatus{
         PENDING,
         CONFIRMED,
         PREPARING,

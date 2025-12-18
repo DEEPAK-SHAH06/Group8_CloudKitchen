@@ -3,3 +3,6 @@
 /build/
 /nbproject/
 /dist/
+.idea/
+*.iml
+out/

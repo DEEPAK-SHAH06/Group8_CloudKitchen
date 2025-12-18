@@ -14,8 +14,13 @@ public class Item {
     private String itemName;
     private String category;
     private double price;
+    private String imagePath;
 
     private Availability availability;
+
+    public Item() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     private enum Availability{
         AVAILABLE, NOT_AVAILABLE
@@ -44,17 +49,26 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
     public Availability getAvailability() {
         return availability;
     }
     public void setAvailability(Availability availability) {
         this.availability = availability;
     }
-    public Item(String itemName, String category, double price, Item.Availability availability) {
+    public Item(String itemName, String category, double price, Item.Availability availability, String imagePath) {
         this.itemName = itemName;
         this.category = category;
         this.price = price;
         this.availability = availability;
+        this.imagePath = imagePath;
     }
 
 }

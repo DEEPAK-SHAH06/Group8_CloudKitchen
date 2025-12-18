@@ -302,7 +302,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
         // TODO add your handling code here:
-        if(Search.getText().equals("Search")){
+        if(Search.getText().equals("                                     Search")){
             Search.setText("");
         }
     }//GEN-LAST:event_SearchFocusGained
@@ -310,7 +310,7 @@ public class DashBoard extends javax.swing.JFrame {
     private void SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusLost
         // TODO add your handling code here:
         if(Search.getText().equals("")){
-           Search.setText("Search");
+           Search.setText("                                     Search");
         }
     }//GEN-LAST:event_SearchFocusLost
 

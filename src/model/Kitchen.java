@@ -17,7 +17,7 @@ public class Kitchen {
     private Item itemName;
     private CookingStatus cookingStatus;
 
-    private enum CookingStatus{
+    public enum CookingStatus{
         PREPARING,COOKED
     }
 

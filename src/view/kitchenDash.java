@@ -4,6 +4,14 @@
  */
 package view;
 
+import controller.KitchenController;
+import java.awt.event.ActionEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Kitchen;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -15,9 +23,12 @@ public class kitchenDash extends javax.swing.JFrame {
     /**
      * Creates new form demo
      */
+    private KitchenController kitchenController;
+    
     public kitchenDash() {
         initComponents();
-  
+       kitchenController = new KitchenController(kitchenTable);
+       kitchenController.loadKitchenOrders();
     }
 
     /**
@@ -33,7 +44,7 @@ public class kitchenDash extends javax.swing.JFrame {
         Markasready = new javax.swing.JButton();
         Startcooking = new javax.swing.JButton();
         KitchenPane = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        kitchenTable = new javax.swing.JTable();
         BackgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +52,6 @@ public class kitchenDash extends javax.swing.JFrame {
 
         KitchenIcon.setBackground(new java.awt.Color(255, 255, 255));
         KitchenIcon.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        KitchenIcon.setForeground(new java.awt.Color(0, 0, 0));
         KitchenIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/k-icon.png"))); // NOI18N
         KitchenIcon.setToolTipText("");
         getContentPane().add(KitchenIcon);
@@ -51,6 +61,7 @@ public class kitchenDash extends javax.swing.JFrame {
         Markasready.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Markasready.setForeground(new java.awt.Color(255, 255, 255));
         Markasready.setText("Mark as ready");
+        Markasready.addActionListener(this::MarkasreadyActionPerformed);
         getContentPane().add(Markasready);
         Markasready.setBounds(900, 630, 170, 50);
 
@@ -58,16 +69,15 @@ public class kitchenDash extends javax.swing.JFrame {
         Startcooking.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Startcooking.setForeground(new java.awt.Color(255, 255, 255));
         Startcooking.setText("Start cooking");
+        Startcooking.addActionListener(this::StartcookingActionPerformed);
         getContentPane().add(Startcooking);
         Startcooking.setBounds(710, 630, 160, 50);
 
         KitchenPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         KitchenPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        table.setBackground(new java.awt.Color(255, 255, 255));
-        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        table.setForeground(new java.awt.Color(0, 0, 0));
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        kitchenTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        kitchenTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -102,9 +112,9 @@ public class kitchenDash extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        KitchenPane.setViewportView(table);
-        if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setMaxWidth(122);
+        KitchenPane.setViewportView(kitchenTable);
+        if (kitchenTable.getColumnModel().getColumnCount() > 0) {
+            kitchenTable.getColumnModel().getColumn(0).setMaxWidth(122);
         }
 
         getContentPane().add(KitchenPane);
@@ -117,6 +127,14 @@ public class kitchenDash extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void StartcookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartcookingActionPerformed
+        kitchenController.startCooking();
+        }//GEN-LAST:event_StartcookingActionPerformed
+
+    private void MarkasreadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkasreadyActionPerformed
+        kitchenController.markAsReady();
+    }//GEN-LAST:event_MarkasreadyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,8 +167,33 @@ public class kitchenDash extends javax.swing.JFrame {
     private javax.swing.JScrollPane KitchenPane;
     private javax.swing.JButton Markasready;
     private javax.swing.JButton Startcooking;
-    private javax.swing.JTable table;
+    private javax.swing.JTable kitchenTable;
     // End of variables declaration//GEN-END:variables
 
+//   DefaultTableModel model = new DefaultTableModel(
+//    new String[]{"Order ID", "Status", "Customer", "Items", "Time"}, 0
+//   );
+//   
+//   kitchenTable.setModel(model);
    
+    
+    public void populateTable(List<Kitchen> orders) {
+    DefaultTableModel model = (DefaultTableModel) kitchenTable.getModel();
+    model.setRowCount(0);
+
+    for (Kitchen k : orders) {
+        model.addRow(new Object[]{
+            k.getOrder_id().getOrder_id(),
+            k.getCookingStatus(),
+            k.getCustomer_id().getUsername(),
+            k.getItemName().getItemName(),
+            k.getOrderTime()
+        });
+        
+        
+    }
+}
+
+   
+ 
 }

@@ -3,49 +3,55 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
-
-import java.sql.*;
-import database.MySqlConnection;
-import java.util.ArrayList;
-import java.util.List;
-import model.Item;
-
 /**
  *
  * @author deepakshah
  */
+
+import model.Item;
+import database.MySqlConnection;
+
+import java.sql.*;
+import java.util.*;
+
 public class ItemDao {
-
+    
     MySqlConnection mysql = new MySqlConnection();
+    
 
-    public List<Item> getAvailableItems() {
+    public List<Item> getAllItems() {
+        List<Item> list = new ArrayList<>();
+        String sql = "SELECT * FROM items";
 
-        List<Item> items = new ArrayList<>();
-        Connection conn = mysql.openConnection();
-
-        String sql = "SELECT * FROM items WHERE availability = 'AVAILABLE'";
-
-        try (PreparedStatement ps = conn.prepareStatement(sql);
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-
-                Item item = new Item();
-                item.setItem_id(rs.getInt("item_id"));
-                item.setItemName(rs.getString("item_name"));
-                item.setPrice(rs.getDouble("price"));
-                item.setImagePath(rs.getString("image_path"));
-
-                items.add(item);
-            }
-
-        } catch (SQLException e) {
+//            while (rs.next()) {
+//                list.add(new Item(                       
+//                        rs.getInt("id"),
+//                        rs.getString("name"),
+//                        rs.getString("category"),
+//                        rs.getDouble("price"),
+//                        rs.getBoolean("availability")
+//                ));
+//            }
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            mysql.closeConnection(conn);
         }
+        return list;
+    }
 
-        return items;
+    public void deleteItem(int id) {
+        try (Connection con = mysql.openConnection()) {
+            PreparedStatement ps =
+                con.prepareStatement("DELETE FROM items WHERE id=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
 

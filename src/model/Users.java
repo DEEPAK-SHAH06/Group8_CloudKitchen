@@ -15,6 +15,10 @@ public class Users {
     private String email;
     private String password;
     private String role;
+
+    public Users() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public int getUser_id() {
         return user_id;

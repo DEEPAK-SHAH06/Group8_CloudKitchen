@@ -27,7 +27,7 @@ public class MainPageController {
 
         panelProducts.removeAll();
 
-        List<Item> items = itemDao.getAvailableItems();
+        List<Item> items = itemDao.getAllItems();
 
         for (Item item : items) {
             ProductCardPanel card = new ProductCardPanel(item);

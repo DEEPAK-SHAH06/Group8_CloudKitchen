@@ -54,7 +54,6 @@ public class Edituserinfo extends javax.swing.JFrame {
 
         Password.setBackground(new java.awt.Color(204, 204, 204));
         Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Password.setForeground(new java.awt.Color(0, 0, 0));
         Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Password.addActionListener(this::PasswordActionPerformed);
         getContentPane().add(Password);
@@ -62,7 +61,6 @@ public class Edituserinfo extends javax.swing.JFrame {
 
         Username.setBackground(new java.awt.Color(204, 204, 204));
         Username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Username.setForeground(new java.awt.Color(0, 0, 0));
         Username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Username.addActionListener(this::UsernameActionPerformed);
         getContentPane().add(Username);
@@ -70,7 +68,6 @@ public class Edituserinfo extends javax.swing.JFrame {
 
         Email.setBackground(new java.awt.Color(204, 204, 204));
         Email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Email.setForeground(new java.awt.Color(0, 0, 0));
         Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Email);
         Email.setBounds(550, 350, 260, 40);
@@ -83,28 +80,24 @@ public class Edituserinfo extends javax.swing.JFrame {
         Add.setBounds(620, 490, 90, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(450, 420, 90, 25);
+        jLabel2.setBounds(450, 420, 90, 22);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Edit User Information");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 80, 530, 64);
+        jLabel1.setBounds(340, 80, 530, 58);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Username");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(440, 290, 100, 25);
+        jLabel3.setBounds(440, 290, 100, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(470, 360, 60, 25);
+        jLabel4.setBounds(470, 360, 60, 22);
 
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");

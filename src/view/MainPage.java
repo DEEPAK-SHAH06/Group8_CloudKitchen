@@ -32,7 +32,7 @@ public class MainPage extends javax.swing.JFrame {
         cardsPanel.removeAll();
 
         ItemDao itemDao = new ItemDao();
-        List<Item> items = itemDao.getAvailableItems();
+        List<Item> items = itemDao.getAllItems();
 
         for (Item item : items) {
             ProductCardPanel card = new ProductCardPanel(item);

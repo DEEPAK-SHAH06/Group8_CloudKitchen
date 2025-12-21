@@ -16,6 +16,10 @@ public class DeliveryStaff {
     private String deliveryStaff_password;
     private Shift shift;
 
+    public DeliveryStaff() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     private enum Shift{
         MORNING, EVENING, NIGHT
     }

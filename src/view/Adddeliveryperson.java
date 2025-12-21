@@ -52,43 +52,36 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Satf_name");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(420, 250, 90, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Phone");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 320, 50, 25);
+        jLabel3.setBounds(450, 320, 50, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 380, 50, 25);
+        jLabel4.setBounds(450, 380, 50, 22);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Password");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(430, 450, 80, 25);
+        jLabel5.setBounds(430, 450, 80, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Shift");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(460, 510, 40, 25);
+        jLabel6.setBounds(460, 510, 40, 22);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Vechile_type");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(410, 570, 110, 30);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Add Delivery Person");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(430, 90, 480, 80);
@@ -98,7 +91,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Logout.setForeground(new java.awt.Color(255, 255, 255));
         Logout.setText("Log out");
         getContentPane().add(Logout);
-        Logout.setBounds(1140, 20, 100, 31);
+        Logout.setBounds(1140, 20, 100, 23);
 
         Add.setBackground(new java.awt.Color(255, 51, 51));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -109,21 +102,18 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Add.setBounds(610, 630, 90, 40);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Shift");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 510, 40, 25);
+        jLabel7.setBounds(460, 510, 40, 22);
 
         Staftname.setBackground(new java.awt.Color(204, 204, 204));
         Staftname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Staftname.setForeground(new java.awt.Color(0, 0, 0));
         Staftname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Staftname);
         Staftname.setBounds(530, 250, 290, 40);
 
         Vechiletype.setBackground(new java.awt.Color(204, 204, 204));
         Vechiletype.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Vechiletype.setForeground(new java.awt.Color(0, 0, 0));
         Vechiletype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Vechiletype.addActionListener(this::VechiletypeActionPerformed);
         getContentPane().add(Vechiletype);
@@ -131,28 +121,24 @@ public class Adddeliveryperson extends javax.swing.JFrame {
 
         Phone.setBackground(new java.awt.Color(204, 204, 204));
         Phone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Phone.setForeground(new java.awt.Color(0, 0, 0));
         Phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Phone);
         Phone.setBounds(530, 310, 290, 40);
 
         Email.setBackground(new java.awt.Color(204, 204, 204));
         Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Email.setForeground(new java.awt.Color(0, 0, 0));
         Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Email);
         Email.setBounds(530, 370, 290, 40);
 
         Password.setBackground(new java.awt.Color(204, 204, 204));
         Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Password.setForeground(new java.awt.Color(0, 0, 0));
         Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Password);
         Password.setBounds(530, 440, 290, 40);
 
         Shift.setBackground(new java.awt.Color(204, 204, 204));
         Shift.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Shift.setForeground(new java.awt.Color(0, 0, 0));
         Shift.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Shift.addActionListener(this::ShiftActionPerformed);
         getContentPane().add(Shift);

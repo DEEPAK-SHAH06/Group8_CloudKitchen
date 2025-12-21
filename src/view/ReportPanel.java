@@ -7,6 +7,7 @@ package view;
 import controller.ReportController;
 import java.util.ArrayList;
 import tablemodel.ReportTableModel;
+import utils.CSVExporter;
 
 /**
  *
@@ -18,9 +19,12 @@ public class ReportPanel extends javax.swing.JPanel {
      * Creates new form ReportPanel
      */
     
+    private CSVExporter csve;
+    
     private ReportController controller;
     public ReportPanel() {
         initComponents();
+        exportBtn();
         ReportTableModel model = new ReportTableModel(new ArrayList<>());
         controller = new ReportController(model);
         controller.loadReports();
@@ -39,7 +43,7 @@ public class ReportPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        exportCsvBtn = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,7 +58,7 @@ public class ReportPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Export As CSV");
+        exportCsvBtn.setText("Export As CSV");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,7 +67,7 @@ public class ReportPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(exportCsvBtn)
                 .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
@@ -71,15 +75,22 @@ public class ReportPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(exportCsvBtn)
                 .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton exportCsvBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void exportBtn(){
+
+        exportCsvBtn.addActionListener(e -> {
+        csve.exportTable(jTable1);
+    });
+    }
+ }

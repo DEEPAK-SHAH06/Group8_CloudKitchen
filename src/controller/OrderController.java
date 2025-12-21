@@ -8,6 +8,21 @@ package controller;
  *
  * @author deepakshah
  */
+
+import dao.OrderDao;
+import tablemodel.OrderTableModel;
+
 public class OrderController {
-    
+
+    private final OrderDao dao = new OrderDao();
+    private final OrderTableModel model;
+
+    public OrderController(OrderTableModel model) {
+        this.model = model;
+    }
+
+    public void loadOrders() {
+        model.setOrders(dao.getAllOrders());
+    }
 }
+

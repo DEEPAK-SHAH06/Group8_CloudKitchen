@@ -15,6 +15,8 @@ import model.Users;
 
 public class AdminUsersTableModel extends AbstractTableModel {
 
+    // THis is just demo, not real code ..... Real code is in tablemodel folder/package.
+    
     private final String[] columns = {
         "User ID", "Username", "Email", "Phone", "Role"
     };

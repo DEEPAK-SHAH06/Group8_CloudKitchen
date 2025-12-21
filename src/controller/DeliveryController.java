@@ -8,6 +8,22 @@ package controller;
  *
  * @author deepakshah
  */
+
+
+import dao.DeliveryDao;
+import tablemodel.DeliveryTableModel;
+
 public class DeliveryController {
-    
+
+    private final DeliveryDao dao = new DeliveryDao();
+    private final DeliveryTableModel model;
+
+    public DeliveryController(DeliveryTableModel model) {
+        this.model = model;
+    }
+
+    public void loadStaff() {
+        model.setStaff(dao.getAllStaff());
+    }
 }
+

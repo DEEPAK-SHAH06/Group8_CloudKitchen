@@ -4,10 +4,22 @@
  */
 package controller;
 
+import dao.UserDao;
+import tablemodel.UserTableModel;
+
 /**
  *
  * @author deepakshah
  */
 public class UserTController {
-    
+     private final UserDao userDao = new UserDao();
+    private final UserTableModel model;
+
+    public UserTController(UserTableModel model) {
+        this.model = model;
+    }
+
+    public void loadUsers() {
+        model.setUsers(userDao.getAllUsers());
+    }
 }

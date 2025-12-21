@@ -8,6 +8,15 @@ package dao;
  *
  * @author deepakshah
  */
+
+
+import model.Reports;
+import java.util.*;
+
 public class ReportDao {
-    
+
+    public List<Reports> getReports() {
+        // Placeholder: can be replaced with complex SQL
+        return new ArrayList<>();
+    }
 }

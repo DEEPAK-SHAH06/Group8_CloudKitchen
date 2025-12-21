@@ -37,14 +37,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/WhatsApp Image 2025-12-03 at 18.08.32_88123ff1.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -56,58 +50,35 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         label1.setText("Admin Dashboard");
         jPanel1.add(label1);
-        label1.setBounds(270, 60, 100, 90);
+        label1.setBounds(270, 60, 130, 90);
 
         jButton1.setBackground(new java.awt.Color(0, 255, 255));
         jButton1.setText("Log out");
         jPanel1.add(jButton1);
-        jButton1.setBounds(630, 50, 72, 23);
+        jButton1.setBounds(630, 50, 73, 23);
 
         jButton3.setText("Manage User");
         jPanel1.add(jButton3);
-        jButton3.setBounds(140, 200, 120, 20);
+        jButton3.setBounds(170, 200, 120, 20);
 
         jButton4.setText("Manage Order");
         jButton4.addActionListener(this::jButton4ActionPerformed);
         jPanel1.add(jButton4);
-        jButton4.setBounds(270, 200, 120, 20);
+        jButton4.setBounds(300, 200, 120, 20);
 
         jButton5.setText("Manage Delivery");
         jButton5.addActionListener(this::jButton5ActionPerformed);
         jPanel1.add(jButton5);
-        jButton5.setBounds(400, 200, 120, 20);
+        jButton5.setBounds(440, 200, 130, 20);
 
         jButton6.setText("Reports");
         jButton6.addActionListener(this::jButton6ActionPerformed);
         jPanel1.add(jButton6);
-        jButton6.setBounds(530, 200, 75, 23);
+        jButton6.setBounds(590, 200, 90, 23);
 
         jButton7.setText("Manage items");
         jPanel1.add(jButton7);
-        jButton7.setBounds(10, 200, 120, 20);
-
-        jButton8.setForeground(new java.awt.Color(102, 255, 102));
-        jButton8.setText("Add");
-        jButton8.addActionListener(this::jButton8ActionPerformed);
-        jPanel1.add(jButton8);
-        jButton8.setBounds(360, 540, 60, 23);
-
-        jButton9.setForeground(new java.awt.Color(255, 51, 255));
-        jButton9.setText("Edit");
-        jButton9.addActionListener(this::jButton9ActionPerformed);
-        jPanel1.add(jButton9);
-        jButton9.setBounds(430, 540, 50, 23);
-
-        jButton10.setForeground(new java.awt.Color(255, 51, 51));
-        jButton10.setText("Delete");
-        jPanel1.add(jButton10);
-        jButton10.setBounds(490, 540, 70, 23);
-
-        jButton11.setForeground(new java.awt.Color(153, 0, 153));
-        jButton11.setText("Save Changes");
-        jButton11.addActionListener(this::jButton11ActionPerformed);
-        jPanel1.add(jButton11);
-        jButton11.setBounds(570, 540, 110, 23);
+        jButton7.setBounds(40, 200, 120, 20);
 
         jButton2.setForeground(new java.awt.Color(51, 51, 255));
         jButton2.setText("Back");
@@ -117,36 +88,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/WhatsApp Image 2025-12-03 at 18.08.32_88123ff1.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 740, 580);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 230, 452, 402);
+        jLabel1.setBounds(0, 0, 990, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -164,18 +117,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,21 +145,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

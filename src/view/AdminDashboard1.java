@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author deepakshah
@@ -11,13 +14,19 @@ package view;
 public class AdminDashboard1 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboard1.class.getName());
+    private CardLayout cardlayout;   // ✅ class-level
+//    private JPanel contentPanel;
 
     /**
      * Creates new form AdminDashboard1
      */
     public AdminDashboard1() {
         initComponents();
+        setupContentPanel();
+        setupButtonActions();
     }
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +37,163 @@ public class AdminDashboard1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        manageItemsbtn = new javax.swing.JButton();
+        manageUserbtn = new javax.swing.JButton();
+        manageOrdersbtn = new javax.swing.JButton();
+        manageDeliverybtn = new javax.swing.JButton();
+        reportbtn = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        logOutbtn = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        manageItemsbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        manageItemsbtn.setText("Manage Items");
+        manageItemsbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageItemsbtn.setContentAreaFilled(false);
+        manageItemsbtn.setFocusPainted(false);
+        manageItemsbtn.setOpaque(true);
+        manageItemsbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageItemsbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(manageItemsbtn);
+        manageItemsbtn.setBounds(170, 250, 120, 23);
+
+        manageUserbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        manageUserbtn.setText("Manage Users");
+        manageUserbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageUserbtn.setContentAreaFilled(false);
+        manageUserbtn.setFocusPainted(false);
+        manageUserbtn.setOpaque(true);
+        manageUserbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageUserbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(manageUserbtn);
+        manageUserbtn.setBounds(340, 250, 120, 23);
+
+        manageOrdersbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        manageOrdersbtn.setText("Manage Orders");
+        manageOrdersbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageOrdersbtn.setContentAreaFilled(false);
+        manageOrdersbtn.setFocusPainted(false);
+        manageOrdersbtn.setOpaque(true);
+        manageOrdersbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageOrdersbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(manageOrdersbtn);
+        manageOrdersbtn.setBounds(510, 250, 120, 23);
+
+        manageDeliverybtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        manageDeliverybtn.setText("Manage Delivery");
+        manageDeliverybtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageDeliverybtn.setContentAreaFilled(false);
+        manageDeliverybtn.setFocusPainted(false);
+        manageDeliverybtn.setOpaque(true);
+        manageDeliverybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageDeliverybtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(manageDeliverybtn);
+        manageDeliverybtn.setBounds(680, 250, 120, 23);
+
+        reportbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
+        reportbtn.setText("Reports");
+        reportbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        reportbtn.setContentAreaFilled(false);
+        reportbtn.setFocusPainted(false);
+        reportbtn.setOpaque(true);
+        reportbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(reportbtn);
+        reportbtn.setBounds(870, 250, 120, 23);
+
+        backbtn.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        backbtn.setText("< Back");
+        backbtn.setBorder(null);
+        backbtn.setBorderPainted(false);
+        backbtn.setContentAreaFilled(false);
+        backbtn.setFocusPainted(false);
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backbtn);
+        backbtn.setBounds(30, 20, 53, 21);
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel3.setText("ADMIN DASHBOARD");
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(380, 130, 370, 40);
+
+        logOutbtn.setBackground(new java.awt.Color(51, 153, 255));
+        logOutbtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        logOutbtn.setForeground(new java.awt.Color(255, 255, 255));
+        logOutbtn.setText("Log Out");
+        logOutbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(logOutbtn);
+        logOutbtn.setBounds(1080, 30, 110, 30);
+
+        contentPanel.setPreferredSize(new java.awt.Dimension(920, 480));
+        contentPanel.setLayout(new java.awt.CardLayout());
+        getContentPane().add(contentPanel);
+        contentPanel.setBounds(160, 290, 920, 480);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1280, 780);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageItemsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageItemsbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageItemsbtnActionPerformed
+
+    private void manageUserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageUserbtnActionPerformed
+
+    private void manageOrdersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageOrdersbtnActionPerformed
+
+    private void manageDeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDeliverybtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageDeliverybtnActionPerformed
+
+    private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reportbtnActionPerformed
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backbtnActionPerformed
+
+    private void logOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logOutbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +221,40 @@ public class AdminDashboard1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backbtn;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton logOutbtn;
+    private javax.swing.JButton manageDeliverybtn;
+    private javax.swing.JButton manageItemsbtn;
+    private javax.swing.JButton manageOrdersbtn;
+    private javax.swing.JButton manageUserbtn;
+    private javax.swing.JButton reportbtn;
     // End of variables declaration//GEN-END:variables
+
+
+    
+private void setupContentPanel(){
+//    JPanel contentPanel = new JPanel();
+    cardlayout = new CardLayout(); 
+    contentPanel.setLayout(cardlayout);
+    
+    contentPanel.add(new ItemPanel(), "ITEMS");
+    contentPanel.add(new UserPanel(), "USERS");
+    contentPanel.add(new OrderPanel(), "ORDERS");
+    contentPanel.add(new DeliveryPanel(), "DELIVERY");
+    contentPanel.add(new ReportPanel(), "REPORTS");
+}
+
+private void setupButtonActions(){
+    manageItemsbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ITEMS");});
+    manageUserbtn.addActionListener(e -> {cardlayout.show(contentPanel,"USERS");});
+    manageOrdersbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ORDERS");});
+    manageDeliverybtn.addActionListener(e -> {cardlayout.show(contentPanel,"Delivery");});
+    reportbtn.addActionListener(e -> {cardlayout.show(contentPanel,"REPORTS");});
+    
+}
+
+
 }

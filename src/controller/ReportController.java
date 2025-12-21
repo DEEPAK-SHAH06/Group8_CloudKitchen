@@ -8,6 +8,22 @@ package controller;
  *
  * @author deepakshah
  */
+
+
+import dao.ReportDao;
+import tablemodel.ReportTableModel;
+
 public class ReportController {
-    
+
+    private final ReportDao dao = new ReportDao();
+    private final ReportTableModel model;
+
+    public ReportController(ReportTableModel model) {
+        this.model = model;
+    }
+
+    public void loadReports() {
+        model.setReports(dao.getReports());
+    }
 }
+

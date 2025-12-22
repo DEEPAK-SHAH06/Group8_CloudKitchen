@@ -13,6 +13,8 @@ import database.MySqlConnection;
 
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ItemDao {
     
@@ -52,6 +54,50 @@ public class ItemDao {
             e.printStackTrace();
         }
     }
+    
+    
+    public void createItem(Item item){
+        Connection conn = mysql.openConnection();
+        
+        String sql = "INSERT INTO items (itemName, category, price, imagePath) VALUES(?,?,?,?)";
+        try(PreparedStatement pstm = conn.prepareStatement(sql)){
+            pstm.setString(1, item.getItemName());
+            pstm.setString(2, item.getCategory());
+            pstm.setDouble(3, item.getPrice());
+            pstm.setString(4, item.getImagePath());
+            
+            pstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
+    
+    
+    public void updateItem(Item item){
+        Connection conn = mysql.openConnection();
+        String sql = "UPDATE items SET itemName=?, imagePath=?, price=? WHERE id=?";
+
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, item.getItemName());
+            pstmt.setString(2, item.getImagePath());
+            pstmt.setDouble(3,item.getPrice() );
+            pstmt.setInt(4, item.getItem_id()); 
+            pstmt.executeUpdate();
+
+
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
+    
+    
 }
 
 

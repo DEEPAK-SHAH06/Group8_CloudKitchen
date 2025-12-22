@@ -183,10 +183,10 @@ public class kitchenDash extends javax.swing.JFrame {
 
     for (Kitchen k : orders) {
         model.addRow(new Object[]{
-            k.getOrder_id().getOrder_id(),
+            k.getOrder_id(),
             k.getCookingStatus(),
-            k.getCustomer_id().getUsername(),
-            k.getItemName().getItemName(),
+            k.getCustomer_id(),
+            k.getItemName(),
             k.getOrderTime()
         });
         

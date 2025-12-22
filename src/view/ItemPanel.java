@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author deepakshah
@@ -86,4 +88,8 @@ public class ItemPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+public void addItemListener(ActionListener listener){
+    btnAdd.addActionListener(listener);
+}
 }

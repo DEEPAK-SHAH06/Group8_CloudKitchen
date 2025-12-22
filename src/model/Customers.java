@@ -12,11 +12,11 @@ public class Customers {
     
     private int customer_id;
 
-    private String username;
-    private Users email;
-    private Users password;
-    private long phone;
-    private String address;
+    private String username; // FK users
+    private String email; // FK users
+    private String password; // FK users
+    private long phone; 
+    private String address; 
 
     public Customers() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -35,16 +35,16 @@ public class Customers {
     public void setUsername(String username) {
         this.username = username;
     }
-    public Users getEmail() {
+    public String getEmail() {
         return email;
     }
-    public void setEmail(Users email) {
+    public void setEmail(String email) {
         this.email = email;
     }
-    public Users getPassword() {
+    public String getPassword() {
         return password;
     }
-    public void setPassword(Users password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     public long getPhone() {
@@ -59,7 +59,7 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
-    public Customers(String username, Users email, Users password, long phone, String address) {
+    public Customers(String username, String email, String password, long phone, String address) {
         this.username = username;
         this.email = email;
         this.password = password;

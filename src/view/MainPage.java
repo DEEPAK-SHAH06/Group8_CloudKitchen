@@ -24,24 +24,24 @@ public class MainPage extends javax.swing.JFrame {
 
     public MainPage() {
         initComponents();
-        loadProducts();
+        //loadProducts();
     }
 
-    private void loadProducts() {
-
-        cardsPanel.removeAll();
-
-        ItemDao itemDao = new ItemDao();
-        List<Item> items = itemDao.getAllItems();
-
-        for (Item item : items) {
-            ProductCardPanel card = new ProductCardPanel(item);
-            cardsPanel.add(card);
-        }
-
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
-    }
+//    private void loadProducts() {
+//
+//        cardsPanel.removeAll();
+//
+//        ItemDao itemDao = new ItemDao();
+//        List<Item> items = itemDao.getAllItems();
+//
+//        for (Item item : items) {
+//            ProductCardPanel card = new ProductCardPanel(item);
+//            cardsPanel.add(card);
+//        }
+//
+//        cardsPanel.revalidate();
+//        cardsPanel.repaint();
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

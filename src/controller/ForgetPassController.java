@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.net.URLEncoder;
 import javax.swing.JOptionPane;
 import model.OTPStore;
+import view.OTPVerifyPage;
 import view.forgetpass;
 
 /**
@@ -42,6 +43,10 @@ public class ForgetPassController {
 
             utils.EmailSender.sendEmail(email, subject, body);
             JOptionPane.showMessageDialog(fgp, "Code sent. Check your email.");
+            
+            OTPVerifyPage ovp = new OTPVerifyPage();
+            ovp.setVisible(true);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(fgp, "Failed to send email: " + ex.getMessage());

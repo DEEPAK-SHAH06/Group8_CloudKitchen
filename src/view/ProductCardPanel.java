@@ -6,6 +6,7 @@ package view;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import model.Item;
 
 /**
@@ -13,25 +14,26 @@ import model.Item;
  * @author deepakshah
  */
 public class ProductCardPanel extends javax.swing.JPanel {
+    private Item currentItem;
 
     /**
      * Creates new form ProductCardPanel
      */
-    public ProductCardPanel(Item item) {
+    public ProductCardPanel() {
         initComponents();
-        loadData(item);
+        //loadData(item);
     }
-    
-    private void loadData(Item item) {
-
-        lblName.setText(item.getItemName());
-        lblPrice.setText("Rs. " + item.getPrice());
-
-        // Load image
-        ImageIcon icon = new ImageIcon(item.getImagePath());
-        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
-        lblImage.setIcon(new ImageIcon(img));
-    }
+//    
+//    private void loadData(Item item) {
+//
+//        lblName.setText(item.getItemName());
+//        lblPrice.setText("Rs. " + item.getPrice());
+//
+//        // Load image
+//        ImageIcon icon = new ImageIcon(item.getImagePath());
+//        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
+//        lblImage.setIcon(new ImageIcon(img));
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +47,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
+        addTocartButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -56,36 +59,77 @@ public class ProductCardPanel extends javax.swing.JPanel {
 
         lblPrice.setText("jLabel1");
 
+        addTocartButton.setText("jButton1");
+        addTocartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTocartButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(lblPrice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addTocartButton)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblPrice))
-                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPrice)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPrice)
+                    .addComponent(addTocartButton))
                 .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addTocartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocartButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addTocartButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addTocartButton;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     // End of variables declaration//GEN-END:variables
+
+    //add this 
+    public Item getCurrentProduct() {
+        return currentItem;
+    }
+
+// Add this:
+    public JButton getEditButton() {
+        return addTocartButton;
+    }
+    
+    public void loadData(Item item) {
+        this.currentItem = item;
+
+        lblName.setText(item.getItemName());
+        lblPrice.setText("Rs. " + item.getPrice());
+
+        // Load image
+        ImageIcon icon = new ImageIcon(item.getImagePath());
+        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(img));
+    }
+
 }

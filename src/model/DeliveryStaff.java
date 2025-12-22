@@ -14,6 +14,8 @@ public class DeliveryStaff {
     private String deliveryStaff_name;
     private String deliveryStaff_email;
     private String deliveryStaff_password;
+    private long phone;
+    private String vehicleType;
     private Shift shift;
 
     public DeliveryStaff() {
@@ -54,6 +56,20 @@ public class DeliveryStaff {
 
     public void setDeliveryStaff_password(String deliveryStaff_password) {
         this.deliveryStaff_password = deliveryStaff_password;
+    }
+    public long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(long phone) {
+        this.phone = phone;
+    }
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public Shift getShift() {

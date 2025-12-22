@@ -251,7 +251,7 @@ private void setupButtonActions(){
     manageItemsbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ITEMS");});
     manageUserbtn.addActionListener(e -> {cardlayout.show(contentPanel,"USERS");});
     manageOrdersbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ORDERS");});
-    manageDeliverybtn.addActionListener(e -> {cardlayout.show(contentPanel,"Delivery");});
+    manageDeliverybtn.addActionListener(e -> {cardlayout.show(contentPanel,"DELIVERY");});
     reportbtn.addActionListener(e -> {cardlayout.show(contentPanel,"REPORTS");});
     
 }

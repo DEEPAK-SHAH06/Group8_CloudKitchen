@@ -25,6 +25,13 @@ public class ForgetPassController {
         this.fgp = fgp;
         fgp.AddBtnSendCodeActionListener(new btnSendCodeListener());
     }
+    
+    public void open(){
+        this.fgp.setVisible(true);
+    }
+    public void close(){
+        this.fgp.dispose();
+    }
 
     class btnSendCodeListener implements ActionListener {
 

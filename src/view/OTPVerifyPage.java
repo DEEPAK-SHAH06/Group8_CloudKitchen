@@ -90,7 +90,7 @@ public class OTPVerifyPage extends javax.swing.JFrame {
 
                 ResetPassword reset = new ResetPassword();
                 reset.setVisible(true);
-                this.dispose();
+                this.dispose();                             
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid OTP. Please try again.");
             }

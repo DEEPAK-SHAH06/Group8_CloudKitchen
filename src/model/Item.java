@@ -70,6 +70,15 @@ public class Item {
         this.availability = availability;
         this.imagePath = imagePath;
     }
+    
+    public Item(int item_id,String itemName, String category, double price, String imagePath) {
+        this.item_id = item_id;
+        this.itemName = itemName;
+        this.category = category;
+        this.price = price;
+        this.imagePath = imagePath;
+        
+    }
 
 }
 

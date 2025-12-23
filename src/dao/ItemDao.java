@@ -20,6 +20,24 @@ public class ItemDao {
     
     MySqlConnection mysql = new MySqlConnection();
     
+    
+    
+//    public void loadProducts() {
+//
+//        cardsPanel.removeAll();
+//
+//        ItemDao itemDao = new ItemDao();
+//        List<Item> items = itemDao.getAllItems();
+//
+//        for (Item item : items) {
+//            ProductCardPanel card = new ProductCardPanel(item);
+//            cardsPanel.add(card);
+//        }
+//
+//        cardsPanel.revalidate();
+//        cardsPanel.repaint();
+//    }
+//    
 
     public List<Item> getAllItems() {
         List<Item> list = new ArrayList<>();
@@ -29,15 +47,15 @@ public class ItemDao {
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
-//            while (rs.next()) {
-//                list.add(new Item(                       
-//                        rs.getInt("id"),
-//                        rs.getString("name"),
-//                        rs.getString("category"),
-//                        rs.getDouble("price"),
-//                        rs.getBoolean("availability")
-//                ));
-//            }
+            while (rs.next()) {
+                list.add(new Item(                       
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("category"),
+                        rs.getDouble("price"),
+                        rs.getString("imagePath")
+                ));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -17,33 +17,19 @@ import model.Item;
 public class MainPage extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainPage.class.getName());
-    private ProductCardPanel card;
+    
 
     /**
      * Creates new form DashBoard
      */
-    MainPageController controller;
+  
 
     public MainPage() {
         initComponents();
-        //loadProducts();
+        
     }
 
-//    private void loadProducts() {
-//
-//        cardsPanel.removeAll();
-//
-//        ItemDao itemDao = new ItemDao();
-//        List<Item> items = itemDao.getAllItems();
-//
-//        for (Item item : items) {
-//            ProductCardPanel card = new ProductCardPanel(item);
-//            cardsPanel.add(card);
-//        }
-//
-//        cardsPanel.revalidate();
-//        cardsPanel.repaint();
-//    }
+//    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,8 +50,8 @@ public class MainPage extends javax.swing.JFrame {
         Login = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
         cardsPanel = new javax.swing.JPanel();
+        jScrollBar1 = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,11 +64,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 10, 100, 80);
 
-        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Menu");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 220, 100, 50);
+        jLabel6.setBounds(40, 210, 150, 50);
 
         jLabel27.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,7 +78,7 @@ public class MainPage extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon1.1.1.png"))); // NOI18N
         jPanel1.add(jButton2);
-        jButton2.setBounds(350, 40, 50, 20);
+        jButton2.setBounds(750, 30, 50, 40);
 
         Search.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         Search.setText("                                     Search");
@@ -155,37 +141,24 @@ public class MainPage extends javax.swing.JFrame {
         jComboBox1.setBounds(840, 32, 210, 40);
 
         scrollPaneProducts.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneProducts.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPaneProducts.setHorizontalScrollBar(null);
 
-        cardsPanel.setLayout(new java.awt.GridLayout());
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(cardsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(983, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(cardsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-
-        scrollPaneProducts.setViewportView(jPanel2);
+        cardsPanel.setBackground(new java.awt.Color(39, 39, 38));
+        scrollPaneProducts.setViewportView(cardsPanel);
 
         jPanel1.add(scrollPaneProducts);
-        scrollPaneProducts.setBounds(20, 280, 1230, 510);
+        scrollPaneProducts.setBounds(60, 280, 1330, 510);
+
+        jScrollBar1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.add(jScrollBar1);
+        jScrollBar1.setBounds(1380, 290, 10, 48);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1268, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1410, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +223,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane scrollPaneProducts;
     // End of variables declaration//GEN-END:variables
 
@@ -258,20 +231,5 @@ public JPanel getItemPanel(){
     return cardsPanel;
 }
 
-public void loadProducts() {
 
-        cardsPanel.removeAll();
-
-        ItemDao itemDao = new ItemDao();
-        List<Item> items = itemDao.getAllItems();
-
-        for (Item item : items) {
-            //ProductCardPanel card = new ProductCardPanel(item);
-            ProductCardPanel card = new ProductCardPanel();
-            cardsPanel.add(card);
-        }
-
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
-    }
 }

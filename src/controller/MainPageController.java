@@ -23,8 +23,10 @@ public class MainPageController {
     
     private MainPage mainpageview;
 
-    public MainPageController(JPanel panelProducts) {
-        this.panelProducts = panelProducts;
+    public MainPageController(MainPage mainpageview) {
+        this.mainpageview = mainpageview;
+        
+        loadAllProducts();
     }
     
     public void open(){
@@ -34,37 +36,22 @@ public class MainPageController {
     public void close(){
         this.mainpageview.dispose();
     }
-
-    public void loadProducts() {
-
-        panelProducts.removeAll();
-
-        List<Item> items = itemDao.getAllItems();
-
-        for (Item item : items) {
+    
+    public void loadAllProducts(){
+        List<Item> item = itemDao.getAllItems();
+        JPanel panel = mainpageview.getItemPanel();
+        
+        panel.removeAll();
+        
+        for(Item it: item){
             ProductCardPanel card = new ProductCardPanel();
-            
-            panelProducts.add(card);
-            
-            card.getEditButton().addActionListener(e -> {
-                selectedItemForEdit = card.getCurrentProduct();
-                //mainpageview
-//                selectedProductForEdit = card.getCurrentProduct();
-//            dashboardView.getProductName().setText(selectedProductForEdit.getProductName());
-//            dashboardView.getProductPrice().setText(String.valueOf(selectedProductForEdit.getProductPrice()));
-//            dashboardView.getProductImage().setText(selectedProductForEdit.getProductImage());
-//            dashboardView.getAddButton().setText("Update Product");
-            
-            });
-            
-            panelProducts.add(card);
+            card.loadData(it);
+            panel.add(card);
         }
-
-        panelProducts.revalidate();
-        panelProducts.repaint();
+        
+        panel.revalidate();
+        panel.repaint();
     }
-    
-    
     
 }
 

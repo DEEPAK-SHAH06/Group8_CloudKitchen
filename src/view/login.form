@@ -200,10 +200,11 @@
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="admin"/>
-                <StringItem index="1" value="user"/>
-                <StringItem index="2" value="kitchen"/>
+              <StringArray count="4">
+                <StringItem index="0" value="ADMIN"/>
+                <StringItem index="1" value="CUSTOMER"/>
+                <StringItem index="2" value="KITCHEN"/>
+                <StringItem index="3" value="DELIVERY"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

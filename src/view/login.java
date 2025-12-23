@@ -118,7 +118,7 @@ public class login extends javax.swing.JFrame {
         loginHere.setBounds(920, 480, 90, 17);
 
         role.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user", "kitchen" }));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CUSTOMER", "KITCHEN", "DELIVERY" }));
         role.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         role.addActionListener(this::roleActionPerformed);
         jPanel1.add(role);

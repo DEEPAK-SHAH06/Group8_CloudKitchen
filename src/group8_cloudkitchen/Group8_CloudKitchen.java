@@ -11,9 +11,12 @@ package group8_cloudkitchen;
 import controller.ForgetPassController;
 import view.login;
 import controller.LoginController;
+import controller.MainPageController;
 import controller.UserController;
 import database.Databasee;
 import database.MySqlConnection;
+import view.MainPage;
+import view.ProductCardPanel;
 import view.SignUp;
 import view.forgetpass;
 public class Group8_CloudKitchen {
@@ -38,9 +41,14 @@ public class Group8_CloudKitchen {
         
 
     
-        forgetpass fgp = new forgetpass();
-        ForgetPassController controller = new ForgetPassController(fgp);
-        fgp.setVisible(true);
+//        forgetpass fgp = new forgetpass();
+//        ForgetPassController controller = new ForgetPassController(fgp);
+//        fgp.setVisible(true);
+        
+        MainPage mp = new MainPage();
+        MainPageController controller = new MainPageController(mp);
+        controller.open();
+        
         
 //        login loginview = new login();
 //        LoginController controller = new LoginController(loginview);

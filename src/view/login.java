@@ -62,9 +62,9 @@ public class login extends javax.swing.JFrame {
         image.setBounds(0, 0, 435, 790);
 
         login.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        login.setText("login");
+        login.setText("Login Page");
         jPanel1.add(login);
-        login.setBounds(860, 170, 80, 30);
+        login.setBounds(830, 150, 150, 30);
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setText("                   ");
@@ -118,19 +118,19 @@ public class login extends javax.swing.JFrame {
         loginHere.setBounds(920, 480, 90, 17);
 
         role.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user", "kitchen" }));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CUSTOMER", "KITCHEN", "DELIVERY" }));
         role.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         role.addActionListener(this::roleActionPerformed);
         jPanel1.add(role);
         role.setBounds(1150, 10, 130, 30);
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        username.setText("username");
+        username.setText("E-mail");
         jPanel1.add(username);
         username.setBounds(650, 250, 90, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("password");
+        jLabel4.setText("Password");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(650, 310, 90, 40);
 

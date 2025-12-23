@@ -19,25 +19,7 @@ import java.util.logging.Logger;
 public class ItemDao {
     
     MySqlConnection mysql = new MySqlConnection();
-    
-    
-    
-//    public void loadProducts() {
-//
-//        cardsPanel.removeAll();
-//
-//        ItemDao itemDao = new ItemDao();
-//        List<Item> items = itemDao.getAllItems();
-//
-//        for (Item item : items) {
-//            ProductCardPanel card = new ProductCardPanel(item);
-//            cardsPanel.add(card);
-//        }
-//
-//        cardsPanel.revalidate();
-//        cardsPanel.repaint();
-//    }
-//    
+     
 
     public List<Item> getAllItems() {
         List<Item> list = new ArrayList<>();
@@ -48,13 +30,16 @@ public class ItemDao {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                list.add(new Item(                       
-                        rs.getInt("id"),
-                        rs.getString("name"),
+                Item item = new Item(           
+                        rs.getInt("item_id"), // rs.next("something") garda Database ko column name sanga similar hunu parxa
+                        rs.getString("item_name"),
                         rs.getString("category"),
                         rs.getDouble("price"),
-                        rs.getString("imagePath")
-                ));
+                        rs.getString("image_path"),
+                        rs.getString("availability")
+                )
+                ;
+                list.add(item);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
 import view.DashBoard;
+import view.MainPage;
 import view.login;
 
 /**
@@ -53,14 +54,14 @@ public class LoginController {
                 JOptionPane.showMessageDialog(loginView, "Login Successful!");
 
                 // Open Dashboard
-                DashBoard dashboard = new DashBoard();
+                MainPage dashboard = new MainPage();
                 dashboard.setVisible(true);
 
                 // Close login window
                 loginView.dispose();
 
             } else {
-                JOptionPane.showMessageDialog(loginView, "Invalid email or password. Try again.");
+                JOptionPane.showMessageDialog(loginView, "Invalid email or password. Try again.");            
             }
 
         } catch(Exception ex){

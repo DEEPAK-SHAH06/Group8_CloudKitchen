@@ -15,6 +15,7 @@ import controller.MainPageController;
 import controller.UserController;
 import database.Databasee;
 import database.MySqlConnection;
+import view.AdminDashboard1;
 import view.MainPage;
 import view.ProductCardPanel;
 import view.SignUp;
@@ -48,6 +49,9 @@ public class Group8_CloudKitchen {
         MainPage mp = new MainPage();
         MainPageController controller = new MainPageController(mp);
         controller.open();
+
+//            AdminDashboard1 adView = new AdminDashboard1();
+//            adView.setVisible(true);
         
         
 //        login loginview = new login();

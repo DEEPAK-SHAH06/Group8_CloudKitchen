@@ -8,10 +8,14 @@ package group8_cloudkitchen;
  *
  * @author deepakshah
  */
+import controller.ForgetPassController;
 import view.login;
 import controller.LoginController;
+import controller.UserController;
 import database.Databasee;
 import database.MySqlConnection;
+import view.SignUp;
+import view.forgetpass;
 public class Group8_CloudKitchen {
 
     /**
@@ -28,9 +32,19 @@ public class Group8_CloudKitchen {
         // }
         
         // TODO code application logic here
-        login loginView = new login();
-        LoginController loginCOntroller = new LoginController(loginView);
-        loginView.setVisible(true);
+//        SignUp signupview = new SignUp();
+//        UserController controller = new UserController(signupview);
+//        signupview.setVisible(true);
+        
+
+    
+        forgetpass fgp = new forgetpass();
+        ForgetPassController controller = new ForgetPassController(fgp);
+        fgp.setVisible(true);
+        
+//        login loginview = new login();
+//        LoginController controller = new LoginController(loginview);
+//        loginview.setVisible(true);
     }
     
 }

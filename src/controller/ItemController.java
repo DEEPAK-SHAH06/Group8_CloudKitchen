@@ -11,15 +11,19 @@ package controller;
 
 
 import dao.ItemDao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import tablemodel.ItemTableModel;
 
 import javax.swing.*;
 import java.util.List;
+import view.ItemPanel;
 
 public class ItemController {
 
     private JTable table;
     private ItemDao dao = new ItemDao();
+    private ItemPanel panel;
 
     public ItemController(JTable table) {
         this.table = table;
@@ -42,6 +46,23 @@ public class ItemController {
         if (row == -1) return;
         dao.deleteItem((int) table.getValueAt(row, 0));
         table.setModel(loadItems());
+    }
+    
+    public ItemController(ItemPanel panel){
+        this.panel = panel;
+        
+        panel.addItemListener(new AddItemListener());
+    }
+
+   class AddItemListener implements ActionListener {
+
+        public AddItemListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // logic here
+        }
     }
 }
 

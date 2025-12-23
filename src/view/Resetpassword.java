@@ -5,6 +5,7 @@
 package view;
 
 import dao.LoginDao;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.OTPStore;
 
@@ -32,64 +33,48 @@ public class ResetPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        txtEmail = new javax.swing.JTextField();
         txtNewPassword = new javax.swing.JTextField();
         txtConfirmPassword = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
         btnResetPassword = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 42, 17);
+        txtEmail.setText("Email");
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(300, 260, 130, 30);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        txtNewPassword.setText("New Password");
+        getContentPane().add(txtNewPassword);
+        txtNewPassword.setBounds(300, 300, 130, 30);
 
-        txtNewPassword.setText("jTextField1");
+        txtConfirmPassword.setText("Confirm Password");
+        getContentPane().add(txtConfirmPassword);
+        txtConfirmPassword.setBounds(300, 340, 130, 30);
 
-        txtConfirmPassword.setText("jTextField2");
-
-        txtEmail.setText("jTextField3");
-
-        btnResetPassword.setText("jButton1");
+        btnResetPassword.setBackground(new java.awt.Color(0, 153, 255));
+        btnResetPassword.setForeground(new java.awt.Color(255, 255, 255));
+        btnResetPassword.setText("Save");
         btnResetPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetPasswordActionPerformed(evt);
             }
         });
+        getContentPane().add(btnResetPassword);
+        btnResetPassword.setBounds(320, 390, 80, 30);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnResetPassword)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnResetPassword)
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel2.setText("Change Password");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(260, 210, 230, 40);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(270, 100, 280, 320);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 720, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,31 +82,31 @@ public class ResetPassword extends javax.swing.JFrame {
 
     private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
 
-        // TODO add your handling code here:
-        String newPass = txtNewPassword.getText().trim();
-        String confirmPass = txtConfirmPassword.getText().trim();
-
-        if (newPass.isEmpty() || confirmPass.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
-            return;
-        }
-
-        if (!newPass.equals(confirmPass)) {
-            JOptionPane.showMessageDialog(this, "Passwords do not match.");
-            return;
-        }
-
-        boolean updated = logindao.updatePassword(OTPStore.email, newPass);
-
-        if (updated) {
-            JOptionPane.showMessageDialog(this, "Password reset successful!");
-
-            login lg = new login();
-            lg.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Something went wrong. Try again.");
-        }
+//        // TODO add your handling code here:
+//        String newPass = txtNewPassword.getText().trim();
+//        String confirmPass = txtConfirmPassword.getText().trim();
+//
+//        if (newPass.isEmpty() || confirmPass.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+//            return;
+//        }
+//
+//        if (!newPass.equals(confirmPass)) {
+//            JOptionPane.showMessageDialog(this, "Passwords do not match.");
+//            return;
+//        }
+//
+//        boolean updated = logindao.updatePassword(OTPStore.email, newPass);
+//
+//        if (updated) {
+//            JOptionPane.showMessageDialog(this, "Password reset successful!");
+//
+//            login lg = new login();
+//            lg.setVisible(true);
+//            this.dispose();
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Something went wrong. Try again.");
+//        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResetPasswordActionPerformed
 
@@ -153,9 +138,24 @@ public class ResetPassword extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnResetPassword;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtConfirmPassword;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNewPassword;
     // End of variables declaration//GEN-END:variables
+
+    public void ResetButtonListener(ActionListener listener){
+        btnResetPassword.addActionListener(listener);
+    }
+    
+    public javax.swing.JTextField getTxtEmail(){
+        return txtEmail;
+    }
+    public javax.swing.JTextField getTxtNewPassword(){
+        return txtNewPassword;
+    }
+    public javax.swing.JTextField getTxtConfirmPassword(){
+        return txtConfirmPassword;
+    }
+
 }

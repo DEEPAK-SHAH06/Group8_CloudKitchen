@@ -52,16 +52,16 @@ public class KitchenTableModel extends AbstractTableModel{
         switch (columnIndex) {
 
             case 0: // Order ID
-                return kitchen.getOrder_id().getOrder_id();
+                return kitchen.getOrder_id();
 
             case 1: // Status
                 return kitchen.getCookingStatus().name();
 
             case 2: // Customer
-                return kitchen.getCustomer_id().getUsername();
+                return kitchen.getCustomer_id();
 
             case 3: // Item
-                return kitchen.getItemName().getItemName();
+                return kitchen.getItemName();
 
             case 4: // Time
                 return kitchen.getOrderTime()

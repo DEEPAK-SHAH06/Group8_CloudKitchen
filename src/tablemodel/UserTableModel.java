@@ -48,7 +48,7 @@ public class UserTableModel extends AbstractTableModel {
             case 0 -> u.getUser_id();
             case 1 -> u.getUsername();
             case 2 -> u.getEmail();
-            case 3 -> u.getPassword(); // replace this with password later, cuz model classes are yet to be rewritten.
+            case 3 -> u.getPhone(); 
             case 4 -> u.getRole();
             default -> null;
         };

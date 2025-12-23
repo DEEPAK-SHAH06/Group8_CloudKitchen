@@ -7,6 +7,7 @@ package view;
 import controller.MainPageController;
 import dao.ItemDao;
 import java.util.List;
+import javax.swing.JPanel;
 import model.Item;
 
 /**
@@ -16,6 +17,7 @@ import model.Item;
 public class MainPage extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainPage.class.getName());
+    private ProductCardPanel card;
 
     /**
      * Creates new form DashBoard
@@ -24,24 +26,24 @@ public class MainPage extends javax.swing.JFrame {
 
     public MainPage() {
         initComponents();
-        loadProducts();
+        //loadProducts();
     }
 
-    private void loadProducts() {
-
-        cardsPanel.removeAll();
-
-        ItemDao itemDao = new ItemDao();
-        List<Item> items = itemDao.getAllItems();
-
-        for (Item item : items) {
-            ProductCardPanel card = new ProductCardPanel(item);
-            cardsPanel.add(card);
-        }
-
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
-    }
+//    private void loadProducts() {
+//
+//        cardsPanel.removeAll();
+//
+//        ItemDao itemDao = new ItemDao();
+//        List<Item> items = itemDao.getAllItems();
+//
+//        for (Item item : items) {
+//            ProductCardPanel card = new ProductCardPanel(item);
+//            cardsPanel.add(card);
+//        }
+//
+//        cardsPanel.revalidate();
+//        cardsPanel.repaint();
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -251,4 +253,25 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane scrollPaneProducts;
     // End of variables declaration//GEN-END:variables
+
+public JPanel getItemPanel(){
+    return cardsPanel;
+}
+
+public void loadProducts() {
+
+        cardsPanel.removeAll();
+
+        ItemDao itemDao = new ItemDao();
+        List<Item> items = itemDao.getAllItems();
+
+        for (Item item : items) {
+            //ProductCardPanel card = new ProductCardPanel(item);
+            ProductCardPanel card = new ProductCardPanel();
+            cardsPanel.add(card);
+        }
+
+        cardsPanel.revalidate();
+        cardsPanel.repaint();
+    }
 }

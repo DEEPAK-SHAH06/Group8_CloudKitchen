@@ -79,7 +79,7 @@ public class DescriptionDash extends javax.swing.JFrame {
         placeOrderButton.setText("Place Order");
         placeOrderButton.addActionListener(this::placeOrderButtonActionPerformed);
         getContentPane().add(placeOrderButton);
-        placeOrderButton.setBounds(840, 460, 110, 31);
+        placeOrderButton.setBounds(840, 460, 110, 23);
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         getContentPane().add(backButton);
@@ -93,24 +93,18 @@ public class DescriptionDash extends javax.swing.JFrame {
         getContentPane().add(addTocardButton);
         addTocardButton.setBounds(970, 460, 120, 30);
 
-        userName.setBackground(new java.awt.Color(255, 255, 255));
         userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        userName.setForeground(new java.awt.Color(0, 0, 0));
         userName.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         getContentPane().add(userName);
         userName.setBounds(850, 260, 230, 40);
 
-        location.setBackground(new java.awt.Color(255, 255, 255));
         location.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        location.setForeground(new java.awt.Color(0, 0, 0));
         location.setBorder(new javax.swing.border.MatteBorder(null));
         location.addActionListener(this::locationActionPerformed);
         getContentPane().add(location);
         location.setBounds(850, 320, 230, 40);
 
-        phone.setBackground(new java.awt.Color(255, 255, 255));
         phone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        phone.setForeground(new java.awt.Color(0, 0, 0));
         phone.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         phone.addActionListener(this::phoneActionPerformed);
         getContentPane().add(phone);

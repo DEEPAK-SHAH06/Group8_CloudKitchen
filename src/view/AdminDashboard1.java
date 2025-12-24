@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 /**
@@ -256,5 +257,9 @@ private void setupButtonActions(){
     
 }
 
+
+public void logOutListener(ActionListener listener){
+    logOutbtn.addActionListener(listener);
+}
 
 }

@@ -29,7 +29,7 @@ public class SignUpDao {
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getEmail());
             pstm.setString(3, user.getPassword());
-            pstm.setString(4, "USER"); // automatically assign USER role
+            pstm.setString(4, "CUSTOMER"); // automatically assign USER role
 
             pstm.executeUpdate();
 

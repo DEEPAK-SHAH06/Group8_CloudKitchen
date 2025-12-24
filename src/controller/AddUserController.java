@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.UserDao;
+import dao.AddUserDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -21,11 +21,11 @@ import view.Adduser;
 public class AddUserController {
 
     private final Adduser view;
-    private final UserDao dao;
+    private final AddUserDao dao;
     // connectes view with controller
     public AddUserController(Adduser view) {
         this.view = view;
-        this.dao = new UserDao();
+        this.dao = new AddUserDao();
 
         // Add button listener
         this.view.getAddButton().addActionListener(new AddButtonListener());

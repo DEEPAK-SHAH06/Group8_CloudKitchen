@@ -14,7 +14,7 @@ import model.Users;
  *
  * @author Limbu Mbg Sujata
  */
-public class UserDao {
+public class AddUserDao {
     
     // Method to add a user to the database
     public boolean Adduser(Users user) {

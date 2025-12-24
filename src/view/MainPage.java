@@ -248,16 +248,13 @@ public javax.swing.JComboBox<String> getCategoryCombo(){
     return categoryCombo;
 }
 
-//private void loadItems(java.util.List<Item> items) {
-//    itemsContainer.removeAll();
-//
-//    for (Item item : items) {
-//        itemsContainer.add(new ProductCardPanel(item));
-//    }
-//
-//    itemsContainer.revalidate();
-//    itemsContainer.repaint();
-//}
+public void loginListener(ActionListener listener){
+    Login.addActionListener(listener);
+}
+
+public void SignUpListener(ActionListener listener){
+    Signup.addActionListener(listener);
+}
 
 
 

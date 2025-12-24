@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import model.Item;
 import view.MainPage;
 import view.ProductCardPanel;
+import view.SignUp;
+import view.login;
 
 /**
  *
@@ -30,6 +32,8 @@ public class MainPageController {
         this.mainpageview = mainpageview;
         mainpageview.searchBtnListener(new searchListener());
         mainpageview.categoryComboListener(new categoryListener());
+        mainpageview.SignUpListener(new addSignupListener());
+        mainpageview.loginListener(new addLoginListener());
         loadAllProducts();
     }
     
@@ -90,6 +94,32 @@ public class MainPageController {
         
         panel.revalidate();
         panel.repaint();
+    }
+
+    private static class addSignupListener implements ActionListener {
+
+        public addSignupListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            SignUp su = new SignUp();
+            UserController cont = new UserController(su);
+            cont.open();
+        }
+    }
+
+    private static class addLoginListener implements ActionListener {
+
+        public addLoginListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                login lc = new login();
+                LoginController log = new LoginController(lc);
+                log.close();
+                log.open();        }
     }
 
     class searchListener implements ActionListener {

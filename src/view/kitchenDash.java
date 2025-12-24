@@ -6,6 +6,7 @@ package view;
 
 import controller.KitchenController;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -27,8 +28,8 @@ public class kitchenDash extends javax.swing.JFrame {
     
     public kitchenDash() {
         initComponents();
-       kitchenController = new KitchenController(kitchenTable);
-       kitchenController.loadKitchenOrders();
+//       kitchenController = new KitchenController(kitchenTable);
+//       kitchenController.loadKitchenOrders();
     }
 
     /**
@@ -129,11 +130,11 @@ public class kitchenDash extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartcookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartcookingActionPerformed
-        kitchenController.startCooking();
+       
         }//GEN-LAST:event_StartcookingActionPerformed
 
     private void MarkasreadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkasreadyActionPerformed
-        kitchenController.markAsReady();
+        
     }//GEN-LAST:event_MarkasreadyActionPerformed
 
     /**
@@ -193,6 +194,19 @@ public class kitchenDash extends javax.swing.JFrame {
         
     }
 }
+    
+    public JTable getKitchenTable() {
+    return kitchenTable;
+}
+
+public void startCookingListener(ActionListener l) {
+    Startcooking.addActionListener(l);
+}
+
+public void markReadyListener(ActionListener l) {
+    Markasready.addActionListener(l);
+}
+
 
    
  

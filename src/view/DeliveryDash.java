@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import javax.swing.JTable;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -31,7 +34,7 @@ public class DeliveryDash extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        deliveredButton = new javax.swing.JButton();
         enRouteButton = new javax.swing.JButton();
         pickUpButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -43,7 +46,6 @@ public class DeliveryDash extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -74,15 +76,22 @@ public class DeliveryDash extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(250, 210, 750, 330);
+        jScrollPane1.setBounds(250, 210, 890, 430);
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         backButton.setText("jButton1");
@@ -90,32 +99,31 @@ public class DeliveryDash extends javax.swing.JFrame {
         getContentPane().add(backButton);
         backButton.setBounds(30, 20, 130, 30);
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Delivered");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(890, 590, 100, 40);
+        deliveredButton.setBackground(new java.awt.Color(255, 0, 51));
+        deliveredButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deliveredButton.setForeground(new java.awt.Color(255, 255, 255));
+        deliveredButton.setText("Delivered");
+        getContentPane().add(deliveredButton);
+        deliveredButton.setBounds(1080, 710, 100, 40);
 
         enRouteButton.setBackground(new java.awt.Color(0, 0, 0));
         enRouteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         enRouteButton.setForeground(new java.awt.Color(255, 255, 255));
         enRouteButton.setText("Ent-Route");
         getContentPane().add(enRouteButton);
-        enRouteButton.setBounds(770, 590, 100, 40);
+        enRouteButton.setBounds(920, 710, 120, 40);
 
         pickUpButton.setBackground(new java.awt.Color(0, 51, 255));
         pickUpButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         pickUpButton.setForeground(new java.awt.Color(255, 255, 255));
         pickUpButton.setText("Picked Up");
         getContentPane().add(pickUpButton);
-        pickUpButton.setBounds(660, 590, 100, 40);
+        pickUpButton.setBounds(760, 710, 120, 40);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Delivery Dashboard ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(480, 120, 460, 50);
+        jLabel1.setBounds(480, 120, 520, 50);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kitchen.jpg"))); // NOI18N
         backgroundImage.setText("jLabel1");
@@ -155,11 +163,32 @@ public class DeliveryDash extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel backgroundImage;
+    private javax.swing.JButton deliveredButton;
     private javax.swing.JButton enRouteButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton pickUpButton;
     // End of variables declaration//GEN-END:variables
+
+public JTable getTable() {
+    return jTable1;
+}
+
+public void pickedUpListener(ActionListener l) {
+    pickUpButton.addActionListener(l);
+}
+
+public void enRouteListener(ActionListener l) {
+    enRouteButton.addActionListener(l);
+}
+
+public void deliveredListener(ActionListener l) {
+    deliveredButton.addActionListener(l);
+}
+public void backBtnListener(ActionListener l) {
+    backButton.addActionListener(l);
+}
+
+    
 }

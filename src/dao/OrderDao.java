@@ -28,8 +28,8 @@ public class OrderDao {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-//                Order o = new Order();
-//                o.setOrder_id(rs.getInt("order_id"));
+                Order o = new Order();
+                o.setOrder_id(rs.getInt("order_id"));
 //                o.setCustomer_id(rs.getInt("customer_id"));
 //                o.setTotalAmount(rs.getDouble("total_amount"));
 //                o.setOrderTime(rs.getTimestamp("order_time").toLocalDateTime());

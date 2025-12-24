@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import controller.ForgetPassController;
 import controller.LoginController;
+import controller.UserController;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
@@ -14,6 +16,7 @@ import javax.swing.JFrame;
 public class login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(login.class.getName());
+    
 
     /**
      * Creates new form login
@@ -38,9 +41,9 @@ public class login extends javax.swing.JFrame {
         password = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         email = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        forgetPasswordLink = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        loginHere = new javax.swing.JLabel();
         role = new javax.swing.JComboBox<>();
         username = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,9 +62,9 @@ public class login extends javax.swing.JFrame {
         image.setBounds(0, 0, 435, 790);
 
         login.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        login.setText("login");
+        login.setText("Login Page");
         jPanel1.add(login);
-        login.setBounds(860, 170, 80, 30);
+        login.setBounds(830, 150, 150, 30);
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setText("                   ");
@@ -87,36 +90,47 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(email);
         email.setBounds(750, 250, 290, 40);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("forget password ?");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(840, 450, 123, 17);
+        forgetPasswordLink.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        forgetPasswordLink.setForeground(new java.awt.Color(255, 51, 51));
+        forgetPasswordLink.setText("forget password ?");
+        forgetPasswordLink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgetPasswordLinkMouseClicked(evt);
+            }
+        });
+        jPanel1.add(forgetPasswordLink);
+        forgetPasswordLink.setBounds(830, 450, 140, 17);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Don't have an account?");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(770, 480, 170, 17);
+        jLabel2.setBounds(760, 480, 170, 17);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel3.setText("login here.");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(930, 480, 80, 20);
+        loginHere.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loginHere.setForeground(new java.awt.Color(51, 51, 255));
+        loginHere.setText("signup Here");
+        loginHere.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginHereMouseClicked(evt);
+            }
+        });
+        jPanel1.add(loginHere);
+        loginHere.setBounds(920, 480, 90, 17);
 
         role.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user", "kitchen" }));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CUSTOMER", "KITCHEN", "DELIVERY" }));
         role.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         role.addActionListener(this::roleActionPerformed);
         jPanel1.add(role);
         role.setBounds(1150, 10, 130, 30);
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        username.setText("username");
+        username.setText("E-mail");
         jPanel1.add(username);
         username.setBounds(650, 250, 90, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("password");
+        jLabel4.setText("Password");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(650, 310, 90, 40);
 
@@ -142,6 +156,20 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
 
+    private void loginHereMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginHereMouseClicked
+        // TODO add your handling code here:
+        SignUp userview = new SignUp();
+        UserController controller = new UserController(userview);
+        controller.open();
+    }//GEN-LAST:event_loginHereMouseClicked
+
+    private void forgetPasswordLinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordLinkMouseClicked
+        // TODO add your handling code here:
+        forgetpass fgp = new forgetpass();
+        ForgetPassController controller = new ForgetPassController(fgp);
+        controller.open();
+    }//GEN-LAST:event_forgetPasswordLinkMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -156,14 +184,14 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
+    private javax.swing.JLabel forgetPasswordLink;
     private javax.swing.JLabel image;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel login;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel loginHere;
     private javax.swing.JTextField password;
     private javax.swing.JComboBox<String> role;
     private javax.swing.JLabel username;

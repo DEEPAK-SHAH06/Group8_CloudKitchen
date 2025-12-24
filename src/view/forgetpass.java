@@ -72,11 +72,13 @@ public class forgetpass extends javax.swing.JFrame {
         });
         txtEmail.addActionListener(this::txtEmailActionPerformed);
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(440, 380, 160, 30);
+        txtEmail.setBounds(430, 390, 170, 30);
 
-        btnSendCode.setText("jButton1");
+        btnSendCode.setBackground(new java.awt.Color(255, 0, 51));
+        btnSendCode.setForeground(new java.awt.Color(255, 255, 255));
+        btnSendCode.setText("Send Code");
         getContentPane().add(btnSendCode);
-        btnSendCode.setBounds(470, 440, 78, 23);
+        btnSendCode.setBounds(460, 440, 100, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -127,23 +129,8 @@ public class forgetpass extends javax.swing.JFrame {
     public javax.swing.JTextField getTxtEmail(){
         return txtEmail;
     }
-public void AddBtnSendCodeActionListener(ActionListener listener){
-    btnSendCode.addActionListener(listener);
-    
-//    try {
-//        String email = txtEmail.getText().trim();
-//        String code = OTPStore.generateOTPAndSaveForEmail(email); // your OTP saving logic
-//        String resetLink = "http://your-app/reset?email=" + URLEncoder.encode(email, "UTF-8") + "&code=" + code;
-//
-//        String subject = "Password reset code";
-//        String body = "Your reset code: " + code + "\nReset link: " + resetLink;
-//
-//        utils.EmailSender.sendEmail(email, subject, body);
-//        JOptionPane.showMessageDialog(this, "Code sent. Check your email.");
-//    } catch (Exception ex) {
-//        ex.printStackTrace();
-//        JOptionPane.showMessageDialog(this, "Failed to send email: " + ex.getMessage());
-//    }
-}
+    public void AddBtnSendCodeActionListener(ActionListener listener){
+        btnSendCode.addActionListener(listener);
+    }
 
 }

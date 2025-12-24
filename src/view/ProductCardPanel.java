@@ -5,7 +5,9 @@
 package view;
 
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import model.Item;
 
 /**
@@ -13,24 +15,17 @@ import model.Item;
  * @author deepakshah
  */
 public class ProductCardPanel extends javax.swing.JPanel {
+    private Item currentItem;
 
     /**
      * Creates new form ProductCardPanel
      */
-    public ProductCardPanel(Item item) {
-        initComponents();
-        loadData(item);
+    public ProductCardPanel() {
+        initComponents();       
     }
-    
-    private void loadData(Item item) {
 
-        lblName.setText(item.getItemName());
-        lblPrice.setText("Rs. " + item.getPrice());
-
-        // Load image
-        ImageIcon icon = new ImageIcon(item.getImagePath());
-        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
-        lblImage.setIcon(new ImageIcon(img));
+    public ProductCardPanel(List<Item> item) {
+        initComponents();
     }
 
     /**
@@ -49,38 +44,73 @@ public class ProductCardPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lblImage.setText("jLabel1");
+        lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblImageMouseClicked(evt);
+            }
+        });
 
         lblName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblName.setText("jLabel1");
+        lblName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNameMouseClicked(evt);
+            }
+        });
 
         lblPrice.setText("jLabel1");
+        lblPrice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPriceMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblPrice))
-                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                        .addGap(86, 86, 86)
+                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPrice)
-                .addGap(16, 16, 16))
+                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseClicked
+        // TODO add your handling code here:
+        DescriptionDash dd = new DescriptionDash();
+        dd.setVisible(true);
+    }//GEN-LAST:event_lblImageMouseClicked
+
+    private void lblNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNameMouseClicked
+        // TODO add your handling code here:
+        DescriptionDash dd = new DescriptionDash();
+        dd.setVisible(true);
+    }//GEN-LAST:event_lblNameMouseClicked
+
+    private void lblPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseClicked
+        // TODO add your handling code here:
+        DescriptionDash dd = new DescriptionDash();
+        dd.setVisible(true);
+    }//GEN-LAST:event_lblPriceMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -88,4 +118,22 @@ public class ProductCardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     // End of variables declaration//GEN-END:variables
+
+    //add this 
+    public Item getCurrentProduct() {
+        return currentItem;
+    }
+    
+    public void loadData(Item item) {
+        this.currentItem = item;
+
+        lblName.setText(item.getItemName());
+        lblPrice.setText("Rs. " + item.getPrice());
+
+        // Load image
+        ImageIcon icon = new ImageIcon(item.getImagePath());
+        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(img));
+    }
+
 }

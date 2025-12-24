@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.LoginController;
 import java.awt.event.ActionListener;
 
 /**
@@ -66,9 +67,9 @@ public class SignUp extends javax.swing.JFrame {
 
         frontSignup.setBackground(new java.awt.Color(255, 255, 255));
         frontSignup.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        frontSignup.setText("Sign up");
+        frontSignup.setText("Sign Up");
         jPanel1.add(frontSignup);
-        frontSignup.setBounds(880, 90, 87, 30);
+        frontSignup.setBounds(880, 90, 110, 30);
 
         emailText.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         emailText.addActionListener(this::emailTextActionPerformed);
@@ -92,11 +93,16 @@ public class SignUp extends javax.swing.JFrame {
         Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text.setText("Already have an account ?");
         jPanel1.add(Text);
-        Text.setBounds(800, 390, 170, 17);
+        Text.setBounds(790, 390, 180, 17);
 
         loginlink.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loginlink.setForeground(new java.awt.Color(51, 51, 255));
         loginlink.setText("login here.");
+        loginlink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginlinkMouseClicked(evt);
+            }
+        });
         jPanel1.add(loginlink);
         loginlink.setBounds(970, 390, 80, 17);
 
@@ -136,6 +142,13 @@ public class SignUp extends javax.swing.JFrame {
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_signupButtonActionPerformed
+
+    private void loginlinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginlinkMouseClicked
+        // TODO add your handling code here:
+        login userview = new login();
+        LoginController controller = new LoginController(userview);
+        controller.open();
+    }//GEN-LAST:event_loginlinkMouseClicked
 
     /**
      * @param args the command line arguments

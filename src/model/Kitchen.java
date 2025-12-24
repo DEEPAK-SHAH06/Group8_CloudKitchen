@@ -12,10 +12,12 @@ import java.time.LocalDateTime;
  */
 public class Kitchen {
     
-    private Order order_id;
-    private Customers customer_id;
-    private Item itemName;
+    private int order_id; // Foreign Key Order
+    private int customer_id; // FK Customers
+    private String itemName; // Foreign key Item
     private CookingStatus cookingStatus;
+
+    
 
     public enum CookingStatus{
         PREPARING,COOKED
@@ -23,27 +25,27 @@ public class Kitchen {
 
     private LocalDateTime orderTime;
 
-    public Order getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(Order order_id) {
+    public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 
-    public Customers getCustomer_id() {
+    public int getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(Customers customer_id) {
+    public void setCustomer_id(int customer_id) {
         this.customer_id = customer_id;
     }
 
-    public Item getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(Item itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
@@ -63,13 +65,17 @@ public class Kitchen {
         this.orderTime = orderTime;
     }
 
-    public Kitchen(Order order_id, Customers customer_id, Item itemName, Kitchen.CookingStatus cookingStatus,
+    public Kitchen(int order_id, int customer_id, String itemName, CookingStatus cookingStatus,
             LocalDateTime orderTime) {
         this.order_id = order_id;
         this.customer_id = customer_id;
         this.itemName = itemName;
         this.cookingStatus = cookingStatus;
         this.orderTime = orderTime;
+    }
+    
+    public Kitchen(Order order, Customers customer, Item item, CookingStatus cookingStatus, LocalDateTime toLocalDateTime) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
    

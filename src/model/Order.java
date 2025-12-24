@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Order {
     
     private int order_id;
-    private Customers customer_id;
+    private int customer_id; // fk customers
     private double totalAmount;
     private LocalDateTime orderTime;
 
@@ -38,10 +38,10 @@ public class Order {
     public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
-    public Customers getCustomer_id() {
+    public int getCustomer_id() {
         return customer_id;
     }
-    public void setCustomer_id(Customers customer_id) {
+    public void setCustomer_id(int customer_id) {
         this.customer_id = customer_id;
     }
     public double getTotalAmount() {
@@ -62,7 +62,7 @@ public class Order {
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
-    public Order(int order_id, Customers customer_id, double totalAmount, LocalDateTime orderTime,
+    public Order(int order_id, int customer_id, double totalAmount, LocalDateTime orderTime,
             Order.OrderStatus orderStatus) {
         this.order_id = order_id;
         this.customer_id = customer_id;

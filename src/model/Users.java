@@ -14,6 +14,7 @@ public class Users {
     private String username;
     private String email;
     private String password;
+    private long phone;
     private String role;
 
     public Users() {
@@ -43,6 +44,12 @@ public class Users {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public long getPhone() {
+        return phone;
+    }
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
     
     public String getRole() {

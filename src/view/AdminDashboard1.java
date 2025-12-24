@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 /**
@@ -53,7 +54,7 @@ public class AdminDashboard1 extends javax.swing.JFrame {
 
         manageItemsbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         manageItemsbtn.setText("Manage Items");
-        manageItemsbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageItemsbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         manageItemsbtn.setContentAreaFilled(false);
         manageItemsbtn.setFocusPainted(false);
         manageItemsbtn.setOpaque(true);
@@ -63,11 +64,11 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(manageItemsbtn);
-        manageItemsbtn.setBounds(170, 250, 120, 23);
+        manageItemsbtn.setBounds(170, 250, 120, 21);
 
         manageUserbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         manageUserbtn.setText("Manage Users");
-        manageUserbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageUserbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         manageUserbtn.setContentAreaFilled(false);
         manageUserbtn.setFocusPainted(false);
         manageUserbtn.setOpaque(true);
@@ -77,11 +78,11 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(manageUserbtn);
-        manageUserbtn.setBounds(340, 250, 120, 23);
+        manageUserbtn.setBounds(340, 250, 120, 21);
 
         manageOrdersbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         manageOrdersbtn.setText("Manage Orders");
-        manageOrdersbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageOrdersbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         manageOrdersbtn.setContentAreaFilled(false);
         manageOrdersbtn.setFocusPainted(false);
         manageOrdersbtn.setOpaque(true);
@@ -91,11 +92,11 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(manageOrdersbtn);
-        manageOrdersbtn.setBounds(510, 250, 120, 23);
+        manageOrdersbtn.setBounds(510, 250, 120, 21);
 
         manageDeliverybtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         manageDeliverybtn.setText("Manage Delivery");
-        manageDeliverybtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        manageDeliverybtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         manageDeliverybtn.setContentAreaFilled(false);
         manageDeliverybtn.setFocusPainted(false);
         manageDeliverybtn.setOpaque(true);
@@ -105,11 +106,11 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(manageDeliverybtn);
-        manageDeliverybtn.setBounds(680, 250, 120, 23);
+        manageDeliverybtn.setBounds(680, 250, 120, 21);
 
         reportbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
         reportbtn.setText("Reports");
-        reportbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
+        reportbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         reportbtn.setContentAreaFilled(false);
         reportbtn.setFocusPainted(false);
         reportbtn.setOpaque(true);
@@ -119,7 +120,7 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(reportbtn);
-        reportbtn.setBounds(870, 250, 120, 23);
+        reportbtn.setBounds(870, 250, 120, 21);
 
         backbtn.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
         backbtn.setText("< Back");
@@ -251,10 +252,14 @@ private void setupButtonActions(){
     manageItemsbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ITEMS");});
     manageUserbtn.addActionListener(e -> {cardlayout.show(contentPanel,"USERS");});
     manageOrdersbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ORDERS");});
-    manageDeliverybtn.addActionListener(e -> {cardlayout.show(contentPanel,"Delivery");});
+    manageDeliverybtn.addActionListener(e -> {cardlayout.show(contentPanel,"DELIVERY");});
     reportbtn.addActionListener(e -> {cardlayout.show(contentPanel,"REPORTS");});
     
 }
 
+
+public void logOutListener(ActionListener listener){
+    logOutbtn.addActionListener(listener);
+}
 
 }

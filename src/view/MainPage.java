@@ -6,7 +6,9 @@ package view;
 
 import controller.MainPageController;
 import dao.ItemDao;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JPanel;
 import model.Item;
 
 /**
@@ -16,32 +18,19 @@ import model.Item;
 public class MainPage extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainPage.class.getName());
+    
 
     /**
      * Creates new form DashBoard
      */
-    MainPageController controller;
+  
 
     public MainPage() {
         initComponents();
-        loadProducts();
+        
     }
 
-    private void loadProducts() {
-
-        cardsPanel.removeAll();
-
-        ItemDao itemDao = new ItemDao();
-        List<Item> items = itemDao.getAllItems();
-
-        for (Item item : items) {
-            ProductCardPanel card = new ProductCardPanel(item);
-            cardsPanel.add(card);
-        }
-
-        cardsPanel.revalidate();
-        cardsPanel.repaint();
-    }
+//    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,15 +44,15 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        Search = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
         Signup = new javax.swing.JButton();
         Cart = new javax.swing.JButton();
         Login = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categoryCombo = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
         cardsPanel = new javax.swing.JPanel();
+        jScrollBar1 = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,11 +65,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 10, 100, 80);
 
-        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Menu");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 220, 100, 50);
+        jLabel6.setBounds(40, 210, 150, 50);
 
         jLabel27.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,13 +77,13 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jLabel27);
         jLabel27.setBounds(10, 80, 110, 40);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon1.1.1.png"))); // NOI18N
-        jPanel1.add(jButton2);
-        jButton2.setBounds(350, 40, 50, 20);
+        searchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon1.1.1.png"))); // NOI18N
+        jPanel1.add(searchBtn);
+        searchBtn.setBounds(750, 30, 50, 40);
 
-        Search.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        Search.setText("                                     Search");
-        Search.setBorder(new javax.swing.border.AbstractBorder() {
+        searchField.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        searchField.setText("                                     Search");
+        searchField.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -103,17 +92,17 @@ public class MainPage extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
             }
         });
-        Search.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                SearchFocusGained(evt);
+                searchFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                SearchFocusLost(evt);
+                searchFieldFocusLost(evt);
             }
         });
-        Search.addActionListener(this::SearchActionPerformed);
-        jPanel1.add(Search);
-        Search.setBounds(340, 30, 460, 40);
+        searchField.addActionListener(this::searchFieldActionPerformed);
+        jPanel1.add(searchField);
+        searchField.setBounds(340, 30, 460, 40);
 
         Signup.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         Signup.setText("Sign up");
@@ -147,43 +136,30 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(Login);
         Login.setBounds(1160, 20, 90, 40);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Categories", "Indian", "Itely", "Japneses", "Chinese" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(840, 32, 210, 40);
+        categoryCombo.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        categoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categories", "Fast Food", "Pizza", "Snacks", "Main Course", "Beverage" }));
+        jPanel1.add(categoryCombo);
+        categoryCombo.setBounds(840, 32, 210, 40);
 
         scrollPaneProducts.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneProducts.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPaneProducts.setHorizontalScrollBar(null);
 
-        cardsPanel.setLayout(new java.awt.GridLayout());
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(cardsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(983, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(cardsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-
-        scrollPaneProducts.setViewportView(jPanel2);
+        cardsPanel.setBackground(new java.awt.Color(39, 39, 38));
+        scrollPaneProducts.setViewportView(cardsPanel);
 
         jPanel1.add(scrollPaneProducts);
-        scrollPaneProducts.setBounds(20, 280, 1230, 510);
+        scrollPaneProducts.setBounds(60, 280, 1330, 510);
+
+        jScrollBar1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.add(jScrollBar1);
+        jScrollBar1.setBounds(1380, 290, 10, 48);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1268, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1410, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,23 +169,23 @@ public class MainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SearchActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
-    private void SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusLost
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
         // TODO add your handling code here:
-        if(Search.getText().equals("")){
-            Search.setText("                                     Search");
+        if(searchField.getText().equals("")){
+            searchField.setText("                                     Search");
         }
-    }//GEN-LAST:event_SearchFocusLost
+    }//GEN-LAST:event_searchFieldFocusLost
 
-    private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         // TODO add your handling code here:
-        if(Search.getText().equals("                                     Search")){
-            Search.setText("");
+        if(searchField.getText().equals("                                     Search")){
+            searchField.setText("");
         }
-    }//GEN-LAST:event_SearchFocusGained
+    }//GEN-LAST:event_searchFieldFocusGained
 
     /**
      * @param args the command line arguments
@@ -239,16 +215,47 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cart;
     private javax.swing.JButton Login;
-    private javax.swing.JTextField Search;
     private javax.swing.JButton Signup;
     private javax.swing.JPanel cardsPanel;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> categoryCombo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane scrollPaneProducts;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
+
+public JPanel getItemPanel(){
+    return cardsPanel;
+}
+
+public void searchBtnListener(ActionListener listener){
+    searchBtn.addActionListener(listener);
+}
+
+public void categoryComboListener(ActionListener listener){
+    categoryCombo.addActionListener(listener);
+}
+
+public javax.swing.JTextField getSearchField(){
+    return searchField;
+}
+
+public javax.swing.JComboBox<String> getCategoryCombo(){
+    return categoryCombo;
+}
+
+public void loginListener(ActionListener listener){
+    Login.addActionListener(listener);
+}
+
+public void SignUpListener(ActionListener listener){
+    Signup.addActionListener(listener);
+}
+
+
+
 }

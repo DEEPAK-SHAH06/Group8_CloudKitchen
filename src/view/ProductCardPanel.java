@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import model.Item;
@@ -21,6 +22,10 @@ public class ProductCardPanel extends javax.swing.JPanel {
      */
     public ProductCardPanel() {
         initComponents();       
+    }
+
+    public ProductCardPanel(List<Item> item) {
+        initComponents();
     }
 
     /**

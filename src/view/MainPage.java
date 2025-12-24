@@ -6,6 +6,7 @@ package view;
 
 import controller.MainPageController;
 import dao.ItemDao;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JPanel;
 import model.Item;
@@ -43,12 +44,12 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        Search = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
         Signup = new javax.swing.JButton();
         Cart = new javax.swing.JButton();
         Login = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categoryCombo = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
         cardsPanel = new javax.swing.JPanel();
         jScrollBar1 = new javax.swing.JScrollBar();
@@ -76,13 +77,13 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jLabel27);
         jLabel27.setBounds(10, 80, 110, 40);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon1.1.1.png"))); // NOI18N
-        jPanel1.add(jButton2);
-        jButton2.setBounds(750, 30, 50, 40);
+        searchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon1.1.1.png"))); // NOI18N
+        jPanel1.add(searchBtn);
+        searchBtn.setBounds(750, 30, 50, 40);
 
-        Search.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        Search.setText("                                     Search");
-        Search.setBorder(new javax.swing.border.AbstractBorder() {
+        searchField.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        searchField.setText("                                     Search");
+        searchField.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -91,17 +92,17 @@ public class MainPage extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
             }
         });
-        Search.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                SearchFocusGained(evt);
+                searchFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                SearchFocusLost(evt);
+                searchFieldFocusLost(evt);
             }
         });
-        Search.addActionListener(this::SearchActionPerformed);
-        jPanel1.add(Search);
-        Search.setBounds(340, 30, 460, 40);
+        searchField.addActionListener(this::searchFieldActionPerformed);
+        jPanel1.add(searchField);
+        searchField.setBounds(340, 30, 460, 40);
 
         Signup.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         Signup.setText("Sign up");
@@ -135,10 +136,10 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(Login);
         Login.setBounds(1160, 20, 90, 40);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Categories", "Indian", "Itely", "Japneses", "Chinese" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(840, 32, 210, 40);
+        categoryCombo.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        categoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categories", "Fast Food", "Pizza", "Snacks", "Main Course", "Beverage" }));
+        jPanel1.add(categoryCombo);
+        categoryCombo.setBounds(840, 32, 210, 40);
 
         scrollPaneProducts.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPaneProducts.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -168,23 +169,23 @@ public class MainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SearchActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
-    private void SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusLost
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
         // TODO add your handling code here:
-        if(Search.getText().equals("")){
-            Search.setText("                                     Search");
+        if(searchField.getText().equals("")){
+            searchField.setText("                                     Search");
         }
-    }//GEN-LAST:event_SearchFocusLost
+    }//GEN-LAST:event_searchFieldFocusLost
 
-    private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         // TODO add your handling code here:
-        if(Search.getText().equals("                                     Search")){
-            Search.setText("");
+        if(searchField.getText().equals("                                     Search")){
+            searchField.setText("");
         }
-    }//GEN-LAST:event_SearchFocusGained
+    }//GEN-LAST:event_searchFieldFocusGained
 
     /**
      * @param args the command line arguments
@@ -214,22 +215,50 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cart;
     private javax.swing.JButton Login;
-    private javax.swing.JTextField Search;
     private javax.swing.JButton Signup;
     private javax.swing.JPanel cardsPanel;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> categoryCombo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane scrollPaneProducts;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 
 public JPanel getItemPanel(){
     return cardsPanel;
 }
+
+public void searchBtnListener(ActionListener listener){
+    searchBtn.addActionListener(listener);
+}
+
+public void categoryComboListener(ActionListener listener){
+    categoryCombo.addActionListener(listener);
+}
+
+public javax.swing.JTextField getSearchField(){
+    return searchField;
+}
+
+public javax.swing.JComboBox<String> getCategoryCombo(){
+    return categoryCombo;
+}
+
+//private void loadItems(java.util.List<Item> items) {
+//    itemsContainer.removeAll();
+//
+//    for (Item item : items) {
+//        itemsContainer.add(new ProductCardPanel(item));
+//    }
+//
+//    itemsContainer.revalidate();
+//    itemsContainer.repaint();
+//}
+
 
 
 }

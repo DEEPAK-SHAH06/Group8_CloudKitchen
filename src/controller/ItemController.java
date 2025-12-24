@@ -17,6 +17,7 @@ import tablemodel.ItemTableModel;
 
 import javax.swing.*;
 import java.util.List;
+import model.Item;
 import view.ItemPanel;
 
 public class ItemController {
@@ -46,6 +47,14 @@ public class ItemController {
         if (row == -1) return;
         dao.deleteItem((int) table.getValueAt(row, 0));
         table.setModel(loadItems());
+    }
+    
+    public List<Item> searchItems(String keyword) {
+        return dao.searchItems(keyword);
+    }
+
+    public List<Item> filterByCategory(String category) {
+        return dao.getItemsByCategory(category);
     }
     
     public ItemController(ItemPanel panel){

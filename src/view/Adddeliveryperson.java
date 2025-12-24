@@ -17,6 +17,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
      */
     public Adddeliveryperson() {
         initComponents();
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -206,7 +207,11 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Adddeliveryperson().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{ 
+        Adddeliveryperson view = new Adddeliveryperson();
+        new controller.AddDeliveryController(view);
+        view.setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -229,4 +234,31 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
+    public javax.swing.JButton getAddButton() {
+        return Add;
+    }
+
+    public javax.swing.JTextField getStaffName() {
+        return Staftname;
+    }
+
+    public javax.swing.JTextField getPhone() {
+        return Phone;
+    }
+
+    public javax.swing.JTextField getEmail() {
+        return Email;
+    }
+
+    public javax.swing.JTextField getPassword() {
+        return Password;
+    }
+
+    public javax.swing.JTextField getShift() {
+        return Shift;
+    }
+
+    public javax.swing.JTextField getVehicleType() {
+        return Vechiletype;
+    }
 }

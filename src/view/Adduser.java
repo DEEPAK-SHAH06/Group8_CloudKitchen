@@ -4,6 +4,11 @@
  */
 package view;
 
+import controller.AddUserController;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -17,8 +22,9 @@ public class Adduser extends javax.swing.JFrame {
      */
     public Adduser() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,12 +141,13 @@ public class Adduser extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+    public static void main(String args[]){
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -154,7 +161,12 @@ public class Adduser extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Adduser().setVisible(true));
+        
+        java.awt.EventQueue.invokeLater(() -> {
+            Adduser view = new Adduser();
+            new AddUserController(view);
+            view.setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,4 +182,17 @@ public class Adduser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+public javax.swing.JButton getAddButton() { 
+    return Add;
+}
+public javax.swing.JTextField getUsername() {
+    return Username;
+}
+public javax.swing.JTextField getEmail() { 
+    return Email; 
+}
+public JTextField getPassword() { 
+    return Password;
+}
+
 }

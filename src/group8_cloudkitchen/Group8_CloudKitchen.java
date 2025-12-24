@@ -9,7 +9,10 @@ package group8_cloudkitchen;
  * @author deepakshah
  */
 import controller.AdminDashboardController;
+import controller.DeliveryController;
+import controller.DeliveryDashboardController;
 import controller.ForgetPassController;
+import controller.KitchenDashboardController;
 import view.login;
 import controller.LoginController;
 import controller.MainPageController;
@@ -17,10 +20,12 @@ import controller.UserController;
 import database.Databasee;
 import database.MySqlConnection;
 import view.AdminDashboard1;
+import view.DeliveryDash;
 import view.MainPage;
 import view.ProductCardPanel;
 import view.SignUp;
 import view.forgetpass;
+import view.kitchenDash;
 public class Group8_CloudKitchen {
 
     /**
@@ -47,9 +52,17 @@ public class Group8_CloudKitchen {
 //        ForgetPassController controller = new ForgetPassController(fgp);
 //        fgp.setVisible(true);
         
-        MainPage mp = new MainPage();
-        MainPageController controller = new MainPageController(mp);
-        controller.open();
+//        MainPage mp = new MainPage();
+//        MainPageController controller = new MainPageController(mp);
+//        controller.open();
+        
+        
+//        DeliveryDash dash = new DeliveryDash();
+//        DeliveryDashboardController controller =new DeliveryDashboardController(dash);
+//        dash.setVisible(true);
+        kitchenDash dash = new kitchenDash();
+        KitchenDashboardController controller =new KitchenDashboardController(dash);
+        dash.setVisible(true);
 
 //            AdminDashboard1 adView = new AdminDashboard1();
 //            AdminDashboardController controller = new AdminDashboardController(adView);

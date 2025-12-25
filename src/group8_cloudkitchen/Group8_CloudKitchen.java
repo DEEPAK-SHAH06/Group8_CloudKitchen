@@ -52,17 +52,17 @@ public class Group8_CloudKitchen {
 //        ForgetPassController controller = new ForgetPassController(fgp);
 //        fgp.setVisible(true);
         
-//        MainPage mp = new MainPage();
-//        MainPageController controller = new MainPageController(mp);
-//        controller.open();
+        MainPage mp = new MainPage();
+        MainPageController controller = new MainPageController(mp);
+        controller.open();
         
         
 //        DeliveryDash dash = new DeliveryDash();
 //        DeliveryDashboardController controller =new DeliveryDashboardController(dash);
 //        dash.setVisible(true);
-        kitchenDash dash = new kitchenDash();
-        KitchenDashboardController controller =new KitchenDashboardController(dash);
-        dash.setVisible(true);
+//        kitchenDash dash = new kitchenDash();
+//        KitchenDashboardController controller =new KitchenDashboardController(dash);
+//        dash.setVisible(true);
 
 //            AdminDashboard1 adView = new AdminDashboard1();
 //            AdminDashboardController controller = new AdminDashboardController(adView);
@@ -71,7 +71,7 @@ public class Group8_CloudKitchen {
         
 //        login loginview = new login();
 //        LoginController controller = new LoginController(loginview);
-//        loginview.setVisible(true);
+//        controller.open();
     }
     
 }

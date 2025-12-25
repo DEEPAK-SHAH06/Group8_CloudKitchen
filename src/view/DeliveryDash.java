@@ -93,13 +93,15 @@ public class DeliveryDash extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(250, 210, 890, 430);
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        backButton.setText("jButton1");
+        backButton.setBackground(new java.awt.Color(255, 0, 51));
+        backButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("Log Out");
         backButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
         getContentPane().add(backButton);
         backButton.setBounds(30, 20, 130, 30);
 
-        deliveredButton.setBackground(new java.awt.Color(255, 0, 51));
+        deliveredButton.setBackground(new java.awt.Color(153, 204, 0));
         deliveredButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deliveredButton.setForeground(new java.awt.Color(255, 255, 255));
         deliveredButton.setText("Delivered");

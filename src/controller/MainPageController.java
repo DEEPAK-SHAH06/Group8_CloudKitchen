@@ -8,8 +8,10 @@ import dao.ItemDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Item;
+import utils.UserSession;
 import view.MainPage;
 import view.ProductCardPanel;
 import view.SignUp;
@@ -32,7 +34,7 @@ public class MainPageController {
         this.mainpageview = mainpageview;
         mainpageview.searchBtnListener(new searchListener());
         mainpageview.categoryComboListener(new categoryListener());
-        mainpageview.SignUpListener(new addSignupListener());
+        mainpageview.LogoutListener(new addLogoutListener());
         mainpageview.loginListener(new addLoginListener());
         loadAllProducts();
     }
@@ -96,16 +98,16 @@ public class MainPageController {
         panel.repaint();
     }
 
-    private static class addSignupListener implements ActionListener {
+    class addLogoutListener implements ActionListener {
 
-        public addSignupListener() {
+        public addLogoutListener() {
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            SignUp su = new SignUp();
-            UserController cont = new UserController(su);
-            cont.open();
+            UserSession.logout();
+            JOptionPane.showMessageDialog(mainpageview,"Logged out successfully");
+            mainpageview.updateHeader();
         }
     }
 

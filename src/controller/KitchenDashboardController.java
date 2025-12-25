@@ -24,6 +24,8 @@ public class KitchenDashboardController {
 
     private final kitchenDash view;
     private final KitchenDao dao = new KitchenDao();
+    
+    
 
     public KitchenDashboardController(kitchenDash view) {
         this.view = view;
@@ -34,6 +36,14 @@ public class KitchenDashboardController {
         view.markReadyListener(markReady());
     }
 
+    public void open(){
+        this.view.setVisible(true);
+    }
+    
+    public void close(){
+        this.view.dispose();
+    }
+    
     private void loadTable() {
         List<KitchenOrder> orders = dao.getKitchenOrders();
         view.getKitchenTable().setModel(new KitchenDashboardTableModel(orders));

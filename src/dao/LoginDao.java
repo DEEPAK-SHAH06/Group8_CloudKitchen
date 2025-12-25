@@ -19,28 +19,36 @@ public class LoginDao {
 
     MySqlConnection mysql = new MySqlConnection();
 
-    public boolean login(Users user, String selectedRole) {
+    public Users login(String email, String password, String role) {
 
         Connection conn = mysql.openConnection();
-        String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
+        String sql = "SELECT user_id, username, role FROM users WHERE email=? AND password=? AND role=?";
 
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            pstm.setString(1, user.getEmail());
-            pstm.setString(2, user.getPassword());
-            pstm.setString(3, selectedRole);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ps.setString(3, role);
 
-            ResultSet result = pstm.executeQuery();
-            return result.next();
+            ResultSet rs = ps.executeQuery();
 
-        } catch (SQLException e) {
-            System.out.println("LOGIN ERROR: " + e.getMessage());
+            if (rs.next()) {
+                Users user = new Users();
+                user.setUser_id(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(email);
+                user.setRole(rs.getString("role"));
+                return user;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             mysql.closeConnection(conn);
         }
-
-        return false;
+        return null;
     }
+
     
     
     

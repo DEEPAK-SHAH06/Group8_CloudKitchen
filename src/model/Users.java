@@ -18,7 +18,6 @@ public class Users {
     private String role;
 
     public Users() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public int getUser_id() {
@@ -60,18 +59,25 @@ public class Users {
     }
     
     
-    public Users(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-    
+//    public Users(String username, String email, String password) {
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//    }
+//    
     public Users(String username, String email, String password,String role) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
     }
+    
+    public Users(String email, String password, String role) {
+    this.email = email;
+    this.password = password;
+    this.role = role;
+}
+
 
     
 }

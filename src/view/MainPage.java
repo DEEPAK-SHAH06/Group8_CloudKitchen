@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JPanel;
 import model.Item;
+import utils.UserSession;
 
 /**
  *
@@ -27,7 +28,7 @@ public class MainPage extends javax.swing.JFrame {
 
     public MainPage() {
         initComponents();
-        
+        updateHeader();
     }
 
 //    
@@ -46,13 +47,14 @@ public class MainPage extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
-        Signup = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         Cart = new javax.swing.JButton();
         Login = new javax.swing.JButton();
         categoryCombo = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
         cardsPanel = new javax.swing.JPanel();
         jScrollBar1 = new javax.swing.JScrollBar();
+        lblUsername = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,9 +106,9 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(searchField);
         searchField.setBounds(340, 30, 460, 40);
 
-        Signup.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        Signup.setText("Sign up");
-        Signup.setBorder(new javax.swing.border.AbstractBorder() {
+        btnLogout.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        btnLogout.setText("Log Out");
+        btnLogout.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -115,8 +117,8 @@ public class MainPage extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
             }
         });
-        jPanel1.add(Signup);
-        Signup.setBounds(1260, 20, 90, 40);
+        jPanel1.add(btnLogout);
+        btnLogout.setBounds(1260, 20, 90, 40);
 
         Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cart.png"))); // NOI18N
         jPanel1.add(Cart);
@@ -154,6 +156,10 @@ public class MainPage extends javax.swing.JFrame {
         jScrollBar1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.add(jScrollBar1);
         jScrollBar1.setBounds(1380, 290, 10, 48);
+
+        lblUsername.setText("jLabel1");
+        jPanel1.add(lblUsername);
+        lblUsername.setBounds(1170, 77, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,7 +221,7 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cart;
     private javax.swing.JButton Login;
-    private javax.swing.JButton Signup;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JPanel cardsPanel;
     private javax.swing.JComboBox<String> categoryCombo;
     private javax.swing.JLabel jLabel2;
@@ -223,6 +229,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JScrollPane scrollPaneProducts;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
@@ -252,9 +259,23 @@ public void loginListener(ActionListener listener){
     Login.addActionListener(listener);
 }
 
-public void SignUpListener(ActionListener listener){
-    Signup.addActionListener(listener);
+public void LogoutListener(ActionListener listener){
+    btnLogout.addActionListener(listener);
 }
+
+public void updateHeader() {
+    if (UserSession.isLoggedIn()) {
+        lblUsername.setText("Hi, " + UserSession.getUser().getUsername());
+        lblUsername.setVisible(true);
+        btnLogout.setVisible(true);
+        Login.setVisible(false);
+    } else {
+        lblUsername.setVisible(false);
+        btnLogout.setVisible(false);
+        Login.setVisible(true);
+    }
+}
+
 
 
 

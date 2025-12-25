@@ -33,6 +33,14 @@ public class DeliveryDashboardController {
         view.deliveredListener(e -> updateStatus("DELIVERED"));
         view.backBtnListener(new Addbackbtnlistener());
     }
+    
+    public void open(){
+        this.view.setVisible(true);
+    }
+    
+    public void close(){
+        this.view.dispose();
+    }
 
     private void loadTable() {
         List<DeliveryOrder> list = dao.getDeliveryOrders();

@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -47,29 +49,28 @@ public class DescriptionDash extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Location");
+        jLabel4.setText("Phone");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(760, 390, 80, 20);
+        jLabel4.setBounds(740, 390, 80, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Username");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(750, 270, 90, 20);
+        jLabel6.setBounds(740, 270, 100, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Location");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(760, 330, 80, 20);
+        jLabel5.setBounds(740, 330, 80, 20);
 
-        details.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/details.png"))); // NOI18N
         details.setText("Pizza");
+        details.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         getContentPane().add(details);
         details.setBounds(50, 430, 490, 340);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pizza.jpeg"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(60, 60, 550, 350);
 
@@ -79,11 +80,14 @@ public class DescriptionDash extends javax.swing.JFrame {
         placeOrderButton.setText("Place Order");
         placeOrderButton.addActionListener(this::placeOrderButtonActionPerformed);
         getContentPane().add(placeOrderButton);
-        placeOrderButton.setBounds(840, 460, 110, 23);
+        placeOrderButton.setBounds(810, 460, 130, 30);
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        backButton.setBackground(new java.awt.Color(153, 153, 153));
+        backButton.setFont(new java.awt.Font("Khmer MN", 2, 24)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("< Back  ");
         getContentPane().add(backButton);
-        backButton.setBounds(9, 10, 110, 30);
+        backButton.setBounds(1050, 20, 110, 30);
 
         addTocardButton.setBackground(new java.awt.Color(0, 51, 255));
         addTocardButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -174,4 +178,8 @@ public class DescriptionDash extends javax.swing.JFrame {
     private javax.swing.JButton placeOrderButton;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
+
+public void backButtonListener(ActionListener l){
+    backButton.addActionListener(l);
+}
 }

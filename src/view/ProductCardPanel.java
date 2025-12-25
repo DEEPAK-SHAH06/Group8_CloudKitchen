@@ -8,7 +8,9 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import model.Item;
+import utils.UserSession;
 
 /**
  *
@@ -43,6 +45,11 @@ public class ProductCardPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,21 +103,84 @@ public class ProductCardPanel extends javax.swing.JPanel {
 
     private void lblImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseClicked
         // TODO add your handling code here:
+        if (!UserSession.isLoggedIn()) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please login first!",
+            "Login Required",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+            new login().setVisible(true);
+            return;
+        }
+
+        // User is logged in
         DescriptionDash dd = new DescriptionDash();
         dd.setVisible(true);
+//        DescriptionDash dd = new DescriptionDash();
+//        dd.setVisible(true);
     }//GEN-LAST:event_lblImageMouseClicked
 
     private void lblNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNameMouseClicked
         // TODO add your handling code here:
+        if (!UserSession.isLoggedIn()) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please login first!",
+            "Login Required",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+            new login().setVisible(true);
+            return;
+        }
+
+        // User is logged in
         DescriptionDash dd = new DescriptionDash();
         dd.setVisible(true);
+//        DescriptionDash dd = new DescriptionDash();
+//        dd.setVisible(true);
     }//GEN-LAST:event_lblNameMouseClicked
 
     private void lblPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseClicked
         // TODO add your handling code here:
+        if (!UserSession.isLoggedIn()) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please login first!",
+            "Login Required",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+            new login().setVisible(true);
+            return;
+        }
+
+        // User is logged in
         DescriptionDash dd = new DescriptionDash();
         dd.setVisible(true);
+//        
     }//GEN-LAST:event_lblPriceMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        if (!UserSession.isLoggedIn()) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please login first!",
+            "Login Required",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+            new login().setVisible(true);
+            return;
+        }
+
+        // User is logged in
+        DescriptionDash dd = new DescriptionDash();
+        dd.setVisible(true);
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -31,9 +31,13 @@ public class UserTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public Users getUserAt(int row) {
+        return users.get(row);
+    }
+
     @Override
     public int getRowCount() {
-        return users.size();
+        return users == null ? 0 : users.size();
     }
 
     @Override
@@ -48,7 +52,7 @@ public class UserTableModel extends AbstractTableModel {
             case 0 -> u.getUser_id();
             case 1 -> u.getUsername();
             case 2 -> u.getEmail();
-            case 3 -> u.getPhone(); 
+            case 3 -> u.getPhone();
             case 4 -> u.getRole();
             default -> null;
         };
@@ -59,4 +63,3 @@ public class UserTableModel extends AbstractTableModel {
         return columns[col];
     }
 }
-

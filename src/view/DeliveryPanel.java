@@ -5,6 +5,7 @@
 package view;
 
 import controller.DeliveryController;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import tablemodel.DeliveryTableModel;
 
@@ -18,12 +19,16 @@ public class DeliveryPanel extends javax.swing.JPanel {
      * Creates new form DeliveryPanel
      */
     
+    private DeliveryTableModel model;
     private DeliveryController controller;
     public DeliveryPanel() {
         initComponents();
-        DeliveryTableModel model = new DeliveryTableModel(new ArrayList<>());      
-        DeliveryController controller = new DeliveryController(model);       
-        controller.loadStaff();
+        
+        model = new DeliveryTableModel(new ArrayList<>());
+        table.setModel(model);
+
+        // ✅ CREATE CONTROLLER AFTER UI IS READY
+        controller = new DeliveryController(this, model);
     }
     
     
@@ -37,7 +42,7 @@ public class DeliveryPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnEditInfo = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -46,8 +51,19 @@ public class DeliveryPanel extends javax.swing.JPanel {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -61,7 +77,7 @@ public class DeliveryPanel extends javax.swing.JPanel {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -72,7 +88,7 @@ public class DeliveryPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         btnAdd.setBackground(new java.awt.Color(0, 153, 204));
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,6 +144,28 @@ public class DeliveryPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEditInfo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    public void addButtonListener(ActionListener l){
+        btnAdd.addActionListener(l);
+    }
+    
+    public void deleteButtonListener(ActionListener l){
+        btnDelete.addActionListener(l);
+    }
+    
+    public void editButtonListener(ActionListener l){
+        btnEditInfo.addActionListener(l);
+    }
+    
+    public javax.swing.JTable getTable(){
+        return table;
+    }
+    
+     // ===== helper methods used by controller =====
+    public int getSelectedRow() {
+        return table.getSelectedRow();
+    }
+
 }

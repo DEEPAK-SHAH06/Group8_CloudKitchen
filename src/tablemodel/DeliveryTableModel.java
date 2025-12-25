@@ -17,8 +17,9 @@ import java.util.List;
 public class DeliveryTableModel extends AbstractTableModel {
 
     private final String[] cols = {
-        "Staff ID", "Name", "Phone", "Vehicle", "Status"
+        "Staff ID", "Name", "Phone", "Vehicle", "Shift"
     };
+
     private List<DeliveryStaff> staff;
 
     public DeliveryTableModel(List<DeliveryStaff> staff) {
@@ -29,19 +30,35 @@ public class DeliveryTableModel extends AbstractTableModel {
         this.staff = staff;
         fireTableDataChanged();
     }
+    
+    public DeliveryStaff getSelectedStaff(int row) {
+        if (row < 0 || row >= staff.size()) return null;
+        return staff.get(row);
+    }
 
-    @Override public int getRowCount() { return staff.size(); }
-    @Override public int getColumnCount() { return cols.length; }
+    public List<DeliveryStaff> getStaffList() {
+        return staff;
+    }
+
+    @Override public int getRowCount() {
+        return staff == null ? 0 : staff.size();
+    }
+
+    @Override public int getColumnCount() {
+        return cols.length;
+    }
 
     @Override
     public Object getValueAt(int r, int c) {
+
         DeliveryStaff d = staff.get(r);
+
         return switch (c) {
             case 0 -> d.getDeliveryStaff_id();
-            case 1 -> d.getDeliveryStaff_name();
-            case 2 -> d.getDeliveryStaff_email();// replace with phone
-            case 3 -> d.getDeliveryStaff_email();// vehicle type
-            case 4 -> d.getShift();// replace status
+            case 1 -> d.getName();
+            case 2 -> d.getPhone();
+            case 3 -> d.getVehicleType();
+            case 4 -> d.getShift();
             default -> null;
         };
     }
@@ -51,3 +68,4 @@ public class DeliveryTableModel extends AbstractTableModel {
         return cols[c];
     }
 }
+

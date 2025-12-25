@@ -22,9 +22,7 @@ public class Item {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public String getAvailability(){
-        return availability;
-    }
+    
     public int getItem_id() {
         return item_id;
     }
@@ -57,20 +55,28 @@ public class Item {
         this.imagePath = imagePath;
     }
     
-//    public Availability getAvailability() {
-//        return availability;
-//    }
-//    public void setAvailability(Availability availability) {
-//        this.availability = availability;
-//    }
-//    public Item(String itemName, String category, double price, Item.Availability availability, String imagePath) {
-//        this.itemName = itemName;
-//        this.category = category;
-//        this.price = price;
-//        this.availability = availability;
-//        this.imagePath = imagePath;
-//    }
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availabiltiy) {
+        this.availability = availability;
+    }
     
+////    public Availability getAvailability() {
+////        return availability;
+////    }
+////    public void setAvailability(Availability availability) {
+////        this.availability = availability;
+////    }
+////    public Item(String itemName, String category, double price, Item.Availability availability, String imagePath) {
+////        this.itemName = itemName;
+////        this.category = category;
+////        this.price = price;
+////        this.availability = availability;
+////        this.imagePath = imagePath;
+////    }
+//    
     public Item(int item_id,String itemName, String category, double price, String imagePath, String availability) {
         this.item_id = item_id;
         this.itemName = itemName;

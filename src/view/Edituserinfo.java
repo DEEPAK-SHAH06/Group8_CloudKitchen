@@ -4,6 +4,10 @@
  */
 package view;
 
+import dao.UserDao;
+import javax.swing.JOptionPane;
+import model.Users;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -15,7 +19,15 @@ public class Edituserinfo extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    private Users user;
+    
     public Edituserinfo() {
+        initComponents();
+    }
+    
+    public Edituserinfo(Users user) {
+        this.user =user;
         initComponents();
     }
 
@@ -28,29 +40,21 @@ public class Edituserinfo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logout = new javax.swing.JButton();
         Password = new javax.swing.JTextField();
         Username = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
-        Add = new javax.swing.JButton();
+        Edit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
-
-        Logout.setBackground(new java.awt.Color(0, 51, 255));
-        Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Logout.setForeground(new java.awt.Color(255, 255, 255));
-        Logout.setText("Log out");
-        Logout.addActionListener(this::LogoutActionPerformed);
-        getContentPane().add(Logout);
-        Logout.setBounds(1150, 20, 90, 30);
 
         Password.setBackground(new java.awt.Color(204, 204, 204));
         Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -72,12 +76,13 @@ public class Edituserinfo extends javax.swing.JFrame {
         getContentPane().add(Email);
         Email.setBounds(550, 350, 260, 40);
 
-        Add.setBackground(new java.awt.Color(255, 0, 51));
-        Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("Edit");
-        getContentPane().add(Add);
-        Add.setBounds(620, 490, 90, 40);
+        Edit.setBackground(new java.awt.Color(255, 0, 51));
+        Edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Edit.setForeground(new java.awt.Color(255, 255, 255));
+        Edit.setText("Edit");
+        Edit.addActionListener(this::EditActionPerformed);
+        getContentPane().add(Edit);
+        Edit.setBounds(520, 520, 90, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Password");
@@ -98,6 +103,14 @@ public class Edituserinfo extends javax.swing.JFrame {
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(470, 360, 60, 22);
+
+        cancelBtn.setBackground(new java.awt.Color(255, 0, 51));
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(this::cancelBtnActionPerformed);
+        getContentPane().add(cancelBtn);
+        cancelBtn.setBounds(650, 520, 120, 40);
 
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
@@ -122,9 +135,16 @@ public class Edituserinfo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameActionPerformed
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LogoutActionPerformed
+        Edit.addActionListener(e -> updateUser());
+        
+    }//GEN-LAST:event_EditActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // TODO add your handling code here:
+        cancelBtn.addActionListener(e -> dispose());
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,16 +172,43 @@ public class Edituserinfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add;
+    private javax.swing.JButton Edit;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Logout;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
     private javax.swing.JLabel addimage;
     private javax.swing.JLabel brackgroundimage;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+public void loadData() {
+        Username.setText(user.getUsername());
+        Email.setText(user.getEmail());
+        Password.setText(user.getPassword());
+        
+    }
+
+    public void updateUser() {
+        user.setUsername(Username.getText());
+        user.setEmail(Email.getText());
+        user.setPassword(Password.getText());
+        user.setRole("CUSTOMER");
+
+        UserDao dao = new UserDao();
+        boolean success = dao.updateUser(user);
+
+        if (success) {
+            JOptionPane.showMessageDialog(this, "User updated successfully");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update user");
+        }
+    }
+    
+    
+
 }

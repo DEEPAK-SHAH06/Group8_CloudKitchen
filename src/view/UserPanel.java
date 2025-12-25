@@ -5,6 +5,7 @@
 package view;
 
 import controller.UserTController;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import tablemodel.UserTableModel;
 
@@ -20,14 +21,16 @@ public class UserPanel extends javax.swing.JPanel {
     
     
     private UserTController controller;
+    private UserTableModel model ;
 
     
     
     public UserPanel() {
         initComponents();
-        UserTableModel model = new UserTableModel(new ArrayList<>());
+        model = new UserTableModel(new ArrayList<>());
+        userTable.setModel(model);
        
-        controller = new UserTController(model);
+        controller = new UserTController(model, userTable);
         controller.loadUsers();
     }
 
@@ -41,13 +44,24 @@ public class UserPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        userTable = new javax.swing.JTable();
         addUserbtn = new javax.swing.JButton();
         editInfobtn = new javax.swing.JButton();
         deletebtn = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -65,7 +79,7 @@ public class UserPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(userTable);
 
         addUserbtn.setBackground(new java.awt.Color(0, 204, 51));
         addUserbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,6 +126,18 @@ public class UserPanel extends javax.swing.JPanel {
     private javax.swing.JButton deletebtn;
     private javax.swing.JButton editInfobtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
+
+public void userAddbtn(ActionListener listener){
+    addUserbtn.addActionListener(listener);
+}
+public void userDeleteBtn(ActionListener listener){
+    deletebtn.addActionListener(listener);
+}
+public void userEditBtn(ActionListener listener){
+    editInfobtn.addActionListener(listener);
+}
+
+
 }

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.LoginController;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -190,6 +191,12 @@ public class AdminDashboard1 extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         // TODO add your handling code here:
+        
+        login loginview = new login();
+        LoginController controller = new LoginController(loginview);
+        controller.open();
+        this.dispose();
+        
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void logOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutbtnActionPerformed

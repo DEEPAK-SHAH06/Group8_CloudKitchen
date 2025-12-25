@@ -35,7 +35,6 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Logout = new javax.swing.JButton();
         Add = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Staftname = new javax.swing.JTextField();
@@ -44,6 +43,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Email = new javax.swing.JTextField();
         Password = new javax.swing.JTextField();
         Shift = new javax.swing.JTextField();
+        cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
@@ -86,20 +86,13 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(430, 90, 480, 80);
 
-        Logout.setBackground(new java.awt.Color(0, 51, 255));
-        Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Logout.setForeground(new java.awt.Color(255, 255, 255));
-        Logout.setText("Log out");
-        getContentPane().add(Logout);
-        Logout.setBounds(1140, 20, 100, 23);
-
         Add.setBackground(new java.awt.Color(255, 51, 51));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
         Add.setText("Add");
         Add.addActionListener(this::AddActionPerformed);
         getContentPane().add(Add);
-        Add.setBounds(610, 630, 90, 40);
+        Add.setBounds(520, 640, 90, 40);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Shift");
@@ -144,6 +137,14 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().add(Shift);
         Shift.setBounds(530, 500, 290, 40);
 
+        cancelBtn.setBackground(new java.awt.Color(255, 51, 51));
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(this::cancelBtnActionPerformed);
+        getContentPane().add(cancelBtn);
+        cancelBtn.setBounds(660, 640, 100, 40);
+
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
         addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -170,6 +171,10 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +204,6 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Logout;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Phone;
     private javax.swing.JTextField Shift;
@@ -207,6 +211,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JTextField Vechiletype;
     private javax.swing.JLabel addimage;
     private javax.swing.JLabel brackgroundimage;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -18,6 +18,7 @@ public class ReportTableModel extends AbstractTableModel {
     private final String[] cols = {
         "Report ID", "Date Range", "Total Orders", "Revenue", "Most Sold Item"
     };
+
     private List<Reports> reports;
 
     public ReportTableModel(List<Reports> reports) {
@@ -29,21 +30,27 @@ public class ReportTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    @Override public int getRowCount() { return reports.size(); }
-    @Override public int getColumnCount() { return cols.length; }
+    @Override
+    public int getRowCount() {
+        return reports == null ? 0 : reports.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return cols.length;
+    }
 
     @Override
     public Object getValueAt(int r, int c) {
         Reports rep = reports.get(r);
+
         return switch (c) {
             case 0 -> rep.getReport_id();
-            case 1 -> rep.getStartDate(); // replace with DateRange : startDate-endDate
+            case 1 -> rep.getStartDate() + " to " + rep.getEndDate(); // ✅ DATE RANGE
             case 2 -> rep.getTotalOrder();
             case 3 -> rep.getTotalRevenue();
             case 4 -> rep.getMostSoldItem();
             default -> null;
-                
-//              
         };
     }
 
@@ -52,4 +59,5 @@ public class ReportTableModel extends AbstractTableModel {
         return cols[c];
     }
 }
+
 

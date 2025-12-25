@@ -21,76 +21,92 @@ public class ItemDao {
 
     MySqlConnection mysql = new MySqlConnection();
 
+    // ================= GET ALL ITEMS =================
     public List<Item> getAllItems() {
         List<Item> list = new ArrayList<>();
         String sql = "SELECT * FROM items";
 
         try (Connection con = mysql.openConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Item item = new Item(
-                        rs.getInt("item_id"), // rs.next("something") garda Database ko column name sanga similar hunu
-                                              // parxa
+                        rs.getInt("item_id"), // must be similar to database ko column ko name
                         rs.getString("item_name"),
                         rs.getString("category"),
                         rs.getDouble("price"),
                         rs.getString("image_path"),
-                        rs.getString("availability"));
+                        rs.getString("availability")
+                );
                 list.add(item);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
 
+    // ================= DELETE ITEM =================
     public void deleteItem(int id) {
-        try (Connection con = mysql.openConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM items WHERE id=?");
-            ps.setInt(1, id);
+    try (Connection con = mysql.openConnection()) {
+        PreparedStatement ps = con.prepareStatement(
+            "DELETE FROM items WHERE item_id=?"
+        );
+        ps.setInt(1, id);
+        ps.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+
+    // ================= ADD ITEM =================
+    public void createItem(Item item) {
+        String sql = """
+            INSERT INTO items (item_name, category, price, image_path, availability)
+            VALUES (?, ?, ?, ?, ?)
+        """;
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, item.getItemName());
+            ps.setString(2, item.getCategory());
+            ps.setDouble(3, item.getPrice());
+            ps.setString(4, item.getImagePath());
+            ps.setString(5, item.getAvailability());
+
             ps.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void createItem(Item item) {
-        Connection conn = mysql.openConnection();
-
-        String sql = "INSERT INTO items (itemName, category, price, imagePath) VALUES(?,?,?,?)";
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, item.getItemName());
-            pstm.setString(2, item.getCategory());
-            pstm.setDouble(3, item.getPrice());
-            pstm.setString(4, item.getImagePath());
-
-            pstm.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            mysql.closeConnection(conn);
-        }
-    }
-
+    // ================= UPDATE ITEM =================
     public void updateItem(Item item) {
-        Connection conn = mysql.openConnection();
-        String sql = "UPDATE items SET itemName=?, imagePath=?, price=? WHERE id=?";
+        String sql = """
+            UPDATE items 
+            SET item_name=?, category=?, price=?, image_path=?, availability=?
+            WHERE item_id=?
+        """;
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
-            pstmt.setString(1, item.getItemName());
-            pstmt.setString(2, item.getImagePath());
-            pstmt.setDouble(3, item.getPrice());
-            pstmt.setInt(4, item.getItem_id());
-            pstmt.executeUpdate();
+            ps.setString(1, item.getItemName());
+            ps.setString(2, item.getCategory());
+            ps.setDouble(3, item.getPrice());
+            ps.setString(4, item.getImagePath());
+            ps.setString(5, item.getAvailability());
+            ps.setInt(6, item.getItem_id());
 
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            mysql.closeConnection(conn);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

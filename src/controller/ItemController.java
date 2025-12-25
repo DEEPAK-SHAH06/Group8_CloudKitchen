@@ -18,36 +18,70 @@ import tablemodel.ItemTableModel;
 import javax.swing.*;
 import java.util.List;
 import model.Item;
+import view.AddItemDashboard;
+import view.EditItemDashboard;
 import view.ItemPanel;
 
 public class ItemController {
 
+    private ItemPanel panel;
     private JTable table;
     private ItemDao dao = new ItemDao();
-    private ItemPanel panel;
 
     public ItemController(JTable table) {
         this.table = table;
     }
 
-    public ItemTableModel loadItems() {
-        return new ItemTableModel(dao.getAllItems());
+    // ================= LOAD ITEMS =================
+    public void loadItems() {
+        table.setModel(new ItemTableModel(dao.getAllItems()));
     }
 
+    // ================= ADD =================
     public void addItem() {
-        JOptionPane.showMessageDialog(null, "Add Item Clicked");
+        new AddItemDashboard().setVisible(true);
     }
 
-    public void editItem(int row) {
-        if (row == -1) return;
-        JOptionPane.showMessageDialog(null, "Edit Item ID: " + table.getValueAt(row, 0));
+    // ================= EDIT =================
+    public void editItem() {
+        int row = table.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select an item to edit");
+            return;
+        }
+
+        Item item = dao.getAllItems().get(row);
+        new EditItemDashboard(item).setVisible(true);
+    }
+    
+    // Afteer closing ADD/Edit window, reload table;
+    //table.setModel(loadItems());
+
+
+    // ================= DELETE =================
+    public void deleteItem() {
+        int row = table.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select an item to delete");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to delete this item?",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            int itemId = (int) table.getValueAt(row, 0);
+            dao.deleteItem(itemId);
+            loadItems();
+        }
     }
 
-    public void deleteItem(int row) {
-        if (row == -1) return;
-        dao.deleteItem((int) table.getValueAt(row, 0));
-        table.setModel(loadItems());
-    }
     
     public List<Item> searchItems(String keyword) {
         return dao.searchItems(keyword);
@@ -60,18 +94,8 @@ public class ItemController {
     public ItemController(ItemPanel panel){
         this.panel = panel;
         
-        panel.addItemListener(new AddItemListener());
     }
 
-   class AddItemListener implements ActionListener {
-
-        public AddItemListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // logic here
-        }
-    }
+ 
 }
 

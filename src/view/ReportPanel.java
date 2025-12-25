@@ -6,6 +6,7 @@ package view;
 
 import controller.ReportController;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import tablemodel.ReportTableModel;
 import utils.CSVExporter;
 
@@ -20,14 +21,16 @@ public class ReportPanel extends javax.swing.JPanel {
      */
     
     private CSVExporter csve;
+    private ReportTableModel model;
     
     private ReportController controller;
     public ReportPanel() {
         initComponents();
         exportBtn();
-        ReportTableModel model = new ReportTableModel(new ArrayList<>());
+        model = new ReportTableModel(new ArrayList<>());
+        reportTable.setModel(model);
         controller = new ReportController(model);
-        controller.loadReports();
+        controller.loadReports();        
     }
     
     
@@ -42,11 +45,22 @@ public class ReportPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        reportTable = new javax.swing.JTable();
         exportCsvBtn = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        reportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -71,7 +85,7 @@ public class ReportPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(reportTable);
 
         exportCsvBtn.setBackground(new java.awt.Color(51, 51, 51));
         exportCsvBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,13 +115,13 @@ public class ReportPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exportCsvBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable reportTable;
     // End of variables declaration//GEN-END:variables
 
     private void exportBtn(){
 
         exportCsvBtn.addActionListener(e -> {
-        csve.exportTable(jTable1);
+        csve.exportTable(reportTable);
     });
     }
  }

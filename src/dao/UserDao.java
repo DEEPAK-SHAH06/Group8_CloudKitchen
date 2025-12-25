@@ -31,7 +31,7 @@ public class UserDao {
                 u.setUser_id(rs.getInt("user_id"));
                 u.setUsername(rs.getString("username"));
                 u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("phone")); // replace with phone
+                u.setPhone(rs.getLong("phone"));
                 u.setRole(rs.getString("role"));
                 list.add(u);
             }
@@ -39,5 +39,62 @@ public class UserDao {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public boolean deleteUser(int userId) {
+        String sql = "DELETE FROM users WHERE user_id = ?";
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean addUser(Users user) {
+        Connection conn = mysql.openConnection();
+        String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, "CUSTOMER"); // automatically assign USER role
+
+            pstm.executeUpdate();
+            return true; // return true if user is added successfully
+
+        } catch (SQLException e) {
+            System.out.println("USER ADDITION ERROR: " + e.getMessage());
+            return false;
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
+    
+    public boolean updateUser(Users user) {
+        Connection conn = mysql.openConnection();
+        String sql = "UPDATE users SET username = ?, email = ?, password = ?, role = ? WHERE user_id = ?";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, user.getRole());
+            pstm.setInt(5, user.getUser_id()); // set the user_id for the WHERE clause
+
+            return pstm.executeUpdate() > 0; // return true if user is updated successfully
+
+        } catch (SQLException e) {
+            System.out.println("USER UPDATE ERROR: " + e.getMessage());
+            return false;
+        } finally {
+            mysql.closeConnection(conn);
+        }
     }
 }

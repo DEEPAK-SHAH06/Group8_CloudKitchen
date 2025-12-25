@@ -21,12 +21,19 @@ public class OrderPanel extends javax.swing.JPanel {
     private OrderController controller;
     public OrderPanel() {
         initComponents();
-        OrderTableModel model = new OrderTableModel(new ArrayList<>());
-      
-        controller = new OrderController(model);
-
-       
+        
+        OrderController controller = new OrderController(orderTable);
         controller.loadOrders();
+
+        assignToKitchenbtn.addActionListener(e -> {
+            controller.assignToKitchen(orderTable.getSelectedRow());
+        });
+
+        cancelOrderbtn.addActionListener(e -> {
+            controller.cancelOrder(orderTable.getSelectedRow());
+        });
+
+        
     }
 
      
@@ -41,12 +48,23 @@ public class OrderPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        orderTable = new javax.swing.JTable();
         assignToKitchenbtn = new javax.swing.JButton();
         cancelOrderbtn = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -71,7 +89,7 @@ public class OrderPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(orderTable);
 
         assignToKitchenbtn.setBackground(new java.awt.Color(153, 204, 0));
         assignToKitchenbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,6 +137,6 @@ public class OrderPanel extends javax.swing.JPanel {
     private javax.swing.JButton assignToKitchenbtn;
     private javax.swing.JButton cancelOrderbtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable orderTable;
     // End of variables declaration//GEN-END:variables
 }

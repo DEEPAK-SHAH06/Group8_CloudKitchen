@@ -6,84 +6,115 @@ package controller;
 
 import dao.AdminDao;
 import dao.UserDao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import model.Users;
 import tablemodel.UserTableModel;
+import view.Adduser;
 import view.AdminUsersTableModel;
+import view.Edituserinfo;
+import view.UserPanel;
 
 /**
  *
  * @author deepakshah
  */
 public class UserTController {
-     private final UserDao userDao = new UserDao();
+
+    private final UserDao dao = new UserDao();
     private final UserTableModel model;
-//    private JTable table;
-//    private AdminUsersTableModel tableModel;
-//    private AdminDao dao = new AdminDao();
+    private final JTable table;
+    private UserPanel panel;
 
-    public UserTController(UserTableModel model) {
+    public UserTController(UserTableModel model, JTable table) {
         this.model = model;
-    }
-
-    public void loadUsers() {
-        model.setUsers(userDao.getAllUsers());
+        this.table = table;
+        panel.userAddbtn(new addUserListener());
+        panel.userDeleteBtn(new deleteUserListener());
+        panel.userEditBtn(new editUserListener());
+        loadUsers();
     }
     
-//    public void loadUsers() {
-//        List<Users> users = dao.getAllUsers();
-//        tableModel = new AdminUsersTableModel(users);
-//        table.setModel(tableModel);
-//    }
-//
-//    // ADD
-//    public void addUser(String username, String email, long phone, String role) {
-//
-//        Users u = new Users();
-//        u.setUsername(username);
-//        u.setEmail(email);
-//        //u.setPhone(phone);
-//        u.setRole(role);
-//
-//        if (dao.addUser(u)) {
-//            JOptionPane.showMessageDialog(null, "User added successfully");
-//            loadUsers();
-//        }
-//    }
-//
-//    // EDIT
-//    public void editUser(int row, String username, String email, long phone, String role) {
-//
-//        Users u = tableModel.getUserAt(row);
-//        u.setUsername(username);
-//        u.setEmail(email);
-//        //u.setPhone(phone);
-//        u.setRole(role);
-//
-//        if (dao.updateUser(u)) {
-//            JOptionPane.showMessageDialog(null, "User updated");
-//            loadUsers();
-//        }
-//    }
-//
-//    // DELETE
-//    public void deleteUser(int row) {
-//
-//        Users u = tableModel.getUserAt(row);
-//
-//        int confirm = JOptionPane.showConfirmDialog(
-//                null,
-//                "Delete selected user?",
-//                "Confirm",
-//                JOptionPane.YES_NO_OPTION
-//        );
-//
-//        if (confirm == JOptionPane.YES_OPTION) {
-//            if (dao.deleteUser(u.getUser_id())) {
-//                JOptionPane.showMessageDialog(null, "User deleted");
-//                loadUsers();
-//            }
-//        }
-//    }
+
+    public void loadUsers() {
+        model.setUsers(dao.getAllUsers());
+    }
+
+    // ADD → open AddUserDashboard
+    public void addUser() {
+        new Adduser().setVisible(true);
+    }
+
+    // EDIT → open EditUserDashboard
+    public void editUser() {
+        int row = table.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select a user first");
+            return;
+        }
+
+        Users u = model.getUserAt(row);
+        new Edituserinfo(u).setVisible(true);
+    }
+
+    // DELETE
+    public void deleteUser() {
+        int row = table.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select a user first");
+            return;
+        }
+
+        Users u = model.getUserAt(row);
+
+        int confirm = JOptionPane.showConfirmDialog(
+                null,
+                "Delete user: " + u.getUsername() + "?",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            if (dao.deleteUser(u.getUser_id())) {
+                JOptionPane.showMessageDialog(null, "User deleted");
+                loadUsers();
+            }
+        }
+    }
+
+    class addUserListener implements ActionListener {
+
+        public addUserListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            addUser();
+        }
+    }
+
+    class deleteUserListener implements ActionListener {
+
+        public deleteUserListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            deleteUser();
+        }
+    }
+
+     class editUserListener implements ActionListener{
+
+        public editUserListener() {
+            
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            editUser();
+        }
+    }
 }

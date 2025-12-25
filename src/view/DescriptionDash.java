@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.MainPageController;
 import java.awt.event.ActionListener;
 
 /**
@@ -36,11 +37,11 @@ public class DescriptionDash extends javax.swing.JFrame {
         details = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         placeOrderButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
         addTocardButton = new javax.swing.JButton();
         userName = new javax.swing.JTextField();
         location = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
+        backLabel = new javax.swing.JLabel();
         imagePizaa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,13 +83,6 @@ public class DescriptionDash extends javax.swing.JFrame {
         getContentPane().add(placeOrderButton);
         placeOrderButton.setBounds(810, 460, 130, 30);
 
-        backButton.setBackground(new java.awt.Color(153, 153, 153));
-        backButton.setFont(new java.awt.Font("Khmer MN", 2, 24)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("< Back  ");
-        getContentPane().add(backButton);
-        backButton.setBounds(1050, 20, 110, 30);
-
         addTocardButton.setBackground(new java.awt.Color(0, 51, 255));
         addTocardButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addTocardButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +108,17 @@ public class DescriptionDash extends javax.swing.JFrame {
         getContentPane().add(phone);
         phone.setBounds(850, 380, 230, 40);
 
-        imagePizaa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/description.jpeg"))); // NOI18N
+        backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
+        backLabel.setText(" < Back");
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backLabel);
+        backLabel.setBounds(1020, 20, 140, 50);
+
+        imagePizaa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/description1.jpeg"))); // NOI18N
         imagePizaa.setText("jLabel1");
         imagePizaa.setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().add(imagePizaa);
@@ -138,6 +142,14 @@ public class DescriptionDash extends javax.swing.JFrame {
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_placeOrderButtonActionPerformed
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        // TODO add your handling code here:
+        MainPage mp = new MainPage();
+        MainPageController controller = new MainPageController(mp);
+        controller.open();
+        this.dispose();
+    }//GEN-LAST:event_backLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -166,7 +178,7 @@ public class DescriptionDash extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addTocardButton;
-    private javax.swing.JButton backButton;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JLabel details;
     private javax.swing.JLabel imagePizaa;
     private javax.swing.JLabel jLabel2;
@@ -180,6 +192,6 @@ public class DescriptionDash extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 public void backButtonListener(ActionListener l){
-    backButton.addActionListener(l);
+//    backButton.addActionListener(l);
 }
 }

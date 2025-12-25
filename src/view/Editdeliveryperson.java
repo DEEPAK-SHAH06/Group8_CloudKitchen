@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.DeliveryStaff;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -15,8 +17,15 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private DeliveryStaff staff;
     public Editdeliveryperson() {
         initComponents();
+    }
+    
+    public Editdeliveryperson(DeliveryStaff staff) { 
+        this.staff =staff;
+        initComponents();
+        
     }
 
     /**
@@ -35,15 +44,14 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         Edit = new javax.swing.JButton();
-        Logout = new javax.swing.JButton();
         Staftname = new javax.swing.JTextField();
         Phone = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Password = new javax.swing.JTextField();
         Shift = new javax.swing.JTextField();
         Vechiletype = new javax.swing.JTextField();
+        cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
@@ -59,37 +67,32 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Satf_name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(420, 250, 90, 30);
+        jLabel2.setBounds(380, 250, 100, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 380, 50, 22);
+        jLabel4.setBounds(380, 380, 80, 22);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Password");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(430, 450, 80, 22);
+        jLabel5.setBounds(380, 450, 100, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Shift");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(460, 510, 40, 22);
+        jLabel6.setBounds(380, 510, 40, 22);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Vechile_type");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(410, 570, 110, 30);
+        jLabel8.setBounds(380, 570, 110, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Phone");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 320, 50, 22);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Shift");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 510, 40, 22);
+        jLabel3.setBounds(380, 320, 80, 22);
 
         Edit.setBackground(new java.awt.Color(255, 51, 51));
         Edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -97,14 +100,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         Edit.setText("Edit");
         Edit.addActionListener(this::EditActionPerformed);
         getContentPane().add(Edit);
-        Edit.setBounds(610, 630, 90, 40);
-
-        Logout.setBackground(new java.awt.Color(0, 51, 255));
-        Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Logout.setForeground(new java.awt.Color(255, 255, 255));
-        Logout.setText("Log out");
-        getContentPane().add(Logout);
-        Logout.setBounds(1140, 20, 100, 23);
+        Edit.setBounds(540, 640, 90, 40);
 
         Staftname.setBackground(new java.awt.Color(204, 204, 204));
         Staftname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -144,6 +140,14 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         getContentPane().add(Vechiletype);
         Vechiletype.setBounds(530, 560, 290, 40);
 
+        cancelBtn.setBackground(new java.awt.Color(255, 51, 51));
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(this::cancelBtnActionPerformed);
+        getContentPane().add(cancelBtn);
+        cancelBtn.setBounds(680, 640, 100, 40);
+
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
         addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -170,6 +174,10 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EditActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +207,6 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Edit;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Logout;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Phone;
     private javax.swing.JTextField Shift;
@@ -207,13 +214,13 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     private javax.swing.JTextField Vechiletype;
     private javax.swing.JLabel addimage;
     private javax.swing.JLabel brackgroundimage;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

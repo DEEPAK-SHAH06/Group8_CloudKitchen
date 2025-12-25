@@ -4,6 +4,11 @@
  */
 package view;
 
+import dao.UserDao;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import model.Users;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -28,32 +33,23 @@ public class Adduser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logout = new javax.swing.JButton();
         Password = new javax.swing.JTextField();
         Username = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
-        Add = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        Logout.setBackground(new java.awt.Color(0, 51, 255));
-        Logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Logout.setForeground(new java.awt.Color(255, 255, 255));
-        Logout.setText("Log out");
-        Logout.addActionListener(this::LogoutActionPerformed);
-        getContentPane().add(Logout);
-        Logout.setBounds(1150, 20, 90, 30);
-
         Password.setBackground(new java.awt.Color(204, 204, 204));
         Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Password.setForeground(new java.awt.Color(0, 0, 0));
         Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Password.addActionListener(this::PasswordActionPerformed);
         getContentPane().add(Password);
@@ -61,7 +57,6 @@ public class Adduser extends javax.swing.JFrame {
 
         Username.setBackground(new java.awt.Color(204, 204, 204));
         Username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Username.setForeground(new java.awt.Color(0, 0, 0));
         Username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Username.addActionListener(this::UsernameActionPerformed);
         getContentPane().add(Username);
@@ -69,41 +64,45 @@ public class Adduser extends javax.swing.JFrame {
 
         Email.setBackground(new java.awt.Color(204, 204, 204));
         Email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Email.setForeground(new java.awt.Color(0, 0, 0));
         Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Email);
         Email.setBounds(550, 350, 260, 40);
 
-        Add.setBackground(new java.awt.Color(255, 0, 51));
-        Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("Add");
-        getContentPane().add(Add);
-        Add.setBounds(620, 490, 90, 40);
+        addBtn.setBackground(new java.awt.Color(255, 0, 51));
+        addBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addBtn.setText("Add");
+        addBtn.addActionListener(this::addBtnActionPerformed);
+        getContentPane().add(addBtn);
+        addBtn.setBounds(530, 510, 90, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(450, 420, 90, 25);
+        jLabel2.setBounds(450, 420, 90, 22);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Add User");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(560, 80, 230, 64);
+        jLabel1.setBounds(560, 80, 230, 58);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Username");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(440, 290, 100, 25);
+        jLabel3.setBounds(440, 290, 100, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(470, 360, 60, 25);
+        jLabel4.setBounds(470, 360, 60, 22);
+
+        cancelBtn.setBackground(new java.awt.Color(255, 0, 51));
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(this::cancelBtnActionPerformed);
+        getContentPane().add(cancelBtn);
+        cancelBtn.setBounds(660, 510, 110, 40);
 
         addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         addimage.setText("jLabel3");
@@ -128,9 +127,16 @@ public class Adduser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameActionPerformed
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LogoutActionPerformed
+        addBtn.addActionListener(e -> saveUser());
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // TODO add your handling code here:
+        cancelBtn.addActionListener(e -> dispose());
+
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,16 +164,42 @@ public class Adduser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Logout;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
+    private javax.swing.JButton addBtn;
     private javax.swing.JLabel addimage;
     private javax.swing.JLabel brackgroundimage;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+public void getAddBtn(ActionListener l){
+    addBtn.addActionListener(l);
+}
+
+public void saveUser() {
+        Users user = new Users();
+        user.setUsername(Username.getText());
+        user.setEmail(Email.getText());
+        user.setPassword(Password.getText());
+        user.setRole("CUSTOMER");
+
+        UserDao dao = new UserDao();
+        boolean success = dao.addUser(user);
+
+        if (success) {
+            JOptionPane.showMessageDialog(this, "User added successfully");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add user");
+        }
+    }
+
+//btnSave.addActionListener(e -> saveUser());
+//btnCancel.addActionListener(e -> dispose());
+
 }

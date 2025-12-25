@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ItemController;
 import java.awt.event.ActionListener;
 
 /**
@@ -17,6 +18,12 @@ public class ItemPanel extends javax.swing.JPanel {
      */
     public ItemPanel() {
         initComponents();
+        ItemController controller = new ItemController(jTable1);
+        controller.loadItems();
+
+        btnAdd.addActionListener(e -> controller.addItem());
+        btnEdit.addActionListener(e -> controller.editItem());
+        btnDelete.addActionListener(e -> controller.deleteItem());
     }
 
     /**
@@ -40,6 +47,17 @@ public class ItemPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -107,7 +125,13 @@ public class ItemPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-public void addItemListener(ActionListener listener){
-    btnAdd.addActionListener(listener);
-}
+//public void addItemListener(ActionListener listener){
+//    btnAdd.addActionListener(listener);
+//}
+//public void editItemListener(ActionListener listener){
+//    btnEdit.addActionListener(listener);
+//}
+//public void deleteItemListener(ActionListener listener){
+//    btnDelete.addActionListener(listener);
+//}
 }

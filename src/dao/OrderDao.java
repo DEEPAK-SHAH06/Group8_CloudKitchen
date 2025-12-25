@@ -17,29 +17,84 @@ import java.util.*;
 
 public class OrderDao {
     
-    private MySqlConnection mysql;
+    MySqlConnection mysql = new MySqlConnection();
 
     public List<Order> getAllOrders() {
-        List<Order> list = new ArrayList<>();
-        String sql = "SELECT * FROM orders";
+    List<Order> list = new ArrayList<>();
+    String sql = "SELECT * FROM orders";
 
-        try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                Order o = new Order();
-                o.setOrder_id(rs.getInt("order_id"));
-//                o.setCustomer_id(rs.getInt("customer_id"));
-//                o.setTotalAmount(rs.getDouble("total_amount"));
-//                o.setOrderTime(rs.getTimestamp("order_time").toLocalDateTime());
-//                o.setOrderStatus(rs.getString("status"));
-//                list.add(o);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        while (rs.next()) {
+            Order o = new Order();
+            o.setOrder_id(rs.getInt("order_id"));
+            o.setCustomer_id(rs.getInt("customer_id"));
+            o.setTotalAmount(rs.getDouble("total_amount"));
+            o.setOrderTime(rs.getTimestamp("order_time").toLocalDateTime());
+
+            String status = rs.getString("order_status");
+            o.setOrderStatus(Order.OrderStatus.valueOf(status));
+
+            list.add(o);
         }
-        return list;
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return list;
+}
+    
+    public void updateOrderStatus(int orderId, String status) {
+    String sql = "UPDATE orders SET order_status=? WHERE order_id=?";
+
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setString(1, status);
+        ps.setInt(2, orderId);
+        ps.executeUpdate();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+    public void insertIntoKitchen(int orderId) {
+    String sql = """
+        INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
+        SELECT o.order_id, k.item_id, 'PREPARING', NOW()
+        FROM orders o
+        JOIN kitchen k ON o.order_id = k.order_id
+        WHERE o.order_id = ?
+    """;
+
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setInt(1, orderId);
+        ps.executeUpdate();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+    public void deleteOrder(int orderId) {
+    String sql = "DELETE FROM orders WHERE order_id=?";
+
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setInt(1, orderId);
+        ps.executeUpdate();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+
 }
 

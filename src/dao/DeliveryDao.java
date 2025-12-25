@@ -78,6 +78,49 @@ public class DeliveryDao {
     return false;
 }
 
+    public boolean addDeliveryStaff(int userId, String vehicleType, String shift) {
+        String sql = """
+            INSERT INTO delivery_staff (user_id, vehicle_type, shift)
+            VALUES (?, ?, ?)
+            """;
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ps.setString(2, vehicleType);
+            ps.setString(3, shift);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean updateDeliveryStaff(int deliveryStaffId, String vehicleType, String shift) {
+    String sql = """
+        UPDATE delivery_staff
+        SET vehicle_type = ?, shift = ?
+        WHERE deliveryStaff_id = ?
+        """;
+
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setString(1, vehicleType);
+        ps.setString(2, shift);
+        ps.setInt(3, deliveryStaffId);
+
+        return ps.executeUpdate() > 0;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
     
     
     // The below methods are for DeliveryDashboard;

@@ -4,6 +4,8 @@
  */
 package view;
 
+import dao.DeliveryDao;
+import javax.swing.JOptionPane;
 import model.DeliveryStaff;
 
 /**
@@ -17,6 +19,8 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    private final DeliveryDao dao = new DeliveryDao();
     private DeliveryStaff staff;
     public Editdeliveryperson() {
         initComponents();
@@ -173,10 +177,12 @@ public class Editdeliveryperson extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
+        Edit.addActionListener(e -> update());
     }//GEN-LAST:event_EditActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
+        cancelBtn.addActionListener(e-> dispose());
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
@@ -223,4 +229,17 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
+
+
+    private void update() {
+        dao.updateDeliveryStaff(
+                staff.getDeliveryStaff_id(),
+                Vechiletype.getText(),
+                Shift.getText()
+        );
+
+        JOptionPane.showMessageDialog(this, "Updated Successfully");
+        dispose();
+    }
+    
 }

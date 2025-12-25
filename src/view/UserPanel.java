@@ -27,11 +27,11 @@ public class UserPanel extends javax.swing.JPanel {
     
     public UserPanel() {
         initComponents();
+
         model = new UserTableModel(new ArrayList<>());
         userTable.setModel(model);
-       
-        controller = new UserTController(model, userTable);
-        controller.loadUsers();
+
+        controller = new UserTController(this, model, userTable);
     }
 
     /**

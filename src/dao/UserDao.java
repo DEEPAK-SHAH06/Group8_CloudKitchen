@@ -97,4 +97,32 @@ public class UserDao {
             mysql.closeConnection(conn);
         }
     }
+    
+    public int addUserAndReturnId(Users u) {
+    String sql = """
+        INSERT INTO users (username, email, password, phone, role)
+        VALUES (?, ?, ?, ?, ?)
+        """;
+
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+        ps.setString(1, u.getUsername());
+        ps.setString(2, u.getEmail());
+        ps.setString(3, u.getPassword());
+        ps.setLong(4, u.getPhone());
+        ps.setString(5, u.getRole());
+
+        ps.executeUpdate();
+
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1); // user_id
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return -1;
+}
 }

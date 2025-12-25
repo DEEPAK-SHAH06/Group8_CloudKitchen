@@ -4,6 +4,11 @@
  */
 package view;
 
+import dao.DeliveryDao;
+import dao.UserDao;
+import javax.swing.JOptionPane;
+import model.Users;
+
 /**
  *
  * @author Limbu Mbg Sujata
@@ -15,6 +20,8 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private final UserDao userDao = new UserDao();
+    private final DeliveryDao deliveryDao = new DeliveryDao();
     public Adddeliveryperson() {
         initComponents();
     }
@@ -84,7 +91,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("Add Delivery Person");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(430, 90, 480, 80);
+        jLabel1.setBounds(430, 90, 560, 80);
 
         Add.setBackground(new java.awt.Color(255, 51, 51));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -170,10 +177,12 @@ public class Adddeliveryperson extends javax.swing.JFrame {
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         // TODO add your handling code here:
+        Add.addActionListener(e-> save());
     }//GEN-LAST:event_AddActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
+        cancelBtn.addActionListener(e-> dispose());
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
@@ -221,4 +230,24 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
+
+private void save() {
+        Users u = new Users();
+        u.setUsername(Staftname.getText());
+        u.setEmail(Email.getText());
+        u.setPhone(Long.parseLong(Phone.getText()));
+        u.setRole("DELIVERY");
+
+        int userId = userDao.addUserAndReturnId(u);
+
+        deliveryDao.addDeliveryStaff(
+                userId,
+                Vechiletype.getText(),
+                Shift.getText()
+        );
+
+        JOptionPane.showMessageDialog(this, "Delivery Person Added");
+        dispose();
+    }
+    
 }

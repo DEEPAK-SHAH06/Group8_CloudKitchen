@@ -157,9 +157,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jScrollBar1);
         jScrollBar1.setBounds(1380, 290, 10, 48);
 
+        lblUsername.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("jLabel1");
         jPanel1.add(lblUsername);
-        lblUsername.setBounds(1170, 77, 160, 30);
+        lblUsername.setBounds(1170, 77, 170, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

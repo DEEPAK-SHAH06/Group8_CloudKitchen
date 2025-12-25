@@ -23,20 +23,22 @@ import view.UserPanel;
  */
 public class UserTController {
 
-    private final UserDao dao = new UserDao();
+     private final UserDao dao = new UserDao();
     private final UserTableModel model;
     private final JTable table;
-    private UserPanel panel;
+    private final UserPanel panel;
 
-    public UserTController(UserTableModel model, JTable table) {
+    public UserTController(UserPanel panel, UserTableModel model, JTable table) {
+        this.panel = panel;
         this.model = model;
         this.table = table;
+
         panel.userAddbtn(new addUserListener());
         panel.userDeleteBtn(new deleteUserListener());
         panel.userEditBtn(new editUserListener());
+
         loadUsers();
     }
-    
 
     public void loadUsers() {
         model.setUsers(dao.getAllUsers());

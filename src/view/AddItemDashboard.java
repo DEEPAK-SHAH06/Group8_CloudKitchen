@@ -152,10 +152,12 @@ public class AddItemDashboard extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        btnAdd.addActionListener(e -> saveItem());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+        btnCancel.addActionListener(e -> dispose());
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

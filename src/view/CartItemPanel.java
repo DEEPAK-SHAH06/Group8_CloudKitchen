@@ -4,11 +4,15 @@
  */
 package view;
 
+import controller.CartManager;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import model.CartItem;
 import model.Item;
 import utils.UserSession;
@@ -17,8 +21,8 @@ import utils.UserSession;
  *
  * @author deepakshah
  */
-public class ProductCardPanel extends javax.swing.JPanel {
-    private Item currentItem;
+public class CartItemPanel extends javax.swing.JPanel {
+    //private Item currentItem;
 
     /**
      * Creates new form ProductCardPanel
@@ -26,12 +30,29 @@ public class ProductCardPanel extends javax.swing.JPanel {
     
     
     
-    
-    public ProductCardPanel() {
-        initComponents();       
+    private CartItem item;
+
+    public CartItemPanel(CartItem item) {
+        this.item = item;
+        initComponents();
+        loadData();
+    }
+
+    private void loadData() {
+        lblName.setText(item.getName());
+        lblPrice.setText("Rs. " + item.getTotalPrice());
+
+        ImageIcon icon = new ImageIcon(item.getImagePath());
+        Image img = icon.getImage().getScaledInstance(120, 100, Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(img));
+
+        removeBtn.addActionListener(e -> {
+            CartManager.getInstance().removeItem(item.getItemId());
+            SwingUtilities.getWindowAncestor(this).repaint();
+        });
     }
     
-//    public ProductCardPanel(int itemId, String name, double price, String imagePath){
+//    public CartItemPanel(int itemId, String name, double price, String imagePath){
 //        this.itemId = itemId;
 //        this.name = name;
 //        this.price = price;
@@ -40,10 +61,9 @@ public class ProductCardPanel extends javax.swing.JPanel {
 //        initComponents();
 //    }
 
-    public ProductCardPanel(Item item) {
-    initComponents();
-    loadData(item);
-}
+//    public CartItemPanel(List<Item> item) {
+//        initComponents();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +77,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
+        removeBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -87,6 +108,8 @@ public class ProductCardPanel extends javax.swing.JPanel {
             }
         });
 
+        removeBtn.setText("Remove");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,8 +124,10 @@ public class ProductCardPanel extends javax.swing.JPanel {
                         .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeBtn)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,94 +136,32 @@ public class ProductCardPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeBtn))
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseClicked
         // TODO add your handling code here:
-        if (!UserSession.isLoggedIn()) {
-        JOptionPane.showMessageDialog(
-            this,
-            "Please login first!",
-            "Login Required",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-            new login().setVisible(true);
-            return;
-        }
-
-        // User is logged in
-        DescriptionDash dd = new DescriptionDash(currentItem);
-        dd.setVisible(true);
-
-//        DescriptionDash dd = new DescriptionDash();
-//        dd.setVisible(true);
+        
     }//GEN-LAST:event_lblImageMouseClicked
 
     private void lblNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNameMouseClicked
         // TODO add your handling code here:
-        if (!UserSession.isLoggedIn()) {
-        JOptionPane.showMessageDialog(
-            this,
-            "Please login first!",
-            "Login Required",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-            new login().setVisible(true);
-            return;
-        }
-
-        // User is logged in
-        DescriptionDash dd = new DescriptionDash(currentItem);
-        dd.setVisible(true);
-
-//        DescriptionDash dd = new DescriptionDash();
-//        dd.setVisible(true);
+        
     }//GEN-LAST:event_lblNameMouseClicked
 
     private void lblPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseClicked
         // TODO add your handling code here:
-        if (!UserSession.isLoggedIn()) {
-        JOptionPane.showMessageDialog(
-            this,
-            "Please login first!",
-            "Login Required",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-            new login().setVisible(true);
-            return;
-        }
-
-        // User is logged in
-        DescriptionDash dd = new DescriptionDash(currentItem);
-        dd.setVisible(true);
-
+        
 //        
     }//GEN-LAST:event_lblPriceMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-        if (!UserSession.isLoggedIn()) {
-        JOptionPane.showMessageDialog(
-            this,
-            "Please login first!",
-            "Login Required",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-            new login().setVisible(true);
-            return;
-        }
-
-        // User is logged in
-       DescriptionDash dd = new DescriptionDash(currentItem);
-       dd.setVisible(true);
-
+        
     }//GEN-LAST:event_formMouseClicked
 
 
@@ -206,33 +169,21 @@ public class ProductCardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
+    private javax.swing.JButton removeBtn;
     // End of variables declaration//GEN-END:variables
 
-    //add this 
-    public Item getCurrentProduct() {
-        return currentItem;
-    }
+//    public void loadCart() {
+//        itemsPanel.removeAll();
+//
+//        CartManager cart = CartManager.getInstance();
+//        itemCountLabel.setText("Items in Cart: " + cart.getItemCount());
+//
+//        for (ProductCardPanel p : cart.getItems()) {
+//            itemsPanel.add(p);
+//        }
+//
+//        revalidate();
+//        repaint();
+//    }
     
-    public void loadData(Item item) {
-        this.currentItem = item;
-
-        lblName.setText(item.getItemName());
-        lblPrice.setText("Rs. " + item.getPrice());
-
-        // Load image
-        ImageIcon icon = new ImageIcon(item.getImagePath());
-        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
-        lblImage.setIcon(new ImageIcon(img));
-    }
-    
-    // Cart logic below : 
-    public CartItem toCartItem() {
-    return new CartItem(
-        currentItem.getItem_id(),
-        currentItem.getItemName(),
-        currentItem.getPrice(),
-        currentItem.getImagePath()
-    );
-}
-
 }

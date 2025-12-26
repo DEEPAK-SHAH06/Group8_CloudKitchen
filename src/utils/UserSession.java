@@ -34,6 +34,17 @@ public class UserSession {
         return loggedInUser;
     }
     
+    public static Users getCurrentUser() {
+        return loggedInUser;
+    }
+
+    public static int getCustomerId() {
+        return loggedInUser != null ? loggedInUser.getUser_id() : -1;
+    }
+    
+    
+    
+    
     
 //    private static Users currentUser;
 //

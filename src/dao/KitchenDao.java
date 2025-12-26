@@ -156,4 +156,48 @@ public class KitchenDao {
         }
     }
     
+    
+    // For Cart : 
+    
+    
+    public void addKitchenItem(int orderId, int itemId) {
+        String sql = """
+            INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
+            VALUES (?, ?, 'PREPARING', NOW())
+        """;
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+//    private static final String INSERT_KITCHEN_ORDER =
+//        "INSERT INTO kitchen_orders (order_id, item_id, status) VALUES (?, ?, ?)";
+
+    public boolean addKitchenOrder(int orderId, int itemId) {
+        String INSERT_KITCHEN_ORDER =
+        "INSERT INTO kitchen_orders (order_id, item_id, status) VALUES (?, ?, ?)";
+
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(INSERT_KITCHEN_ORDER)) {
+
+            ps.setInt(1, orderId);
+            ps.setInt(2, itemId);
+            ps.setString(3, "PENDING"); // default status
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 }

@@ -94,6 +94,31 @@ public class OrderDao {
         e.printStackTrace();
     }
 }
+    
+    
+    // For Cart
+    
+    public int createOrder(int customerId, double total) {
+        String sql = """
+            INSERT INTO orders (customer_id, total_amount, order_time, order_status)
+            VALUES (?, ?, NOW(), 'PENDING')
+        """;
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            ps.setInt(1, customerId);
+            ps.setDouble(2, total);
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) return rs.getInt(1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
 
 }

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.CartManager;
 import controller.MainPageController;
 import dao.ItemDao;
 import java.awt.event.ActionListener;
@@ -55,6 +56,7 @@ public class MainPage extends javax.swing.JFrame {
         cardsPanel = new javax.swing.JPanel();
         jScrollBar1 = new javax.swing.JScrollBar();
         lblUsername = new javax.swing.JLabel();
+        cartCountLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,8 +123,9 @@ public class MainPage extends javax.swing.JFrame {
         btnLogout.setBounds(1260, 20, 90, 40);
 
         Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cart.png"))); // NOI18N
+        Cart.addActionListener(this::CartActionPerformed);
         jPanel1.add(Cart);
-        Cart.setBounds(1110, 30, 30, 30);
+        Cart.setBounds(1090, 30, 30, 30);
 
         Login.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         Login.setText("Login");
@@ -163,6 +166,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(lblUsername);
         lblUsername.setBounds(1170, 77, 170, 40);
 
+        cartCountLabel.setForeground(new java.awt.Color(255, 255, 51));
+        cartCountLabel.setText("jLabel1");
+        jPanel1.add(cartCountLabel);
+        cartCountLabel.setBounds(1110, 10, 50, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,6 +203,14 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchFieldFocusGained
 
+    private void CartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CartActionPerformed
+        // TODO add your handling code here:
+        new CartPage().setVisible(true);
+
+        updateCartCount();
+
+    }//GEN-LAST:event_CartActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +241,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JButton btnLogout;
     private javax.swing.JPanel cardsPanel;
+    private javax.swing.JLabel cartCountLabel;
     private javax.swing.JComboBox<String> categoryCombo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
@@ -277,7 +294,11 @@ public void updateHeader() {
         Login.setVisible(true);
     }
 }
-
+public void updateCartCount() {
+    cartCountLabel.setText(
+        String.valueOf(CartManager.getInstance().getItemCount())
+    );
+}
 
 
 

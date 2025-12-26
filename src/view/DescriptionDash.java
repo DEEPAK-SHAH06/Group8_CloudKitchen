@@ -4,8 +4,19 @@
  */
 package view;
 
+import controller.CartManager;
 import controller.MainPageController;
+import dao.KitchenDao;
+import dao.OrderDao;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.CartItem;
+import model.Item;
+import model.Users;
+import utils.Session;
+import utils.UserSession;
 
 /**
  *
@@ -20,6 +31,21 @@ public class DescriptionDash extends javax.swing.JFrame {
      */
     public DescriptionDash() {
         initComponents();
+    }
+    
+//    public DescriptionDash(Item item) {
+//        initComponents();
+//    }
+//    
+    private Item product;
+
+    
+    
+    public DescriptionDash(Item product) {
+        this.product = product;
+        initComponents();
+        loadProductDetails();
+        loadUserDetails();
     }
 
     /**
@@ -137,10 +163,41 @@ public class DescriptionDash extends javax.swing.JFrame {
 
     private void addTocardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocardButtonActionPerformed
         // TODO add your handling code here:
+        //CartManager.getInstance().addItem(product);
+        CartItem cartItem = new CartItem(
+            product.getItem_id(),
+            product.getItemName(),
+            product.getPrice(),
+            product.getImagePath()
+        );
+
+    CartManager.getInstance().addItem(cartItem);
+
+        JOptionPane.showMessageDialog(this, "Added to Cart 🛒");
+        MainPage mp = new MainPage();
+        mp.updateHeader();
+
+
+
     }//GEN-LAST:event_addTocardButtonActionPerformed
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
         // TODO add your handling code here:
+        if (location.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter delivery location");
+            return;
+        }
+
+        OrderDao orderDao = new OrderDao();
+        int customerId = Session.getCustomerId();
+
+        int orderId = orderDao.createOrder(customerId, product.getPrice());
+
+        KitchenDao kitchenDao = new KitchenDao();
+        kitchenDao.addKitchenOrder(orderId, product.getItem_id());
+
+        JOptionPane.showMessageDialog(this, "Order placed successfully!");
+        this.dispose();
     }//GEN-LAST:event_placeOrderButtonActionPerformed
 
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
@@ -194,4 +251,43 @@ public class DescriptionDash extends javax.swing.JFrame {
 public void backButtonListener(ActionListener l){
 //    backButton.addActionListener(l);
 }
+
+
+private void loadProductDetails() {
+    if (product == null) return;
+
+    details.setText(
+        "<html>"
+        + "<h2>" + product.getItemName() + "</h2>"
+        + "<p>Category: " + product.getCategory() + "</p>"
+        + "<p>Price: Rs. " + product.getPrice() + "</p>"
+        + "</html>"
+    );
+
+    ImageIcon icon = new ImageIcon(product.getImagePath());
+    Image img = icon.getImage().getScaledInstance(
+            imagePizaa.getWidth(),
+            imagePizaa.getHeight(),
+            Image.SCALE_SMOOTH
+    );
+    imagePizaa.setIcon(new ImageIcon(img));
+}
+
+
+
+
+private void loadUserDetails() {
+    Users user = UserSession.getCurrentUser();
+
+    if (user != null) {
+        userName.setText(user.getUsername());
+        phone.setText(String.valueOf(user.getPhone()));
+        userName.setEditable(false);
+        phone.setEditable(false);
+    }
+}
+
+
+
+
 }

@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.AdminDashboardController;
+import controller.MainPageController;
 import dao.ItemDao;
 import javax.swing.JOptionPane;
 import model.Item;
@@ -39,7 +41,6 @@ public class AddItemDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         txtItemName = new javax.swing.JTextField();
         txtCategory = new javax.swing.JTextField();
@@ -48,9 +49,10 @@ public class AddItemDashboard extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         comboAvailability = new javax.swing.JComboBox<>();
         addimage = new javax.swing.JLabel();
+        backLabel = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -82,13 +84,6 @@ public class AddItemDashboard extends javax.swing.JFrame {
         jLabel1.setText("Add Items");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(500, 80, 480, 80);
-
-        btnLogout.setBackground(new java.awt.Color(0, 51, 255));
-        btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogout.setText("Log out");
-        getContentPane().add(btnLogout);
-        btnLogout.setBounds(1140, 20, 100, 23);
 
         btnAdd.setBackground(new java.awt.Color(255, 51, 51));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -141,6 +136,16 @@ public class AddItemDashboard extends javax.swing.JFrame {
         getContentPane().add(addimage);
         addimage.setBounds(300, 210, 720, 490);
 
+        backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
+        backLabel.setText(" < Back");
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backLabel);
+        backLabel.setBounds(80, 30, 140, 50);
+
         brackgroundimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminImage.jpg"))); // NOI18N
         brackgroundimage.setText("jLabel1");
         brackgroundimage.setPreferredSize(new java.awt.Dimension(1273, 789));
@@ -159,6 +164,12 @@ public class AddItemDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnCancel.addActionListener(e -> dispose());
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        // TODO add your handling code here:
+        
+        this.dispose();
+    }//GEN-LAST:event_backLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,10 +198,10 @@ public class AddItemDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addimage;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JLabel brackgroundimage;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JComboBox<String> comboAvailability;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

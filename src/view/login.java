@@ -38,7 +38,6 @@ public class login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         login = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         email = new javax.swing.JTextField();
         forgetPasswordLink = new javax.swing.JLabel();
@@ -47,8 +46,9 @@ public class login extends javax.swing.JFrame {
         role = new javax.swing.JComboBox<>();
         username = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1723, 789));
         getContentPane().setLayout(null);
 
@@ -66,14 +66,6 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(login);
         login.setBounds(830, 150, 150, 30);
 
-        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password.setText("                   ");
-        password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        password.addActionListener(this::passwordActionPerformed);
-        jPanel1.add(password);
-        password.setBounds(750, 320, 290, 40);
-
         loginButton.setBackground(new java.awt.Color(255, 0, 0));
         loginButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,9 +75,17 @@ public class login extends javax.swing.JFrame {
         loginButton.setBounds(850, 390, 79, 23);
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        email.setText("                    ");
+        email.setText("Enter your E-mail");
         email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         email.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailFocusLost(evt);
+            }
+        });
         email.addActionListener(this::emailActionPerformed);
         jPanel1.add(email);
         email.setBounds(750, 250, 290, 40);
@@ -134,15 +134,24 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(650, 310, 90, 40);
 
+        password.setText("12345678");
+        password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFocusLost(evt);
+            }
+        });
+        password.addActionListener(this::passwordActionPerformed);
+        jPanel1.add(password);
+        password.setBounds(750, 310, 290, 40);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1287, 789);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
@@ -170,6 +179,38 @@ public class login extends javax.swing.JFrame {
         controller.open();
     }//GEN-LAST:event_forgetPasswordLinkMouseClicked
 
+    private void emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusGained
+        // TODO add your handling code here:
+        if(email.getText().equals("Enter your E-mail")){
+            email.setText("");
+        }
+    }//GEN-LAST:event_emailFocusGained
+
+    private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
+        // TODO add your handling code here:
+        if(email.getText().equals("")){
+            email.setText("Enter your E-mail");
+        }
+    }//GEN-LAST:event_emailFocusLost
+
+    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+        // TODO add your handling code here:
+        if(email.getText().equals("12345678")){
+            email.setText("");
+        }
+    }//GEN-LAST:event_passwordFocusGained
+
+    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+        // TODO add your handling code here:
+        if(email.getText().equals("")){
+            email.setText("12345678");
+        }
+    }//GEN-LAST:event_passwordFocusLost
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,7 +233,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel login;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel loginHere;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField password;
     private javax.swing.JComboBox<String> role;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables

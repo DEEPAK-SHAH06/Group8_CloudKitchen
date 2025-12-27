@@ -125,4 +125,20 @@ public class UserDao {
     }
     return -1;
 }
+    
+    
+    public void updatePhone(int userId, long phone) {
+        String sql = "UPDATE users SET phone = ? WHERE user_id = ?";
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setLong(1, phone);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

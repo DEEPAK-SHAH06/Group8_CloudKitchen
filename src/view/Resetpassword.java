@@ -40,20 +40,20 @@ public class ResetPassword extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         txtEmail.setText("Email");
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(300, 260, 130, 30);
+        txtEmail.setBounds(600, 380, 130, 30);
 
         txtNewPassword.setText("New Password");
         getContentPane().add(txtNewPassword);
-        txtNewPassword.setBounds(300, 300, 130, 30);
+        txtNewPassword.setBounds(600, 420, 130, 30);
 
         txtConfirmPassword.setText("Confirm Password");
         getContentPane().add(txtConfirmPassword);
-        txtConfirmPassword.setBounds(300, 340, 130, 30);
+        txtConfirmPassword.setBounds(600, 460, 130, 30);
 
         btnResetPassword.setBackground(new java.awt.Color(0, 153, 255));
         btnResetPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,17 +64,17 @@ public class ResetPassword extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnResetPassword);
-        btnResetPassword.setBounds(320, 390, 80, 30);
+        btnResetPassword.setBounds(620, 510, 80, 30);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel2.setText("Change Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(260, 210, 230, 40);
+        jLabel2.setBounds(560, 330, 230, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 720, 514);
+        jLabel1.setBounds(300, 120, 720, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,32 +82,6 @@ public class ResetPassword extends javax.swing.JFrame {
 
     private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
 
-//        // TODO add your handling code here:
-//        String newPass = txtNewPassword.getText().trim();
-//        String confirmPass = txtConfirmPassword.getText().trim();
-//
-//        if (newPass.isEmpty() || confirmPass.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Please fill all fields.");
-//            return;
-//        }
-//
-//        if (!newPass.equals(confirmPass)) {
-//            JOptionPane.showMessageDialog(this, "Passwords do not match.");
-//            return;
-//        }
-//
-//        boolean updated = logindao.updatePassword(OTPStore.email, newPass);
-//
-//        if (updated) {
-//            JOptionPane.showMessageDialog(this, "Password reset successful!");
-//
-//            login lg = new login();
-//            lg.setVisible(true);
-//            this.dispose();
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Something went wrong. Try again.");
-//        }
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnResetPasswordActionPerformed
 
     /**

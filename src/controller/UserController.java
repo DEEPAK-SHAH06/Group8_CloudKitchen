@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
+import utils.UserSession;
+import view.MainPage;
 import view.SignUp;
 import view.login;
 
@@ -36,33 +38,53 @@ public class UserController {
 
     class AddActionListener implements ActionListener {
 
-        public void actionPerformed(ActionEvent ex) {
-            
-            try{
-                
-                String username = userView.getUsernameText().getText();
-                String email = userView.getEmailText().getText();
-                String password = userView.getPasswordText().getText();
-                
-                Users users = new Users(username, email, password);
-                boolean check = signupdao.checkExists(users);
-                if (check) {
-                    JOptionPane.showConfirmDialog(userView, "Duplicated user");
-                } else {
-                    signupdao.signUp(users);
-                    JOptionPane.showMessageDialog(userView, "Successfull");
-                    login lc = new login();
-                    LoginController log = new LoginController(lc);
-                    log.close();
-                    log.open();
-                }
-           
-            }catch(Exception e){
-                System.out.println(e);
+    @Override
+    public void actionPerformed(ActionEvent ex) {
+
+        try {
+            String username = userView.getUsernameText().getText().trim();
+            String email = userView.getEmailText().getText().trim();
+            String password = new String(userView.getPasswordText().getPassword());
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(userView, "All fields are required");
+                return;
             }
-     }
+
+            // ?HASH PASSWORD
+            String hashedPassword = utils.PasswordUtil.hashPassword(password);
+
+            Users users = new Users(username, email, hashedPassword);
+
+            boolean exists = signupdao.checkExists(users);
+            if (exists) {
+                JOptionPane.showMessageDialog(userView, "User already exists");
+                return;
+            }
+
+            
+            
+
+            signupdao.signUp(users);
+            
+            // 🔥 AUTO LOGIN
+            UserSession.setCurrentUser(users);
+
+            JOptionPane.showMessageDialog(userView, "Signup successful! Logged in automatically");
+
+            // Open main page directly
+            MainPage main = new MainPage();
+            new MainPageController(main).open();
+
+            close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(userView, "Signup failed");
+        }
     }
-    
+}
     
     
 }

@@ -40,7 +40,7 @@ public class forgetpass extends javax.swing.JFrame {
         btnSendCode = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(null);
 
@@ -70,6 +70,14 @@ public class forgetpass extends javax.swing.JFrame {
                 g2.drawRoundRect(x, y, width - 1, height - 1, 30, 30);
             }
         });
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addActionListener(this::txtEmailActionPerformed);
         getContentPane().add(txtEmail);
         txtEmail.setBounds(430, 390, 170, 30);
@@ -90,6 +98,20 @@ public class forgetpass extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // TODO add your handling code here:
+        if(txtEmail.getText().equals("    E-mail Or Username")){
+            txtEmail.setText("");
+        }
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if(txtEmail.getText().equals("")){
+            txtEmail.setText("    E-mail Or Username");
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
 
     /**
      * @param args the command line arguments

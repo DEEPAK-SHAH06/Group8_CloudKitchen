@@ -183,7 +183,7 @@ public class KitchenDao {
 
     public boolean addKitchenOrder(int orderId, int itemId) {
         String INSERT_KITCHEN_ORDER =
-        "INSERT INTO kitchen_orders (order_id, item_id, status) VALUES (?, ?, ?)";
+        "INSERT INTO kitchen (order_id, item_id, status) VALUES (?, ?, ?)";
 
         try (Connection conn = mysql.openConnection();
              PreparedStatement ps = conn.prepareStatement(INSERT_KITCHEN_ORDER)) {
@@ -199,5 +199,5 @@ public class KitchenDao {
             return false;
         }
     }
-    
+  
 }

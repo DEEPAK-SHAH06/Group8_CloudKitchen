@@ -40,8 +40,9 @@ public class ForgetPassController {
            try {
                
             String email = fgp.getTxtEmail().getText().trim();
-               
-           
+
+            OTPStore.email = email; // ✅ IMPORTANT
+
             String code = OTPStore.generateOTPAndSaveForEmail(email); // your OTP saving logic
             String resetLink = "http://your-app/reset?email=" + URLEncoder.encode(email, "UTF-8") + "&code=" + code;
 

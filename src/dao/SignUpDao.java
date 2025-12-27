@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Users;
 
 /**
@@ -18,6 +19,34 @@ import model.Users;
 public class SignUpDao {
 
     MySqlConnection mysql = new MySqlConnection();
+    
+//    public int signUp(Users user) {
+//
+//    Connection conn = mysql.openConnection();
+//    String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+//
+//    try (PreparedStatement pstm =
+//         conn.prepareStatement(sql)) {
+//
+//        pstm.setString(1, user.getUsername());
+//        pstm.setString(2, user.getEmail());
+//        pstm.setString(3, user.getPassword());
+//        pstm.setString(4, "CUSTOMER");
+//
+//        pstm.executeUpdate();
+//
+//        ResultSet rs = pstm.getGeneratedKeys();
+//        if (rs.next()) {
+//            return rs.getInt(1);
+//        }
+//
+//    } catch (SQLException e) {
+//        throw new RuntimeException(e);
+//    } finally {
+//        mysql.closeConnection(conn);
+//    }
+//    return -1;
+//}
 
     public void signUp(Users user) {
 
@@ -34,8 +63,12 @@ public class SignUpDao {
             pstm.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("SIGNUP ERROR: " + e.getMessage());
-        } finally {
+            JOptionPane.showMessageDialog(null,
+                "Signup failed: " + e.getMessage(),
+                "Database Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }finally {
             mysql.closeConnection(conn);
         }
     }

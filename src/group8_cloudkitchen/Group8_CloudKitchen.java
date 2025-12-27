@@ -44,7 +44,7 @@ public class Group8_CloudKitchen {
         // TODO code application logic here
 //        SignUp signupview = new SignUp();
 //        UserController controller = new UserController(signupview);
-//        signupview.setVisible(true);
+//        controller.open();
         
 
     

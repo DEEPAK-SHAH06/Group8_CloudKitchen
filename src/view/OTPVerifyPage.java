@@ -37,7 +37,7 @@ public class OTPVerifyPage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         btnVerify.setBackground(new java.awt.Color(218, 41, 41));
@@ -45,12 +45,12 @@ public class OTPVerifyPage extends javax.swing.JFrame {
         btnVerify.setText("Verify");
         btnVerify.addActionListener(this::btnVerifyActionPerformed);
         getContentPane().add(btnVerify);
-        btnVerify.setBounds(330, 293, 75, 30);
+        btnVerify.setBounds(620, 420, 75, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         jLabel2.setText("Enter Your Code: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(310, 220, 120, 16);
+        jLabel2.setBounds(600, 350, 120, 16);
 
         txtOTP.setBackground(new java.awt.Color(204, 204, 204));
         txtOTP.setBorder(new javax.swing.border.AbstractBorder() {
@@ -63,39 +63,44 @@ public class OTPVerifyPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtOTP);
-        txtOTP.setBounds(290, 250, 170, 30);
+        txtOTP.setBounds(580, 380, 170, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Resend Code");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(330, 340, 90, 16);
+        jLabel3.setBounds(620, 470, 90, 16);
 
         jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("CheckBox.icon.checkmarkColor"));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(6, 0, 714, 514);
+        jLabel1.setBounds(300, 130, 714, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
-        try {
-            int userOtp = Integer.parseInt(txtOTP.getText().trim());
-            
-            if (userOtp == OTPStore.currentOTP) {
-                JOptionPane.showMessageDialog(this, "OTP Verified Successfully!");
+        String enteredOtp = txtOTP.getText().trim();
 
-                ResetPassword reset = new ResetPassword();
-                reset.setVisible(true);
-                this.dispose();                             
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid OTP. Please try again.");
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Enter a valid numeric OTP.");
+        if (enteredOtp.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter OTP");
+            return;
+        }
+
+        boolean verified = OTPStore.verifyOTP(OTPStore.email, enteredOtp);
+
+        if (verified) {
+            JOptionPane.showMessageDialog(this, "OTP Verified Successfully!");
+
+            OTPStore.clearOTP(OTPStore.email); // cleanup
+
+            ResetPassword reset = new ResetPassword();
+            reset.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid OTP. Please try again.");
         }
     }//GEN-LAST:event_btnVerifyActionPerformed
 

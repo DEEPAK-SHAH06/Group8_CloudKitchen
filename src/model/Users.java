@@ -59,24 +59,20 @@ public class Users {
     }
     
     
-//    public Users(String username, String email, String password) {
-//        this.username = username;
-//        this.email = email;
-//        this.password = password;
-//    }
-//    
-    public Users(String username, String email, String password,String role) {
+    public Users(String username, String email, String password) {
         this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role="CUSTOMER";
+    }
+    
+//   
+    
+    public Users(String email, String password, String role, boolean isLogin) {
         this.email = email;
         this.password = password;
         this.role = role;
     }
-    
-    public Users(String email, String password, String role) {
-    this.email = email;
-    this.password = password;
-    this.role = role;
-}
 
 
     

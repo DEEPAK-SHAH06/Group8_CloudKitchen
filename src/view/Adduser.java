@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.AdminDashboardController;
+import controller.MainPageController;
 import dao.UserDao;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -43,9 +45,10 @@ public class Adduser extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
+        backLabel = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         Password.setBackground(new java.awt.Color(204, 204, 204));
@@ -110,6 +113,16 @@ public class Adduser extends javax.swing.JFrame {
         getContentPane().add(addimage);
         addimage.setBounds(300, 180, 710, 480);
 
+        backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
+        backLabel.setText(" < Back");
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backLabel);
+        backLabel.setBounds(40, 50, 140, 50);
+
         brackgroundimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminImage.jpg"))); // NOI18N
         brackgroundimage.setText("jLabel1");
         brackgroundimage.setPreferredSize(new java.awt.Dimension(1273, 789));
@@ -137,6 +150,12 @@ public class Adduser extends javax.swing.JFrame {
         cancelBtn.addActionListener(e -> dispose());
 
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        // TODO add your handling code here:       
+        
+        this.dispose();
+    }//GEN-LAST:event_backLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -169,6 +188,7 @@ public class Adduser extends javax.swing.JFrame {
     private javax.swing.JTextField Username;
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel addimage;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JLabel brackgroundimage;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;

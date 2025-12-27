@@ -11,13 +11,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
 import utils.UserSession;
-import view.DashBoard;
 import view.MainPage;
 import view.login;
 import java.sql.*;
 import view.AdminDashboard1;
 import view.kitchenDash;
 import utils.AuthConstants;
+import utils.PasswordUtil;
 import view.DeliveryDash;
 
 /**
@@ -99,7 +99,10 @@ public class LoginController {
                 }
 
                 // ================= CUSTOMER / DELIVERY LOGIN =================
+                //String hashedPassword = PasswordUtil.hashPassword(password);
                 Users user = logindao.login(email, password, role);
+
+                
 
                 if (user != null) {
                     UserSession.login(user);

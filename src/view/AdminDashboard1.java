@@ -50,7 +50,7 @@ public class AdminDashboard1 extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         manageItemsbtn.setFont(new java.awt.Font("Serif", 3, 14)); // NOI18N
@@ -191,16 +191,14 @@ public class AdminDashboard1 extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         // TODO add your handling code here:
-        
-        login loginview = new login();
-        LoginController controller = new LoginController(loginview);
-        controller.open();
-        this.dispose();
-        
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void logOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutbtnActionPerformed
         // TODO add your handling code here:
+        login loginview = new login();
+        LoginController controller = new LoginController(loginview);
+        controller.open();
+        this.dispose();
     }//GEN-LAST:event_logOutbtnActionPerformed
 
     /**

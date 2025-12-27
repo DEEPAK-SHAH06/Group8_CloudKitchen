@@ -6,8 +6,10 @@ package view;
 
 import controller.CartManager;
 import controller.MainPageController;
+import dao.CustomerDao;
 import dao.KitchenDao;
 import dao.OrderDao;
+import dao.UserDao;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -61,16 +63,16 @@ public class DescriptionDash extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         details = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        imagePizaa = new javax.swing.JLabel();
         placeOrderButton = new javax.swing.JButton();
         addTocardButton = new javax.swing.JButton();
         userName = new javax.swing.JTextField();
         location = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
         backLabel = new javax.swing.JLabel();
-        imagePizaa = new javax.swing.JLabel();
+        backgroundImage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -92,14 +94,15 @@ public class DescriptionDash extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(740, 330, 80, 20);
 
+        details.setFont(new java.awt.Font("Helvetica Neue", 2, 36)); // NOI18N
+        details.setForeground(new java.awt.Color(255, 255, 255));
         details.setText("Pizza");
-        details.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         getContentPane().add(details);
-        details.setBounds(50, 430, 490, 340);
+        details.setBounds(60, 410, 490, 220);
 
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 60, 550, 350);
+        imagePizaa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(imagePizaa);
+        imagePizaa.setBounds(60, 60, 550, 350);
 
         placeOrderButton.setBackground(new java.awt.Color(255, 0, 51));
         placeOrderButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -144,11 +147,11 @@ public class DescriptionDash extends javax.swing.JFrame {
         getContentPane().add(backLabel);
         backLabel.setBounds(1020, 20, 140, 50);
 
-        imagePizaa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/description1.jpeg"))); // NOI18N
-        imagePizaa.setText("jLabel1");
-        imagePizaa.setPreferredSize(new java.awt.Dimension(1273, 789));
-        getContentPane().add(imagePizaa);
-        imagePizaa.setBounds(0, 0, 1273, 795);
+        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/description1.jpeg"))); // NOI18N
+        backgroundImage.setText("jLabel1");
+        backgroundImage.setPreferredSize(new java.awt.Dimension(1273, 789));
+        getContentPane().add(backgroundImage);
+        backgroundImage.setBounds(0, 0, 1273, 795);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,20 +186,37 @@ public class DescriptionDash extends javax.swing.JFrame {
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
         // TODO add your handling code here:
-        if (location.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter delivery location");
+        if (location.getText().trim().isEmpty() || phone.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter phone and location");
             return;
         }
 
-        OrderDao orderDao = new OrderDao();
-        int customerId = Session.getCustomerId();
+        Users user = UserSession.getCurrentUser();
+        long phoneNumber = Long.parseLong(phone.getText());
+        String address = location.getText();
 
+        // 1️⃣ Update phone in users table
+        UserDao userDao = new UserDao();
+        userDao.updatePhone(user.getUser_id(), phoneNumber);
+
+        // 2️⃣ Create or update customer
+        CustomerDao customerDao = new CustomerDao();
+        int customerId = customerDao.getOrCreateCustomer(user.getUser_id(), address);
+
+        if (customerId == -1) {
+            JOptionPane.showMessageDialog(this, "Customer creation failed");
+            return;
+        }
+
+        // 3️⃣ Create order
+        OrderDao orderDao = new OrderDao();
         int orderId = orderDao.createOrder(customerId, product.getPrice());
 
+        // 4️⃣ Send to kitchen
         KitchenDao kitchenDao = new KitchenDao();
         kitchenDao.addKitchenOrder(orderId, product.getItem_id());
 
-        JOptionPane.showMessageDialog(this, "Order placed successfully!");
+        JOptionPane.showMessageDialog(this, "Order placed successfully 🍕");
         this.dispose();
     }//GEN-LAST:event_placeOrderButtonActionPerformed
 
@@ -236,9 +256,9 @@ public class DescriptionDash extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addTocardButton;
     private javax.swing.JLabel backLabel;
+    private javax.swing.JLabel backgroundImage;
     private javax.swing.JLabel details;
     private javax.swing.JLabel imagePizaa;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -265,9 +285,8 @@ private void loadProductDetails() {
     );
 
     ImageIcon icon = new ImageIcon(product.getImagePath());
-    Image img = icon.getImage().getScaledInstance(
-            imagePizaa.getWidth(),
-            imagePizaa.getHeight(),
+    Image img = icon.getImage().getScaledInstance(backgroundImage.getWidth(),
+            backgroundImage.getHeight(),
             Image.SCALE_SMOOTH
     );
     imagePizaa.setIcon(new ImageIcon(img));
@@ -283,7 +302,7 @@ private void loadUserDetails() {
         userName.setText(user.getUsername());
         phone.setText(String.valueOf(user.getPhone()));
         userName.setEditable(false);
-        phone.setEditable(false);
+        phone.setEditable(true);
     }
 }
 

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.MainPageController;
 import dao.DeliveryDao;
 import dao.UserDao;
 import javax.swing.JOptionPane;
@@ -52,9 +53,10 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         Shift = new javax.swing.JTextField();
         cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
+        backLabel = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -158,6 +160,16 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().add(addimage);
         addimage.setBounds(300, 210, 720, 490);
 
+        backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
+        backLabel.setText(" < Back");
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backLabel);
+        backLabel.setBounds(80, 30, 140, 50);
+
         brackgroundimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminImage.jpg"))); // NOI18N
         brackgroundimage.setText("jLabel1");
         brackgroundimage.setPreferredSize(new java.awt.Dimension(1273, 789));
@@ -184,6 +196,12 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         // TODO add your handling code here:
         cancelBtn.addActionListener(e-> dispose());
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        // TODO add your handling code here:
+        
+        this.dispose();
+    }//GEN-LAST:event_backLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,6 +237,7 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JTextField Staftname;
     private javax.swing.JTextField Vechiletype;
     private javax.swing.JLabel addimage;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JLabel brackgroundimage;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;

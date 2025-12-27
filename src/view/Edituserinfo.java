@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.MainPageController;
 import dao.UserDao;
 import javax.swing.JOptionPane;
 import model.Users;
@@ -50,9 +51,10 @@ public class Edituserinfo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
         addimage = new javax.swing.JLabel();
+        backLabel = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -92,7 +94,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("Edit User Information");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 80, 530, 58);
+        jLabel1.setBounds(340, 80, 560, 58);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Username");
@@ -117,6 +119,16 @@ public class Edituserinfo extends javax.swing.JFrame {
         addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         getContentPane().add(addimage);
         addimage.setBounds(300, 180, 710, 480);
+
+        backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
+        backLabel.setText(" < Back");
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(backLabel);
+        backLabel.setBounds(80, 30, 140, 50);
 
         brackgroundimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminImage.jpg"))); // NOI18N
         brackgroundimage.setText("jLabel1");
@@ -145,6 +157,12 @@ public class Edituserinfo extends javax.swing.JFrame {
         // TODO add your handling code here:
         cancelBtn.addActionListener(e -> dispose());
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        // TODO add your handling code here:
+        
+        this.dispose();
+    }//GEN-LAST:event_backLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -177,6 +195,7 @@ public class Edituserinfo extends javax.swing.JFrame {
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
     private javax.swing.JLabel addimage;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JLabel brackgroundimage;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel jLabel1;

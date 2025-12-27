@@ -39,15 +39,15 @@ public class SignUp extends javax.swing.JFrame {
         usernameText = new javax.swing.JTextField();
         frontSignup = new javax.swing.JLabel();
         emailText = new javax.swing.JTextField();
-        passwordText = new javax.swing.JTextField();
         signupButton = new javax.swing.JButton();
         Text = new javax.swing.JLabel();
         loginlink = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
+        passwordText = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -76,24 +76,18 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1.add(emailText);
         emailText.setBounds(850, 230, 175, 30);
 
-        passwordText.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        passwordText.addActionListener(this::passwordTextActionPerformed);
-        jPanel1.add(passwordText);
-        passwordText.setBounds(850, 290, 175, 28);
-
         signupButton.setBackground(new java.awt.Color(255, 51, 51));
         signupButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         signupButton.setForeground(new java.awt.Color(255, 255, 255));
         signupButton.setText("sign up");
-        signupButton.addActionListener(this::signupButtonActionPerformed);
         jPanel1.add(signupButton);
-        signupButton.setBounds(900, 340, 79, 21);
+        signupButton.setBounds(880, 350, 79, 30);
 
         Text.setBackground(new java.awt.Color(255, 255, 255));
         Text.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text.setText("Already have an account ?");
         jPanel1.add(Text);
-        Text.setBounds(790, 390, 180, 17);
+        Text.setBounds(790, 410, 180, 17);
 
         loginlink.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loginlink.setForeground(new java.awt.Color(51, 51, 255));
@@ -104,7 +98,7 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(loginlink);
-        loginlink.setBounds(970, 390, 80, 17);
+        loginlink.setBounds(970, 410, 80, 17);
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         username.setText("username");
@@ -121,6 +115,10 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1.add(password);
         password.setBounds(750, 290, 90, 22);
 
+        passwordText.setText("jPasswordField1");
+        jPanel1.add(passwordText);
+        passwordText.setBounds(850, 290, 170, 30);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1273, 789);
 
@@ -131,17 +129,9 @@ public class SignUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTextActionPerformed
 
-    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextActionPerformed
-
     private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextActionPerformed
-
-    private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signupButtonActionPerformed
 
     private void loginlinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginlinkMouseClicked
         // TODO add your handling code here:
@@ -184,7 +174,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel loginlink;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField passwordText;
+    private javax.swing.JPasswordField passwordText;
     private javax.swing.JButton signupButton;
     private javax.swing.JLabel username;
     private javax.swing.JTextField usernameText;
@@ -197,7 +187,7 @@ public class SignUp extends javax.swing.JFrame {
     public javax.swing.JTextField getEmailText(){
         return emailText;
     }
-    public javax.swing.JTextField getPasswordText(){
+    public javax.swing.JPasswordField getPasswordText(){
         return passwordText;
     }
     

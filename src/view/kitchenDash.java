@@ -5,6 +5,7 @@
 package view;
 
 import controller.KitchenController;
+import controller.LoginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -46,6 +47,7 @@ public class kitchenDash extends javax.swing.JFrame {
         Startcooking = new javax.swing.JButton();
         KitchenPane = new javax.swing.JScrollPane();
         kitchenTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
         BackgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,7 +66,7 @@ public class kitchenDash extends javax.swing.JFrame {
         Markasready.setText("Mark as ready");
         Markasready.addActionListener(this::MarkasreadyActionPerformed);
         getContentPane().add(Markasready);
-        Markasready.setBounds(900, 630, 170, 50);
+        Markasready.setBounds(960, 700, 170, 50);
 
         Startcooking.setBackground(new java.awt.Color(51, 51, 255));
         Startcooking.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -72,7 +74,7 @@ public class kitchenDash extends javax.swing.JFrame {
         Startcooking.setText("Start cooking");
         Startcooking.addActionListener(this::StartcookingActionPerformed);
         getContentPane().add(Startcooking);
-        Startcooking.setBounds(710, 630, 160, 50);
+        Startcooking.setBounds(760, 700, 160, 50);
 
         KitchenPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         KitchenPane.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +121,16 @@ public class kitchenDash extends javax.swing.JFrame {
         }
 
         getContentPane().add(KitchenPane);
-        KitchenPane.setBounds(180, 210, 850, 370);
+        KitchenPane.setBounds(180, 210, 950, 410);
+
+        backButton.setBackground(new java.awt.Color(255, 0, 51));
+        backButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("Log Out");
+        backButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
+        backButton.addActionListener(this::backButtonActionPerformed);
+        getContentPane().add(backButton);
+        backButton.setBounds(30, 20, 130, 30);
 
         BackgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kitchen.jpg"))); // NOI18N
         BackgroundImage.setText("jLabel1");
@@ -136,6 +147,14 @@ public class kitchenDash extends javax.swing.JFrame {
     private void MarkasreadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkasreadyActionPerformed
         
     }//GEN-LAST:event_MarkasreadyActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        login loginview = new login();
+        LoginController controller = new LoginController(loginview);
+        controller.open();
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +187,7 @@ public class kitchenDash extends javax.swing.JFrame {
     private javax.swing.JScrollPane KitchenPane;
     private javax.swing.JButton Markasready;
     private javax.swing.JButton Startcooking;
+    private javax.swing.JButton backButton;
     private javax.swing.JTable kitchenTable;
     // End of variables declaration//GEN-END:variables
 

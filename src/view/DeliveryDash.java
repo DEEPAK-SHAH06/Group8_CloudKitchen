@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.LoginController;
 import java.awt.event.ActionListener;
 import javax.swing.JTable;
 
@@ -40,7 +41,7 @@ public class DeliveryDash extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         backgroundImage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
@@ -98,6 +99,7 @@ public class DeliveryDash extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setText("Log Out");
         backButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
+        backButton.addActionListener(this::backButtonActionPerformed);
         getContentPane().add(backButton);
         backButton.setBounds(30, 20, 130, 30);
 
@@ -136,6 +138,14 @@ public class DeliveryDash extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        login loginview = new login();
+        LoginController controller = new LoginController(loginview);
+        controller.open();
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments

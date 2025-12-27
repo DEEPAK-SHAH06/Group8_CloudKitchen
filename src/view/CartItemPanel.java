@@ -109,6 +109,11 @@ public class CartItemPanel extends javax.swing.JPanel {
         });
 
         removeBtn.setText("Remove");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -163,6 +168,13 @@ public class CartItemPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_formMouseClicked
+
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+//        CartManager cm = new CartManager();
+//        cm.removeItem(item);
+        
+    }//GEN-LAST:event_removeBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

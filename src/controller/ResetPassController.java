@@ -19,10 +19,11 @@ import view.login;
 public class ResetPassController {
     
     private final ResetPassword rp;
-    private LoginDao logindao;
+    private LoginDao logindao = new LoginDao();
     
     public ResetPassController(ResetPassword rp){
         this.rp = rp;
+        this.logindao = new LoginDao();
         rp.ResetButtonListener(new AddResetButtonListener());
     }
 

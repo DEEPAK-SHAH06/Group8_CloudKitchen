@@ -8,6 +8,7 @@ import controller.MainPageController;
 import dao.UserDao;
 import javax.swing.JOptionPane;
 import model.Users;
+import utils.PasswordUtil;
 
 /**
  *
@@ -235,11 +236,12 @@ public void loadData() {
     public void updateUser() {
     user.setUsername(Username.getText());
     user.setEmail(Email.getText());
-    user.setPassword(Password.getText());
+
+    String rawPassword = Password.getText();
+    user.setPassword(PasswordUtil.hashPassword(rawPassword));
 
     long phone = Long.parseLong(phoneNumber.getText().trim());
     user.setPhone(phone);
-    
 
     user.setRole("CUSTOMER");
 
@@ -254,16 +256,18 @@ public void loadData() {
     }
 }
 
+
     
     
     private void loadUserDetails() {
     if (user != null) {
         Username.setText(user.getUsername());
         Email.setText(user.getEmail());
-        Password.setText(user.getPassword());
+        Password.setText(""); // NEVER show password
         phoneNumber.setText(String.valueOf(user.getPhone()));
     }
 }
+
     
 
 }

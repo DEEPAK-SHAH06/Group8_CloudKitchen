@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.ResetPassController;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.OTPStore;
 
@@ -18,7 +20,17 @@ public class OTPVerifyPage extends javax.swing.JFrame {
     /**
      * Creates new form Resetpassword
      */
+    private String email;
+
+    public OTPVerifyPage(String email) {
+        this.email = email;
+        initComponents();
+    }
+    
+   
+
     public OTPVerifyPage() {
+        
         initComponents();
     }
 
@@ -82,6 +94,9 @@ public class OTPVerifyPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
+        // TODO add your handling code here:
+//        System.out.println("Verify Button Clicked...");
+
         String enteredOtp = txtOTP.getText().trim();
 
         if (enteredOtp.isEmpty()) {
@@ -89,19 +104,19 @@ public class OTPVerifyPage extends javax.swing.JFrame {
             return;
         }
 
-        boolean verified = OTPStore.verifyOTP(OTPStore.email, enteredOtp);
+        if (OTPStore.verifyOTP(email, enteredOtp)) {
+            OTPStore.clearOTP(email);
 
-        if (verified) {
-            JOptionPane.showMessageDialog(this, "OTP Verified Successfully!");
-
-            OTPStore.clearOTP(OTPStore.email); // cleanup
-
-            ResetPassword reset = new ResetPassword();
-            reset.setVisible(true);
+            ResetPassword rp = new ResetPassword(email);
+            ResetPassController con = new ResetPassController(rp, email);
+            con.open();
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid OTP. Please try again.");
+            JOptionPane.showMessageDialog(this, "Invalid OTP");
         }
+        System.out.println("Email used for verification: " + email);
+        System.out.println("Entered OTP: " + enteredOtp);
+
     }//GEN-LAST:event_btnVerifyActionPerformed
 
     /**
@@ -137,6 +152,12 @@ public class OTPVerifyPage extends javax.swing.JFrame {
     private javax.swing.JTextField txtOTP;
     // End of variables declaration//GEN-END:variables
 
+public void addVerifyListener(ActionListener l){
+    //btnVerify.addActionListener(l);
+}
 
+public javax.swing.JTextField getTxtOTP(){
+    return txtOTP;
+}
 
 }

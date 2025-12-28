@@ -5,6 +5,7 @@
 package view;
 
 import controller.UserTController;
+import database.Refreshable;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import tablemodel.UserTableModel;
@@ -13,7 +14,7 @@ import tablemodel.UserTableModel;
  *
  * @author deepakshah
  */
-public class UserPanel extends javax.swing.JPanel {
+public class UserPanel extends javax.swing.JPanel implements Refreshable{
 
     /**
      * Creates new form UserPanel
@@ -138,6 +139,13 @@ public void userDeleteBtn(ActionListener listener){
 public void userEditBtn(ActionListener listener){
     editInfobtn.addActionListener(listener);
 }
+
+    @Override
+    public void refreshTable() {
+        controller.loadUsers();
+        System.out.println("Users Reffreshed");
+        
+    }
 
 
 }

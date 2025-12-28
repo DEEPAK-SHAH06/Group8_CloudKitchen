@@ -11,6 +11,7 @@ package controller;
 
 
 import dao.KitchenDao;
+import dao.OrderDao;
 import model.KitchenOrder;
 import tablemodel.KitchenTableModel;
 import view.kitchenDash;
@@ -68,7 +69,20 @@ public class KitchenDashboardController {
                 (KitchenDashboardTableModel) view.getKitchenTable().getModel();
 
         KitchenOrder order = model.getOrderAt(row);
+
+        // 1️⃣ Update kitchen status
         dao.updateCookingStatus(order.getKitchenId(), status);
+
+        // 2️⃣ If COOKED, check if entire order is cooked
+        if ("COOKED".equals(status)) {
+            if (dao.isOrderFullyCooked(order.getOrderId())) {
+
+                OrderDao orderDao = new OrderDao();
+                orderDao.updateOrderStatus(order.getOrderId(), "CONFIRMED");
+                // or READY / COOKED based on your workflow
+            }
+        }
+
         loadTable();
     }
 }

@@ -8,6 +8,7 @@ import controller.OrderController;
 import dao.DeliveryAssignmentDao;
 import dao.DeliveryDao;
 import dao.OrderDao;
+import database.Refreshable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -21,7 +22,7 @@ import tablemodel.OrderTableModel;
  *
  * @author deepakshah
  */
-public class OrderPanel extends javax.swing.JPanel {
+public class OrderPanel extends javax.swing.JPanel{
 
     /**
      * Creates new form OrderPanel
@@ -216,6 +217,12 @@ public class OrderPanel extends javax.swing.JPanel {
         List<Order> orders = orderDao.getAllOrders();
         orderTableModel.setOrders(orders);
     }
+
+//    @Override
+//    public void refreshTable() {
+//        loadOrders();
+//        System.out.println("Orders Refreshed");
+//    }
 
     
 }

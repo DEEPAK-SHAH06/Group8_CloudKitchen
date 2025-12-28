@@ -10,6 +10,7 @@ import dao.UserDao;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Users;
+import utils.PasswordUtil;
 
 /**
  *
@@ -202,24 +203,24 @@ public void getAddBtn(ActionListener l){
 }
 
 public void saveUser() {
-        Users user = new Users();
-        user.setUsername(Username.getText());
-        user.setEmail(Email.getText());
-        user.setPassword(Password.getText());
-        user.setRole("CUSTOMER");
+    Users user = new Users();
+    user.setUsername(Username.getText());
+    user.setEmail(Email.getText());
 
-        UserDao dao = new UserDao();
-        boolean success = dao.addUser(user);
+    String rawPassword = Password.getText();
+    user.setPassword(PasswordUtil.hashPassword(rawPassword));
 
-        if (success) {
-            JOptionPane.showMessageDialog(this, "User added successfully");
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to add user");
-        }
+    user.setRole("CUSTOMER");
+
+    UserDao dao = new UserDao();
+    boolean success = dao.addUser(user);
+
+    if (success) {
+        JOptionPane.showMessageDialog(this, "User added successfully");
+        dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to add user");
     }
-
-//btnSave.addActionListener(e -> saveUser());
-//btnCancel.addActionListener(e -> dispose());
-
 }
+}
+

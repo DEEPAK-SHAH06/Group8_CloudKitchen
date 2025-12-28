@@ -99,7 +99,7 @@ public class LoginController {
                 }
 
                 // ================= CUSTOMER / DELIVERY LOGIN =================
-                String hashedPassword = PasswordUtil.hashPassword(password);
+                //String hashedPassword = PasswordUtil.hashPassword(password);
                 Users user = logindao.login(email, password, role);
 
                 

@@ -55,7 +55,7 @@ public class Group8_CloudKitchen {
         MainPage mp = new MainPage();
         MainPageController controller = new MainPageController(mp);
         controller.open();
-        
+//        
         
 //        DeliveryDash dash = new DeliveryDash();
 //        DeliveryDashboardController controller =new DeliveryDashboardController(dash);

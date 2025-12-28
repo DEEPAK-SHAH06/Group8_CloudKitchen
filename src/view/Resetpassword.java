@@ -20,6 +20,13 @@ public class ResetPassword extends javax.swing.JFrame {
     /**
      * Creates new form ResetPassword
      */
+    
+    private String email;
+
+    public ResetPassword(String email) {
+        initComponents();
+        this.email = email;
+    }
     public ResetPassword() {
         initComponents();
     }
@@ -33,7 +40,6 @@ public class ResetPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtEmail = new javax.swing.JTextField();
         txtNewPassword = new javax.swing.JTextField();
         txtConfirmPassword = new javax.swing.JTextField();
         btnResetPassword = new javax.swing.JButton();
@@ -43,17 +49,13 @@ public class ResetPassword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        txtEmail.setText("Email");
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(600, 380, 130, 30);
-
         txtNewPassword.setText("New Password");
         getContentPane().add(txtNewPassword);
-        txtNewPassword.setBounds(600, 420, 130, 30);
+        txtNewPassword.setBounds(600, 390, 130, 30);
 
         txtConfirmPassword.setText("Confirm Password");
         getContentPane().add(txtConfirmPassword);
-        txtConfirmPassword.setBounds(600, 460, 130, 30);
+        txtConfirmPassword.setBounds(600, 440, 130, 30);
 
         btnResetPassword.setBackground(new java.awt.Color(0, 153, 255));
         btnResetPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +116,6 @@ public class ResetPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtConfirmPassword;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNewPassword;
     // End of variables declaration//GEN-END:variables
 
@@ -122,9 +123,9 @@ public class ResetPassword extends javax.swing.JFrame {
         btnResetPassword.addActionListener(listener);
     }
     
-    public javax.swing.JTextField getTxtEmail(){
-        return txtEmail;
-    }
+//    public javax.swing.JTextField getTxtEmail(){
+//        return txtEmail;
+//    }
     public javax.swing.JTextField getTxtNewPassword(){
         return txtNewPassword;
     }
@@ -132,4 +133,8 @@ public class ResetPassword extends javax.swing.JFrame {
         return txtConfirmPassword;
     }
 
+    
+    public String getEmail() {
+    return email;
+}
 }

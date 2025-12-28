@@ -5,6 +5,7 @@
 package view;
 
 import controller.DeliveryController;
+import database.Refreshable;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import tablemodel.DeliveryTableModel;
@@ -13,7 +14,7 @@ import tablemodel.DeliveryTableModel;
  *
  * @author deepakshah
  */
-public class DeliveryPanel extends javax.swing.JPanel {
+public class DeliveryPanel extends javax.swing.JPanel implements Refreshable{
 
     /**
      * Creates new form DeliveryPanel
@@ -166,6 +167,12 @@ public class DeliveryPanel extends javax.swing.JPanel {
      // ===== helper methods used by controller =====
     public int getSelectedRow() {
         return table.getSelectedRow();
+    }
+
+    @Override
+    public void refreshTable() {
+        controller.loadStaff();
+        System.out.println("Orders refreshed");
     }
 
 }

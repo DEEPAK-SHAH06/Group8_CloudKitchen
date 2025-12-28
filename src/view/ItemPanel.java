@@ -5,13 +5,14 @@
 package view;
 
 import controller.ItemController;
+import database.Refreshable;
 import java.awt.event.ActionListener;
 
 /**
  *
  * @author deepakshah
  */
-public class ItemPanel extends javax.swing.JPanel {
+public class ItemPanel extends javax.swing.JPanel implements Refreshable{
 
     /**
      * Creates new form ItemPanel
@@ -124,6 +125,13 @@ public class ItemPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void refreshTable() {
+        ItemController controller = new ItemController(jTable1);
+        controller.loadItems();
+        System.out.println("Items Refreshed");
+    }
 
 //public void addItemListener(ActionListener listener){
 //    btnAdd.addActionListener(listener);

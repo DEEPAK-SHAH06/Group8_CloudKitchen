@@ -5,9 +5,12 @@
 package view;
 
 import controller.LoginController;
+import database.Refreshable;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,8 +19,10 @@ import javax.swing.JPanel;
 public class AdminDashboard1 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboard1.class.getName());
-    private CardLayout cardlayout;   // ✅ class-level
-//    private JPanel contentPanel;
+    private CardLayout cardlayout;   //  class-level
+    private javax.swing.Timer refreshTimer;
+
+
 
     /**
      * Creates new form AdminDashboard1
@@ -26,8 +31,9 @@ public class AdminDashboard1 extends javax.swing.JFrame {
         initComponents();
         setupContentPanel();
         setupButtonActions();
+        startAutoRefresh();
     }
-    
+
   
 
     /**
@@ -195,6 +201,10 @@ public class AdminDashboard1 extends javax.swing.JFrame {
 
     private void logOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutbtnActionPerformed
         // TODO add your handling code here:
+        if (refreshTimer != null) {
+            refreshTimer.stop();
+        }
+
         login loginview = new login();
         LoginController controller = new LoginController(loginview);
         controller.open();
@@ -239,20 +249,28 @@ public class AdminDashboard1 extends javax.swing.JFrame {
     private javax.swing.JButton reportbtn;
     // End of variables declaration//GEN-END:variables
 
-
+private ItemPanel itemPanel;
+private UserPanel userPanel;
+private OrderPanel orderPanel;
+private DeliveryPanel deliveryPanel;
+private ReportPanel reportPanel;
     
-private void setupContentPanel(){
-//    JPanel contentPanel = new JPanel();
-    cardlayout = new CardLayout(); 
+private void setupContentPanel() {
+    cardlayout = new CardLayout();
     contentPanel.setLayout(cardlayout);
-    
-    contentPanel.add(new ItemPanel(), "ITEMS");
-    contentPanel.add(new UserPanel(), "USERS");
-    contentPanel.add(new OrderPanel(), "ORDERS");
-    contentPanel.add(new DeliveryPanel(), "DELIVERY");
-    contentPanel.add(new ReportPanel(), "REPORTS");
-}
 
+    itemPanel = new ItemPanel();
+    userPanel = new UserPanel();
+    orderPanel = new OrderPanel();
+    deliveryPanel = new DeliveryPanel();
+    reportPanel = new ReportPanel();
+
+    contentPanel.add(itemPanel, "ITEMS");
+    contentPanel.add(userPanel, "USERS");
+    contentPanel.add(orderPanel, "ORDERS");
+    contentPanel.add(deliveryPanel, "DELIVERY");
+    contentPanel.add(reportPanel, "REPORTS");
+}
 private void setupButtonActions(){
     manageItemsbtn.addActionListener(e -> {cardlayout.show(contentPanel,"ITEMS");});
     manageUserbtn.addActionListener(e -> {cardlayout.show(contentPanel,"USERS");});
@@ -266,5 +284,24 @@ private void setupButtonActions(){
 public void logOutListener(ActionListener listener){
     logOutbtn.addActionListener(listener);
 }
+
+private void refreshCurrentPanel() {
+    for (Component comp : contentPanel.getComponents()) {
+        if (comp.isVisible() && comp instanceof Refreshable) {
+            ((Refreshable) comp).refreshTable();
+        }
+    }
+}
+
+private void startAutoRefresh() {
+    int refreshInterval = 10000; // 10 seconds
+
+    refreshTimer = new javax.swing.Timer(refreshInterval, e -> {
+        refreshCurrentPanel();
+    });
+
+    refreshTimer.start();
+}
+
 
 }

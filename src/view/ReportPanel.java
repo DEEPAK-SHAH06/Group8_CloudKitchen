@@ -5,6 +5,7 @@
 package view;
 
 import controller.ReportController;
+import database.Refreshable;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import tablemodel.ReportTableModel;
@@ -14,7 +15,7 @@ import utils.CSVExporter;
  *
  * @author deepakshah
  */
-public class ReportPanel extends javax.swing.JPanel {
+public class ReportPanel extends javax.swing.JPanel implements Refreshable{
 
     /**
      * Creates new form ReportPanel
@@ -123,5 +124,11 @@ public class ReportPanel extends javax.swing.JPanel {
         exportCsvBtn.addActionListener(e -> {
         csve.exportTable(reportTable);
     });
+    }
+
+    @Override
+    public void refreshTable() {
+        controller.loadReports();
+        System.out.println("Reports Refreshed");
     }
  }

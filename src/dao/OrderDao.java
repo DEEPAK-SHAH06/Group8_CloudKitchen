@@ -47,7 +47,6 @@ public class OrderDao {
 }
     
     public void updateOrderStatus(int orderId, String status) {
-
     String sql = "UPDATE orders SET order_status = ? WHERE order_id = ?";
 
     try (Connection con = mysql.openConnection();
@@ -61,6 +60,7 @@ public class OrderDao {
         e.printStackTrace();
     }
 }
+
 
     public void insertIntoKitchen(int orderId) {
     String sql = """
@@ -122,45 +122,6 @@ public class OrderDao {
     }
     
     
-//    public List<Object[]> loadOrders() {
-//
-//    List<Object[]> orders = new ArrayList<>();
-//
-//    String sql = """
-//        SELECT 
-//            o.order_id,
-//            u.username,
-//            c.address,
-//            o.total_amount,
-//            o.order_status,
-//            o.order_time
-//        FROM orders o
-//        JOIN customers c ON o.customer_id = c.customer_id
-//        JOIN users u ON c.user_id = u.user_id
-//        ORDER BY o.order_time DESC
-//    """;
-//
-//    try (Connection con = mysql.openConnection();
-//         PreparedStatement ps = con.prepareStatement(sql);
-//         ResultSet rs = ps.executeQuery()) {
-//
-//        while (rs.next()) {
-//            orders.add(new Object[]{
-//                rs.getInt("order_id"),
-//                rs.getString("username"),
-//                rs.getString("address"),
-//                rs.getDouble("total_amount"),
-//                rs.getString("order_status"),
-//                rs.getTimestamp("order_time")
-//            });
-//        }
-//
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//    }
-//
-//    return orders;
-//}
 
 
 

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.LoginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URLEncoder;
@@ -19,10 +20,12 @@ import view.forgetpass;
 public class ForgetPassController {
     
     private final forgetpass fgp;
+    private LoginDao logindao;
            
     
     public ForgetPassController(forgetpass fgp){
         this.fgp = fgp;
+        this.logindao = new LoginDao();
         fgp.AddBtnSendCodeActionListener(new btnSendCodeListener());
     }
     
@@ -39,9 +42,15 @@ public class ForgetPassController {
         public void actionPerformed(ActionEvent e) {
            try {
                
+      
             String email = fgp.getTxtEmail().getText().trim();
+            if (!logindao.emailExists(email)) {
+                JOptionPane.showMessageDialog(fgp, "Email not registered");
+                return;
+            }
 
-            OTPStore.email = email; // ✅ IMPORTANT
+            //String code = OTPStore.generateOTPAndSaveForEmail(email);
+
 
             String code = OTPStore.generateOTPAndSaveForEmail(email); // your OTP saving logic
             String resetLink = "http://your-app/reset?email=" + URLEncoder.encode(email, "UTF-8") + "&code=" + code;
@@ -52,8 +61,9 @@ public class ForgetPassController {
             utils.EmailSender.sendEmail(email, subject, body);
             JOptionPane.showMessageDialog(fgp, "Code sent. Check your email.");
             
-            OTPVerifyPage ovp = new OTPVerifyPage();
+            OTPVerifyPage ovp = new OTPVerifyPage(email);
             ovp.setVisible(true);
+            fgp.dispose();
             
         } catch (Exception ex) {
             ex.printStackTrace();

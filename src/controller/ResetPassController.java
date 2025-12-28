@@ -17,20 +17,26 @@ import view.login;
  * @author deepakshah
  */
 public class ResetPassController {
-    
+
     private final ResetPassword rp;
-    private LoginDao logindao = new LoginDao();
-    
-    public ResetPassController(ResetPassword rp){
+    private final LoginDao logindao;
+    private final String email; // ✅ stored properly
+
+    public ResetPassController(ResetPassword rp, String email) {
         this.rp = rp;
+        this.email = email;
         this.logindao = new LoginDao();
         rp.ResetButtonListener(new AddResetButtonListener());
     }
+    
+    public void open(){
+        this.rp.setVisible(true);
+    }
+    public void close(){
+        this.rp.dispose();
+    }
 
     class AddResetButtonListener implements ActionListener {
-
-        public AddResetButtonListener() {
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -47,18 +53,17 @@ public class ResetPassController {
                 return;
             }
 
-            boolean updated = logindao.updatePassword(OTPStore.email, newPass);
+            boolean updated = logindao.updatePassword(email, newPass);
 
             if (updated) {
                 JOptionPane.showMessageDialog(rp, "Password reset successful!");
-
-                login lg = new login();
-                lg.setVisible(true);
+                new login().setVisible(true);
                 rp.dispose();
             } else {
-                JOptionPane.showMessageDialog(rp, "Something went wrong. Try again.");
+                JOptionPane.showMessageDialog(rp, "Something went wrong.");
             }
         }
     }
-    
 }
+
+

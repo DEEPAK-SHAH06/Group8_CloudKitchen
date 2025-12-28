@@ -17,6 +17,9 @@ public class DeliveryStaff {
     private String vehicleType;
     private String shift;
 
+    public DeliveryStaff() {
+    }
+
     // getters & setters
     public int getDeliveryStaff_id() { return deliveryStaff_id; }
     public void setDeliveryStaff_id(int deliveryStaff_id) { this.deliveryStaff_id = deliveryStaff_id; }
@@ -35,6 +38,20 @@ public class DeliveryStaff {
 
     public String getShift() { return shift; }
     public void setShift(String shift) { this.shift = shift; }
+
+    
+    public DeliveryStaff(int deliveryStaff_id, String name, String vehicleType, String shift){
+        this.deliveryStaff_id = deliveryStaff_id;
+        this.name = name;
+        this.vehicleType = vehicleType;
+        this.shift = shift;
+        
+    }
+    
+    @Override
+    public String toString() {
+        return name + " | " + vehicleType + " | " + shift;
+    }
 }
 
 

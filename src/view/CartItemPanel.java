@@ -5,6 +5,7 @@
 package view;
 
 import controller.CartManager;
+import java.awt.Container;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -46,10 +47,10 @@ public class CartItemPanel extends javax.swing.JPanel {
         Image img = icon.getImage().getScaledInstance(120, 100, Image.SCALE_SMOOTH);
         lblImage.setIcon(new ImageIcon(img));
 
-        removeBtn.addActionListener(e -> {
-            CartManager.getInstance().removeItem(item.getItemId());
-            SwingUtilities.getWindowAncestor(this).repaint();
-        });
+//        removeBtn.addActionListener(e -> {
+//            CartManager.getInstance().removeItem(item.getItemId());
+//            SwingUtilities.getWindowAncestor(this).repaint();
+//        });
     }
     
 //    public CartItemPanel(int itemId, String name, double price, String imagePath){
@@ -171,9 +172,16 @@ public class CartItemPanel extends javax.swing.JPanel {
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-//        CartManager cm = new CartManager();
-//        cm.removeItem(item);
-        
+//        // 1. Remove from cart data
+        CartManager.getInstance().removeItem(item.getItemId());
+
+        // 2. Remove this panel from UI
+        Container parent = this.getParent();
+        parent.remove(this);
+
+        // 3. Refresh UI
+        parent.revalidate();
+        parent.repaint();
     }//GEN-LAST:event_removeBtnActionPerformed
 
 

@@ -8,6 +8,7 @@ import controller.MainPageController;
 import dao.DeliveryDao;
 import javax.swing.JOptionPane;
 import model.DeliveryStaff;
+import model.Users;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     
     private final DeliveryDao dao = new DeliveryDao();
     private DeliveryStaff staff;
+    private Users user;
     public Editdeliveryperson() {
         initComponents();
     }
@@ -30,6 +32,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     public Editdeliveryperson(DeliveryStaff staff) { 
         this.staff =staff;
         initComponents();
+        loadPersonDetails();
         
     }
 
@@ -259,6 +262,18 @@ public class Editdeliveryperson extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Updated Successfully");
         dispose();
+    }
+    
+    private void loadPersonDetails(){
+        if (staff!= null) {
+            Staftname.setText(staff.getName());
+            //Phone.setText(staff.getPhone());          
+            //Email.setText(user.getEmail());
+            //Password.setText(user.getPassword());
+            Shift.setText(staff.getShift());
+            Vechiletype.setText(staff.getVehicleType());
+            
+        }
     }
     
 }

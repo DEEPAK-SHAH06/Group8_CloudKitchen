@@ -5,7 +5,16 @@
 package view;
 
 import controller.OrderController;
+import dao.DeliveryAssignmentDao;
+import dao.DeliveryDao;
+import dao.OrderDao;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.DeliveryStaff;
+import model.Order;
 import tablemodel.OrderTableModel;
 
 /**
@@ -51,6 +60,7 @@ public class OrderPanel extends javax.swing.JPanel {
         orderTable = new javax.swing.JTable();
         assignToKitchenbtn = new javax.swing.JButton();
         cancelOrderbtn = new javax.swing.JButton();
+        assignDeliveryPerson = new javax.swing.JButton();
 
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +114,15 @@ public class OrderPanel extends javax.swing.JPanel {
         cancelOrderbtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelOrderbtn.setText("Cancel Order");
 
+        assignDeliveryPerson.setBackground(new java.awt.Color(51, 204, 255));
+        assignDeliveryPerson.setForeground(new java.awt.Color(255, 255, 255));
+        assignDeliveryPerson.setText("Assign DeliveryMan");
+        assignDeliveryPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignDeliveryPersonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +131,9 @@ public class OrderPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(assignToKitchenbtn)
-                .addGap(48, 48, 48)
+                .addGap(28, 28, 28)
+                .addComponent(assignDeliveryPerson)
+                .addGap(31, 31, 31)
                 .addComponent(cancelOrderbtn)
                 .addGap(86, 86, 86))
         );
@@ -122,8 +143,9 @@ public class OrderPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignToKitchenbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignDeliveryPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignToKitchenbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -132,11 +154,68 @@ public class OrderPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_assignToKitchenbtnActionPerformed
 
+    private void assignDeliveryPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDeliveryPersonActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = orderTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Select an order first");
+            return;
+        }
+
+        int orderId = (int) orderTable.getValueAt(selectedRow, 0);
+
+        DeliveryDao staffDao = new DeliveryDao();
+        List<DeliveryStaff> staffList = staffDao.getAllDeliveryStaff();
+
+        JComboBox<DeliveryStaff> staffCombo = new JComboBox<>();
+        for (DeliveryStaff d : staffList) {
+            staffCombo.addItem(d);
+        }
+
+        int result = JOptionPane.showConfirmDialog(
+                this,
+                staffCombo,
+                "Select Delivery Person",
+                JOptionPane.OK_CANCEL_OPTION
+        );
+
+        if (result == JOptionPane.OK_OPTION) {
+            DeliveryStaff selected = (DeliveryStaff) staffCombo.getSelectedItem();
+
+            DeliveryAssignmentDao assignDao = new DeliveryAssignmentDao();
+            assignDao.assignOrderToDelivery(orderId, selected.getDeliveryStaff_id());
+            assignDao.updateOrderStatus(orderId);
+
+            JOptionPane.showMessageDialog(this, "Order assigned successfully 🚚");
+            initOrderTable();
+            //loadOrders(); // refresh table
+            
+        }
+    }//GEN-LAST:event_assignDeliveryPersonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assignDeliveryPerson;
     private javax.swing.JButton assignToKitchenbtn;
     private javax.swing.JButton cancelOrderbtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable orderTable;
     // End of variables declaration//GEN-END:variables
+
+    
+    private OrderTableModel orderTableModel;
+
+    private void initOrderTable() {
+        orderTableModel = new OrderTableModel(new ArrayList<>());
+        orderTable.setModel(orderTableModel);
+        loadOrders();
+    }
+
+    private void loadOrders() {
+        OrderDao orderDao = new OrderDao();
+        List<Order> orders = orderDao.getAllOrders();
+        orderTableModel.setOrders(orders);
+    }
+
+    
 }

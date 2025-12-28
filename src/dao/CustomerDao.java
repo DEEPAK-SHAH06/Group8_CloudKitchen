@@ -5,6 +5,8 @@
 package dao;
 import database.MySqlConnection;
 import java.sql.*;
+import model.Users;
+import utils.UserSession;
 
 /**
  *
@@ -22,6 +24,13 @@ public class CustomerDao {
         String updateSql = "UPDATE customers SET address = ? WHERE user_id = ?";
 
         try (Connection con = mysql.openConnection()) {
+            
+            Users user = UserSession.getCurrentUser();
+
+            if (user == null || user.getUser_id() <= 0) {
+                throw new IllegalStateException("Invalid user session");
+            }
+
 
             // Check if customer already exists
             PreparedStatement ps = con.prepareStatement(selectSql);

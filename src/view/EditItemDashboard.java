@@ -29,6 +29,7 @@ public class EditItemDashboard extends javax.swing.JFrame {
     public EditItemDashboard(Item item) {
         this.item = item;
         initComponents();
+        loadItemDetails();
     }
 
     /**
@@ -162,7 +163,7 @@ public class EditItemDashboard extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        btnSave.addActionListener(e -> updateItem());
+        updateItem();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -240,4 +241,16 @@ public class EditItemDashboard extends javax.swing.JFrame {
         }
     }
 
+    
+    private void loadItemDetails(){
+        if (item!= null) {
+            txtItemName.setText(item.getItemName());
+            txtCategory.setText(item.getCategory());
+            //txtItemPrice.setText(item.getPrice());
+            txtImageUrl.setText(item.getImagePath());
+            comboAvailability.setSelectedIndex(WIDTH);
+        }
+    }
+    
+    
 }

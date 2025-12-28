@@ -138,6 +138,7 @@ public class SignUp extends javax.swing.JFrame {
         login userview = new login();
         LoginController controller = new LoginController(userview);
         controller.open();
+        this.dispose();
     }//GEN-LAST:event_loginlinkMouseClicked
 
     /**

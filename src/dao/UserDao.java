@@ -79,14 +79,15 @@ public class UserDao {
     
     public boolean updateUser(Users user) {
         Connection conn = mysql.openConnection();
-        String sql = "UPDATE users SET username = ?, email = ?, password = ?, role = ? WHERE user_id = ?";
+        String sql = "UPDATE users SET username = ?, email = ?, password = ?, phone = ?, role = ? WHERE user_id = ?";
 
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getEmail());
             pstm.setString(3, user.getPassword());
-            pstm.setString(4, user.getRole());
-            pstm.setInt(5, user.getUser_id()); // set the user_id for the WHERE clause
+            pstm.setLong(4, user.getPhone());
+            pstm.setString(5, user.getRole());
+            pstm.setInt(6, user.getUser_id()); // set the user_id for the WHERE clause
 
             return pstm.executeUpdate() > 0; // return true if user is updated successfully
 

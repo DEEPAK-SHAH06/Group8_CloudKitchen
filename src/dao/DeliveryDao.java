@@ -125,7 +125,7 @@ public class DeliveryDao {
     
     // The below methods are for DeliveryDashboard;
     
-    public List<DeliveryOrder> getDeliveryOrders() {
+    public List<DeliveryOrder> getDeliveryOrdersByStaff(int deliveryStaffId) {
 
         List<DeliveryOrder> list = new ArrayList<>();
 
@@ -136,46 +136,102 @@ public class DeliveryDao {
                    u.phone,
                    o.order_time,
                    o.order_status
-            FROM orders o
+            FROM delivery_assignments da
+            JOIN orders o ON da.order_id = o.order_id
             JOIN customers c ON o.customer_id = c.customer_id
             JOIN users u ON c.user_id = u.user_id
-            WHERE o.order_status IN ('CONFIRMED','PREPARING','OUT_FOR_DELIVERY')
+            WHERE da.deliveryStaff_id = ?
             """;
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, deliveryStaffId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new DeliveryOrder(
+                    rs.getInt("order_id"),
+                    rs.getString("username"),
+                    rs.getString("address"),
+                    rs.getLong("phone"),
+                    rs.getTimestamp("order_time").toLocalDateTime(),
+                    rs.getString("order_status")
+                ));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+
+        public void updateOrderStatus(int orderId, String status) {
+            String sql = "UPDATE orders SET order_status=? WHERE order_id=?";
+
+            try (Connection con = mysql.openConnection();
+                 PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setString(1, status);
+                ps.setInt(2, orderId);
+                ps.executeUpdate();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    
+    
+    /// For assigning orders by admin to delivery person:
+    public List<DeliveryStaff> getAllDeliveryStaff() {
+        List<DeliveryStaff> list = new ArrayList<>();
+        String sql = """
+            SELECT ds.deliveryStaff_id, u.username, ds.vehicle_type, ds.shift
+            FROM delivery_staff ds
+            JOIN users u ON ds.user_id = u.user_id
+        """;
 
         try (Connection con = mysql.openConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                list.add(new DeliveryOrder(
-                        rs.getInt("order_id"),
+                DeliveryStaff d = new DeliveryStaff(
+                        rs.getInt("deliveryStaff_id"),
                         rs.getString("username"),
-                        rs.getString("address"),
-                        rs.getLong("phone"),
-                        rs.getTimestamp("order_time").toLocalDateTime(),
-                        rs.getString("order_status")
-                ));
+                        rs.getString("vehicle_type"),
+                        rs.getString("shift")
+                );
+                list.add(d);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
+    
+    
+    public int getDeliveryStaffIdByUserId(int userId) {
+    String sql = "SELECT deliveryStaff_id FROM delivery_staff WHERE user_id=?";
+    
+    try (Connection con = mysql.openConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
 
-    public void updateOrderStatus(int orderId, String status) {
-        String sql = "UPDATE orders SET order_status=? WHERE order_id=?";
+        ps.setInt(1, userId);
+        ResultSet rs = ps.executeQuery();
 
-        try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, status);
-            ps.setInt(2, orderId);
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (rs.next()) {
+            return rs.getInt("deliveryStaff_id");
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return -1;
+}
 
+    
 }
 

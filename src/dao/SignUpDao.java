@@ -5,8 +5,10 @@
 package dao;
 
 import database.MySqlConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -49,29 +51,31 @@ public class SignUpDao {
 //}
 
     public void signUp(Users user) {
+    Connection conn = mysql.openConnection();
+    String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+    
+    try (PreparedStatement pstm =
+         conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+        pstm.setString(1, user.getUsername());
+        pstm.setString(2, user.getEmail());
+        pstm.setString(3, user.getPassword());
+        pstm.setString(4, "CUSTOMER");
 
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+        pstm.executeUpdate();
 
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getEmail());
-            pstm.setString(3, user.getPassword());
-            pstm.setString(4, "CUSTOMER"); // automatically assign USER role
-
-            pstm.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                "Signup failed: " + e.getMessage(),
-                "Database Error",
-                JOptionPane.ERROR_MESSAGE
-            );
-        }finally {
-            mysql.closeConnection(conn);
+        //  GET GENERATED USER_ID
+        ResultSet rs = pstm.getGeneratedKeys();
+        if (rs.next()) {
+            user.setUser_id(rs.getInt(1));
         }
+
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    } finally {
+        mysql.closeConnection(conn);
     }
+}
 
     public boolean checkExists(Users user) {
 

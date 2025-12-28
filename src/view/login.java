@@ -169,7 +169,8 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         SignUp userview = new SignUp();
         UserController controller = new UserController(userview);
-        controller.open();
+        controller.open(); 
+        this.dispose();
     }//GEN-LAST:event_loginHereMouseClicked
 
     private void forgetPasswordLinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordLinkMouseClicked

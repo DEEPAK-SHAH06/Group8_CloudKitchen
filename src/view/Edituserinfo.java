@@ -30,6 +30,7 @@ public class Edituserinfo extends javax.swing.JFrame {
     public Edituserinfo(Users user) {
         this.user =user;
         initComponents();
+        loadUserDetails();
     }
 
     /**
@@ -50,7 +51,9 @@ public class Edituserinfo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
-        addimage = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        phoneNumber = new javax.swing.JTextField();
+        ph = new javax.swing.JLabel();
         backLabel = new javax.swing.JLabel();
         brackgroundimage = new javax.swing.JLabel();
 
@@ -84,7 +87,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         Edit.setText("Edit");
         Edit.addActionListener(this::EditActionPerformed);
         getContentPane().add(Edit);
-        Edit.setBounds(520, 520, 90, 40);
+        Edit.setBounds(520, 580, 90, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Password");
@@ -112,13 +115,25 @@ public class Edituserinfo extends javax.swing.JFrame {
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(this::cancelBtnActionPerformed);
         getContentPane().add(cancelBtn);
-        cancelBtn.setBounds(650, 520, 120, 40);
+        cancelBtn.setBounds(650, 580, 120, 40);
 
-        addimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        addimage.setText("jLabel3");
-        addimage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        getContentPane().add(addimage);
-        addimage.setBounds(300, 180, 710, 480);
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Phone no.");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(450, 480, 90, 22);
+
+        phoneNumber.setBackground(new java.awt.Color(204, 204, 204));
+        phoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        phoneNumber.addActionListener(this::phoneNumberActionPerformed);
+        getContentPane().add(phoneNumber);
+        phoneNumber.setBounds(550, 470, 260, 40);
+
+        ph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        ph.setText("jLabel3");
+        ph.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        getContentPane().add(ph);
+        ph.setBounds(300, 180, 710, 480);
 
         backLabel.setFont(new java.awt.Font("Kaiti SC", 1, 36)); // NOI18N
         backLabel.setText(" < Back");
@@ -164,6 +179,10 @@ public class Edituserinfo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backLabelMouseClicked
 
+    private void phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNumberActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -194,7 +213,6 @@ public class Edituserinfo extends javax.swing.JFrame {
     private javax.swing.JTextField Email;
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
-    private javax.swing.JLabel addimage;
     private javax.swing.JLabel backLabel;
     private javax.swing.JLabel brackgroundimage;
     private javax.swing.JButton cancelBtn;
@@ -202,6 +220,9 @@ public class Edituserinfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel ph;
+    private javax.swing.JTextField phoneNumber;
     // End of variables declaration//GEN-END:variables
 
 public void loadData() {
@@ -212,22 +233,37 @@ public void loadData() {
     }
 
     public void updateUser() {
-        user.setUsername(Username.getText());
-        user.setEmail(Email.getText());
-        user.setPassword(Password.getText());
-        user.setRole("CUSTOMER");
+    user.setUsername(Username.getText());
+    user.setEmail(Email.getText());
+    user.setPassword(Password.getText());
 
-        UserDao dao = new UserDao();
-        boolean success = dao.updateUser(user);
-
-        if (success) {
-            JOptionPane.showMessageDialog(this, "User updated successfully");
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to update user");
-        }
-    }
+    long phone = Long.parseLong(phoneNumber.getText().trim());
+    user.setPhone(phone);
     
+
+    user.setRole("CUSTOMER");
+
+    UserDao dao = new UserDao();
+    boolean success = dao.updateUser(user);
+
+    if (success) {
+        JOptionPane.showMessageDialog(this, "User updated successfully");
+        dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to update user");
+    }
+}
+
+    
+    
+    private void loadUserDetails() {
+    if (user != null) {
+        Username.setText(user.getUsername());
+        Email.setText(user.getEmail());
+        Password.setText(user.getPassword());
+        phoneNumber.setText(String.valueOf(user.getPhone()));
+    }
+}
     
 
 }

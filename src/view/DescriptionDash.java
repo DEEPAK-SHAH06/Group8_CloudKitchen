@@ -40,7 +40,7 @@ public class DescriptionDash extends javax.swing.JFrame {
 //    }
 //    
     private Item product;
-
+    private KitchenDao kitchendao;
     
     
     public DescriptionDash(Item product) {
@@ -210,7 +210,19 @@ public class DescriptionDash extends javax.swing.JFrame {
 
         // 3️⃣ Create order
         OrderDao orderDao = new OrderDao();
+        //int orderId = orderDao.createOrder(customerId, product.getPrice());
+        
+                 //1. Create order
         int orderId = orderDao.createOrder(customerId, product.getPrice());
+
+        // 2. For each cart item → insert into kitchen
+        for (CartItem item : CartManager.getInstance().getItems()) {
+            kitchendao.addKitchenOrder(orderId, item.getItemId());
+        }
+
+        // 3. Update order status
+        orderDao.updateOrderStatus(orderId, "PREPARING");
+        
 
         // 4️⃣ Send to kitchen
         KitchenDao kitchenDao = new KitchenDao();

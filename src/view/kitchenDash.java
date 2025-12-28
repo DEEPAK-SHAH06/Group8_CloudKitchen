@@ -76,10 +76,10 @@ public class kitchenDash extends javax.swing.JFrame {
         getContentPane().add(Startcooking);
         Startcooking.setBounds(760, 700, 160, 50);
 
-        KitchenPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        KitchenPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         KitchenPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        kitchenTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        kitchenTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         kitchenTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -121,7 +121,7 @@ public class kitchenDash extends javax.swing.JFrame {
         }
 
         getContentPane().add(KitchenPane);
-        KitchenPane.setBounds(180, 210, 950, 410);
+        KitchenPane.setBounds(180, 210, 950, 404);
 
         backButton.setBackground(new java.awt.Color(255, 0, 51));
         backButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N

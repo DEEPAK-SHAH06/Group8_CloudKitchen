@@ -54,7 +54,6 @@ public class MainPage extends javax.swing.JFrame {
         categoryCombo = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
         cardsPanel = new javax.swing.JPanel();
-        jScrollBar1 = new javax.swing.JScrollBar();
         lblUsername = new javax.swing.JLabel();
         cartCountLabel = new javax.swing.JLabel();
 
@@ -69,11 +68,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 10, 100, 80);
 
-        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 36)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 3, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Menu");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(40, 210, 150, 50);
+        jLabel6.setBounds(60, 190, 150, 50);
 
         jLabel27.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +119,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnLogout);
-        btnLogout.setBounds(1260, 20, 90, 40);
+        btnLogout.setBounds(1320, 20, 90, 40);
 
         Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cart.png"))); // NOI18N
         Cart.addActionListener(this::CartActionPerformed);
@@ -147,24 +146,20 @@ public class MainPage extends javax.swing.JFrame {
         categoryCombo.setBounds(840, 32, 210, 40);
 
         scrollPaneProducts.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneProducts.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPaneProducts.setHorizontalScrollBar(null);
 
         cardsPanel.setBackground(new java.awt.Color(39, 39, 38));
+        cardsPanel.setLayout(new java.awt.GridLayout(0, 4, 15, 15));
         scrollPaneProducts.setViewportView(cardsPanel);
 
         jPanel1.add(scrollPaneProducts);
         scrollPaneProducts.setBounds(60, 280, 1330, 510);
 
-        jScrollBar1.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel1.add(jScrollBar1);
-        jScrollBar1.setBounds(1380, 290, 10, 48);
-
         lblUsername.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("jLabel1");
         jPanel1.add(lblUsername);
-        lblUsername.setBounds(1170, 77, 170, 40);
+        lblUsername.setBounds(1160, 20, 150, 40);
 
         cartCountLabel.setForeground(new java.awt.Color(255, 255, 51));
         cartCountLabel.setText("jLabel1");
@@ -175,11 +170,13 @@ public class MainPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1413, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
         );
 
         pack();
@@ -247,7 +244,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JScrollPane scrollPaneProducts;
     private javax.swing.JButton searchBtn;

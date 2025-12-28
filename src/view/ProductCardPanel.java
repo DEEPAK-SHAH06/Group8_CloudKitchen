@@ -4,7 +4,10 @@
  */
 package view;
 
+import controller.LoginController;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +15,8 @@ import javax.swing.JOptionPane;
 import model.CartItem;
 import model.Item;
 import utils.UserSession;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.*;
 
 /**
  *
@@ -19,32 +24,42 @@ import utils.UserSession;
  */
 public class ProductCardPanel extends javax.swing.JPanel {
     private Item currentItem;
+    private int arc = 20; // roundness (increase = more rounded)
 
-    /**
-     * Creates new form ProductCardPanel
-     */
-    
-    
-    
-    
     public ProductCardPanel() {
-        initComponents();       
+        initComponents();
+        setOpaque(false); // IMPORTANT for rounded corners
     }
-    
-//    public ProductCardPanel(int itemId, String name, double price, String imagePath){
-//        this.itemId = itemId;
-//        this.name = name;
-//        this.price = price;
-//        this.imagePath = imagePath;
-//
-//        initComponents();
-//    }
 
     public ProductCardPanel(Item item) {
-    initComponents();
-    loadData(item);
-}
+        initComponents();
+        loadData(item);
+        setOpaque(false);
+    }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Background
+        g2.setColor(getBackground());
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), arc, arc);
+
+        g2.dispose();
+        super.paintComponent(g);
+    }
+
+    @Override
+    protected void paintBorder(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2.setColor(new Color(200, 200, 200)); // soft border
+        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arc, arc);
+
+        g2.dispose();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,10 +74,15 @@ public class ProductCardPanel extends javax.swing.JPanel {
         lblPrice = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
             }
         });
 
@@ -72,7 +92,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
             }
         });
 
-        lblName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblName.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         lblName.setText("jLabel1");
         lblName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,6 +100,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
             }
         });
 
+        lblPrice.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         lblPrice.setText("jLabel1");
         lblPrice.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,23 +113,20 @@ public class ProductCardPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(106, 106, 106)
+                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
+            .addComponent(lblImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,13 +144,17 @@ public class ProductCardPanel extends javax.swing.JPanel {
             JOptionPane.WARNING_MESSAGE
         );
 
-            new login().setVisible(true);
+            login loginView = new login();
+            LoginController lc = new LoginController(loginView);
+            lc.open();
             return;
         }
 
         // User is logged in
         DescriptionDash dd = new DescriptionDash(currentItem);
         dd.setVisible(true);
+        MainPage mp = new MainPage();
+       mp.dispose();
 
 //        DescriptionDash dd = new DescriptionDash();
 //        dd.setVisible(true);
@@ -148,13 +170,17 @@ public class ProductCardPanel extends javax.swing.JPanel {
             JOptionPane.WARNING_MESSAGE
         );
 
-            new login().setVisible(true);
+            login loginView = new login();
+            LoginController lc = new LoginController(loginView);
+            lc.open();
             return;
         }
 
         // User is logged in
         DescriptionDash dd = new DescriptionDash(currentItem);
         dd.setVisible(true);
+        MainPage mp = new MainPage();
+       mp.dispose();
 
 //        DescriptionDash dd = new DescriptionDash();
 //        dd.setVisible(true);
@@ -169,14 +195,17 @@ public class ProductCardPanel extends javax.swing.JPanel {
             "Login Required",
             JOptionPane.WARNING_MESSAGE
         );
-
-            new login().setVisible(true);
+            login loginView = new login();
+            LoginController lc = new LoginController(loginView);
+            lc.open();
             return;
         }
 
         // User is logged in
         DescriptionDash dd = new DescriptionDash(currentItem);
         dd.setVisible(true);
+        MainPage mp = new MainPage();
+       mp.dispose();
 
 //        
     }//GEN-LAST:event_lblPriceMouseClicked
@@ -191,15 +220,31 @@ public class ProductCardPanel extends javax.swing.JPanel {
             JOptionPane.WARNING_MESSAGE
         );
 
-            new login().setVisible(true);
+            login loginView = new login();
+            LoginController lc = new LoginController(loginView);
+            lc.open();
             return;
         }
 
         // User is logged in
        DescriptionDash dd = new DescriptionDash(currentItem);
        dd.setVisible(true);
+       MainPage mp = new MainPage();
+       mp.dispose();
 
     }//GEN-LAST:event_formMouseClicked
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here:
+        setBackground(new java.awt.Color(245, 245, 245)); // light gray
+    repaint();
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        // TODO add your handling code here:
+        setBackground(java.awt.Color.WHITE);
+    repaint();
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -221,7 +266,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
 
         // Load image
         ImageIcon icon = new ImageIcon(item.getImagePath());
-        Image img = icon.getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH);
+        Image img = icon.getImage().getScaledInstance(320, 400, Image.SCALE_SMOOTH);
         lblImage.setIcon(new ImageIcon(img));
     }
     

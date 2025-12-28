@@ -45,26 +45,11 @@ public class UserSession {
     public static int getCustomerId() {
         return loggedInUser != null ? loggedInUser.getUser_id() : -1;
     }
+    public static int getUserId() {
+        return loggedInUser.getUser_id();
+    }
     
     
     
     
-    
-//    private static Users currentUser;
-//
-//    public static void login(Users user) {
-//        currentUser = user;
-//    }
-//
-//    public static void logout() {
-//        currentUser = null;
-//    }
-//
-//    public static boolean isLoggedIn() {
-//        return currentUser != null;
-//    }
-//
-//    public static Users getUser() {
-//        return currentUser;
-//    }
 }

@@ -253,7 +253,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPrice;
     // End of variables declaration//GEN-END:variables
 
-    //add this 
+     
     public Item getCurrentProduct() {
         return currentItem;
     }
@@ -272,12 +272,12 @@ public class ProductCardPanel extends javax.swing.JPanel {
     
     // Cart logic below : 
     public CartItem toCartItem() {
-    return new CartItem(
-        currentItem.getItem_id(),
-        currentItem.getItemName(),
-        currentItem.getPrice(),
-        currentItem.getImagePath()
-    );
-}
+        return new CartItem(
+            currentItem.getItem_id(),
+            currentItem.getItemName(),
+            currentItem.getPrice(),
+            currentItem.getImagePath()
+        );
+    }
 
 }

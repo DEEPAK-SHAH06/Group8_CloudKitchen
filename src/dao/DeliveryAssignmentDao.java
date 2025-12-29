@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+
 import database.MySqlConnection;
 import java.sql.*;
 
@@ -16,13 +17,13 @@ public class DeliveryAssignmentDao {
     public void assignOrderToDelivery(int orderId, int deliveryStaffId) {
 
         String sql = """
-            INSERT INTO delivery_assignments
-            (order_id, deliveryStaff_id, assigned_time)
-            VALUES (?, ?, NOW())
-        """;
+                    INSERT INTO delivery_assignments
+                    (order_id, deliveryStaff_id, assigned_time)
+                    VALUES (?, ?, NOW())
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, orderId);
             ps.setInt(2, deliveryStaffId);
@@ -37,7 +38,7 @@ public class DeliveryAssignmentDao {
         String sql = "UPDATE orders SET order_status='ASSIGNED_FOR_DELIVERY' WHERE order_id=?";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, orderId);
             ps.executeUpdate();

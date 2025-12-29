@@ -45,12 +45,12 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        Login = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         btnLogout = new javax.swing.JButton();
         Cart = new javax.swing.JButton();
-        Login = new javax.swing.JButton();
         categoryCombo = new javax.swing.JComboBox<>();
         scrollPaneProducts = new javax.swing.JScrollPane();
         cardsPanel = new javax.swing.JPanel();
@@ -73,6 +73,20 @@ public class MainPage extends javax.swing.JFrame {
         jLabel6.setText("Menu");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(60, 190, 150, 50);
+
+        Login.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
+        Login.setText("Login");
+        Login.setBorder(new javax.swing.border.AbstractBorder() {
+            @Override
+            public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(java.awt.Color.GRAY);
+                g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
+            }
+        });
+        jPanel1.add(Login);
+        Login.setBounds(1160, 20, 90, 40);
 
         jLabel27.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,20 +140,6 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(Cart);
         Cart.setBounds(1090, 30, 30, 30);
 
-        Login.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
-        Login.setText("Login");
-        Login.setBorder(new javax.swing.border.AbstractBorder() {
-            @Override
-            public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
-                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
-                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(java.awt.Color.GRAY);
-                g2.drawRoundRect(x, y, width - 1, height - 1, 20, 20);
-            }
-        });
-        jPanel1.add(Login);
-        Login.setBounds(1160, 20, 90, 40);
-
         categoryCombo.setFont(new java.awt.Font("Segoe Print", 3, 14)); // NOI18N
         categoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categories", "Fast Food", "Pizza", "Snacks", "Main Course", "Beverage" }));
         jPanel1.add(categoryCombo);
@@ -162,7 +162,7 @@ public class MainPage extends javax.swing.JFrame {
         lblUsername.setBounds(1160, 20, 150, 40);
 
         cartCountLabel.setForeground(new java.awt.Color(255, 255, 51));
-        cartCountLabel.setText("jLabel1");
+        cartCountLabel.setText("0");
         jPanel1.add(cartCountLabel);
         cartCountLabel.setBounds(1110, 10, 50, 30);
 

@@ -4,7 +4,6 @@
  */
 package controller;
 
-
 import dao.LoginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,40 +17,53 @@ import view.AdminDashboard1;
 import view.kitchenDash;
 import utils.AuthConstants;
 import utils.PasswordUtil;
+import utils.ValidationUtil;
 import view.DeliveryDash;
 
 /**
  *
-<<<<<<< HEAD
-
+ * <<<<<<< HEAD
+ * 
  * @author deepakshah
  */
 public class LoginController {
-    
+
     private final LoginDao logindao = new LoginDao();
     private final login loginView;
     private MainPageController controller;
     private MainPage mainpage;
-    
-    public LoginController(login loginView){
+
+    public LoginController(login loginView) {
         this.loginView = loginView;
         loginView.AddLoginListener(new LoginListener());
     }
 
-    public void open(){
+    public void open() {
         this.loginView.setVisible(true);
     }
-    public void close(){
+
+    public void close() {
         this.loginView.dispose();
     }
-    
+
     class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
             try {
-                String email = loginView.getEmail().getText();
-                String password = loginView.getPassword().getText();
+                String email = loginView.getEmail().getText().trim();
+                String password = loginView.getPassword().getText().trim();
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(loginView, "Please fill all fields");
+                    return;
+                }
+
+                // ✅ EMAIL FORMAT CHECK
+                if (!ValidationUtil.isValidEmail(email)) {
+                    JOptionPane.showMessageDialog(loginView, "Invalid email format");
+                    return;
+                }
                 String role = loginView.getRole().getSelectedItem().toString();
 
                 // ================= ADMIN FIXED LOGIN =================
@@ -99,17 +111,14 @@ public class LoginController {
                 }
 
                 // ================= CUSTOMER / DELIVERY LOGIN =================
-                //String hashedPassword = PasswordUtil.hashPassword(password);
-                
-                Users user = logindao.login(email, password, role);
 
-                
+                Users user = logindao.login(email, password, role);
 
                 if (user != null) {
                     UserSession.login(user);
 
                     JOptionPane.showMessageDialog(loginView, "Login Successful!");
-                    
+
                     // ================= ROLE BASED REDIRECT =================
                     if (user.getRole().equals("DELIVERY")) {
                         DeliveryDash dd = new DeliveryDash();
@@ -123,8 +132,7 @@ public class LoginController {
                     }
 
                     loginView.dispose();
-                    
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(loginView, "Invalid Email or Password");
                 }
@@ -134,11 +142,6 @@ public class LoginController {
             }
         }
 
-     }
+    }
 
-
- }
-    
-
-
-
+}

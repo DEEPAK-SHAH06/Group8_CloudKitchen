@@ -9,7 +9,6 @@ package dao;
  * @author deepakshah
  */
 
-
 import database.MySqlConnection;
 import model.DeliveryStaff;
 import java.sql.*;
@@ -18,75 +17,75 @@ import model.DeliveryOrder;
 import model.Users;
 
 public class DeliveryDao {
-    
-    MySqlConnection mysql= new MySqlConnection();
-    
+
+    MySqlConnection mysql = new MySqlConnection();
+
     // This method is for manageDelivery Table of Admin Dashboard;
 
     public List<DeliveryStaff> getAllStaff() {
 
-    List<DeliveryStaff> list = new ArrayList<>();
+        List<DeliveryStaff> list = new ArrayList<>();
 
-    String sql = """
-        SELECT ds.deliveryStaff_id,
-               u.user_id,
-               u.username,
-               u.phone,
-               ds.vehicle_type,
-               ds.shift
-        FROM delivery_staff ds
-        JOIN users u ON ds.user_id = u.user_id
-        WHERE u.role = 'DELIVERY'
-        """;
+        String sql = """
+                SELECT ds.deliveryStaff_id,
+                       u.user_id,
+                       u.username,
+                       u.phone,
+                       ds.vehicle_type,
+                       ds.shift
+                FROM delivery_staff ds
+                JOIN users u ON ds.user_id = u.user_id
+                WHERE u.role = 'DELIVERY'
+                """;
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql);
-         ResultSet rs = ps.executeQuery()) {
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
 
-        while (rs.next()) {
+            while (rs.next()) {
 
-            DeliveryStaff d = new DeliveryStaff();
-            d.setDeliveryStaff_id(rs.getInt("deliveryStaff_id"));
-            d.setUser_id(rs.getInt("user_id"));
-            d.setName(rs.getString("username"));
-            d.setPhone(rs.getLong("phone"));
-            d.setVehicleType(rs.getString("vehicle_type"));
-            d.setShift(rs.getString("shift"));
+                DeliveryStaff d = new DeliveryStaff();
+                d.setDeliveryStaff_id(rs.getInt("deliveryStaff_id"));
+                d.setUser_id(rs.getInt("user_id"));
+                d.setName(rs.getString("username"));
+                d.setPhone(rs.getLong("phone"));
+                d.setVehicleType(rs.getString("vehicle_type"));
+                d.setShift(rs.getString("shift"));
 
-            list.add(d);
+                list.add(d);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        return list;
     }
-
-    return list;
-}
 
     public boolean deleteStaff(int deliveryStaffId) {
 
-    String sql = "DELETE FROM delivery_staff WHERE deliveryStaff_id = ?";
+        String sql = "DELETE FROM delivery_staff WHERE deliveryStaff_id = ?";
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
-        ps.setInt(1, deliveryStaffId);
-        return ps.executeUpdate() > 0;
+            ps.setInt(1, deliveryStaffId);
+            return ps.executeUpdate() > 0;
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    return false;
-}
 
     public boolean addDeliveryStaff(int userId, String vehicleType, String shift) {
         String sql = """
-            INSERT INTO delivery_staff (user_id, vehicle_type, shift)
-            VALUES (?, ?, ?)
-            """;
+                INSERT INTO delivery_staff (user_id, vehicle_type, shift)
+                VALUES (?, ?, ?)
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, userId);
             ps.setString(2, vehicleType);
@@ -99,82 +98,77 @@ public class DeliveryDao {
         }
         return false;
     }
-    
-    //need to add more parameter in update DeliveryStaff...
-    
-    public boolean updateDeliveryStaff(int deliveryStaffId, String vehicleType, String shift, String email, String staffname,Long Phone, String hashedPassword) {
-    
-    String sql = """
-        UPDATE delivery_staff ds
-        JOIN users u ON ds.user_id = u.user_id
-        SET ds.vehicle_type = ?,
-            ds.shift = ?,
-            u.email = ?,
-            u.username = ?,
-            u.phone=?,
-            u.password = ?
-        WHERE ds.deliveryStaff_id = ?
-        """;
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql)) {
+    // need to add more parameter in update DeliveryStaff...
 
-        ps.setString(1, vehicleType);
-        ps.setString(2, shift);
-        ps.setString(3, email);
-        ps.setString(4, staffname);
-        ps.setLong(5, Phone);
-        ps.setString(6, hashedPassword); // ✅ already hashed
-        ps.setInt(7, deliveryStaffId);
+    public boolean updateDeliveryStaff(int deliveryStaffId, String vehicleType, String shift, String email,
+            String staffname, Long Phone, String hashedPassword) {
 
-        return ps.executeUpdate() > 0;
+        String sql = """
+                UPDATE delivery_staff ds
+                JOIN users u ON ds.user_id = u.user_id
+                SET ds.vehicle_type = ?,
+                    ds.shift = ?,
+                    u.email = ?,
+                    u.username = ?,
+                    u.phone=?,
+                    u.password = ?
+                WHERE ds.deliveryStaff_id = ?
+                """;
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, vehicleType);
+            ps.setString(2, shift);
+            ps.setString(3, email);
+            ps.setString(4, staffname);
+            ps.setLong(5, Phone);
+            ps.setString(6, hashedPassword); // ✅ already hashed
+            ps.setInt(7, deliveryStaffId);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    return false;
-}
 
-
-
-
-    
-    
     // The below methods are for DeliveryDashboard;
-    
+
     public List<DeliveryOrder> getDeliveryOrdersByStaff(int deliveryStaffId) {
 
         List<DeliveryOrder> list = new ArrayList<>();
 
         String sql = """
-            SELECT o.order_id,
-                   u.username,
-                   c.address,
-                   u.phone,
-                   o.order_time,
-                   o.order_status
-            FROM delivery_assignments da
-            JOIN orders o ON da.order_id = o.order_id
-            JOIN customers c ON o.customer_id = c.customer_id
-            JOIN users u ON c.user_id = u.user_id
-            WHERE da.deliveryStaff_id = ?
-            """;
+                SELECT o.order_id,
+                       u.username,
+                       c.address,
+                       u.phone,
+                       o.order_time,
+                       o.order_status
+                FROM delivery_assignments da
+                JOIN orders o ON da.order_id = o.order_id
+                JOIN customers c ON o.customer_id = c.customer_id
+                JOIN users u ON c.user_id = u.user_id
+                WHERE da.deliveryStaff_id = ?
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, deliveryStaffId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 list.add(new DeliveryOrder(
-                    rs.getInt("order_id"),
-                    rs.getString("username"),
-                    rs.getString("address"),
-                    rs.getLong("phone"),
-                    rs.getTimestamp("order_time").toLocalDateTime(),
-                    rs.getString("order_status")
-                ));
+                        rs.getInt("order_id"),
+                        rs.getString("username"),
+                        rs.getString("address"),
+                        rs.getLong("phone"),
+                        rs.getTimestamp("order_time").toLocalDateTime(),
+                        rs.getString("order_status")));
             }
 
         } catch (Exception e) {
@@ -184,44 +178,40 @@ public class DeliveryDao {
         return list;
     }
 
+    public void updateOrderStatus(int orderId, String status) {
+        String sql = "UPDATE orders SET order_status=? WHERE order_id=?";
 
-        public void updateOrderStatus(int orderId, String status) {
-            String sql = "UPDATE orders SET order_status=? WHERE order_id=?";
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
-            try (Connection con = mysql.openConnection();
-                 PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, status);
+            ps.setInt(2, orderId);
+            ps.executeUpdate();
 
-                ps.setString(1, status);
-                ps.setInt(2, orderId);
-                ps.executeUpdate();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-    
-    
     /// For assigning orders by admin to delivery person:
     public List<DeliveryStaff> getAllDeliveryStaff() {
         List<DeliveryStaff> list = new ArrayList<>();
         String sql = """
-            SELECT ds.deliveryStaff_id, u.username, ds.vehicle_type, ds.shift
-            FROM delivery_staff ds
-            JOIN users u ON ds.user_id = u.user_id
-        """;
+                    SELECT ds.deliveryStaff_id, u.username, ds.vehicle_type, ds.shift
+                    FROM delivery_staff ds
+                    JOIN users u ON ds.user_id = u.user_id
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 DeliveryStaff d = new DeliveryStaff(
                         rs.getInt("deliveryStaff_id"),
                         rs.getString("username"),
                         rs.getString("vehicle_type"),
-                        rs.getString("shift")
-                );
+                        rs.getString("shift"));
                 list.add(d);
             }
         } catch (Exception e) {
@@ -229,13 +219,12 @@ public class DeliveryDao {
         }
         return list;
     }
-    
-    
+
     public int getDeliveryStaffIdByUserId(int userId) {
         String sql = "SELECT deliveryStaff_id FROM delivery_staff WHERE user_id=?";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -249,30 +238,27 @@ public class DeliveryDao {
         return -1;
     }
 
-    
     public Users getUserById(int userId) {
-    String sql = "SELECT user_id, username, email FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, username, email FROM users WHERE user_id = ?";
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
-        ps.setInt(1, userId);
-        ResultSet rs = ps.executeQuery();
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            Users u = new Users();
-            u.setUser_id(rs.getInt("user_id"));
-            u.setUsername(rs.getString("username"));
-            u.setEmail(rs.getString("email"));
-            return u;
+            if (rs.next()) {
+                Users u = new Users();
+                u.setUser_id(rs.getInt("user_id"));
+                u.setUsername(rs.getString("username"));
+                u.setEmail(rs.getString("email"));
+                return u;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        return null;
     }
-    return null;
-}
 
-    
 }
-

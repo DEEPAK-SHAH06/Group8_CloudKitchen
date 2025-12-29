@@ -165,13 +165,13 @@ public class Edituserinfo extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
-        Edit.addActionListener(e -> updateUser());
+        updateUser();
         
     }//GEN-LAST:event_EditActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-        cancelBtn.addActionListener(e -> dispose());
+        dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
@@ -226,7 +226,7 @@ public class Edituserinfo extends javax.swing.JFrame {
     private javax.swing.JTextField phoneNumber;
     // End of variables declaration//GEN-END:variables
 
-public void loadData() {
+    public void loadData() {
         Username.setText(user.getUsername());
         Email.setText(user.getEmail());
         Password.setText(user.getPassword());
@@ -234,39 +234,37 @@ public void loadData() {
     }
 
     public void updateUser() {
-    user.setUsername(Username.getText());
-    user.setEmail(Email.getText());
+        user.setUsername(Username.getText());
+        user.setEmail(Email.getText());
 
-    String rawPassword = Password.getText();
-    user.setPassword(PasswordUtil.hashPassword(rawPassword));
+        String rawPassword = Password.getText();
+        user.setPassword(PasswordUtil.hashPassword(rawPassword));
 
-    long phone = Long.parseLong(phoneNumber.getText().trim());
-    user.setPhone(phone);
+        long phone = Long.parseLong(phoneNumber.getText().trim());
+        user.setPhone(phone);
 
-    user.setRole("CUSTOMER");
+        user.setRole("CUSTOMER");
 
-    UserDao dao = new UserDao();
-    boolean success = dao.updateUser(user);
+        UserDao dao = new UserDao();
+        boolean success = dao.updateUser(user);
 
-    if (success) {
-        JOptionPane.showMessageDialog(this, "User updated successfully");
-        dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "Failed to update user");
+        if (success) {
+            JOptionPane.showMessageDialog(this, "User updated successfully");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update user");
+        }
     }
-}
 
 
-    
-    
     private void loadUserDetails() {
-    if (user != null) {
-        Username.setText(user.getUsername());
-        Email.setText(user.getEmail());
-        Password.setText(""); // NEVER show password
-        phoneNumber.setText(String.valueOf(user.getPhone()));
+        if (user != null) {
+            Username.setText(user.getUsername());
+            Email.setText(user.getEmail());
+            Password.setText(""); // NEVER show password
+            phoneNumber.setText(String.valueOf(user.getPhone()));
+        }
     }
-}
 
     
 

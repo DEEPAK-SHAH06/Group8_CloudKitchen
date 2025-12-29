@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+
 import database.MySqlConnection;
 import java.sql.*;
 import model.Users;
@@ -13,10 +14,9 @@ import utils.UserSession;
  * @author deepakshah
  */
 public class CustomerDao {
-    
+
     MySqlConnection mysql = new MySqlConnection();
-    
-    
+
     // Returns customer_id
     public int getOrCreateCustomer(int userId, String address) {
         String selectSql = "SELECT customer_id FROM customers WHERE user_id = ?";
@@ -24,13 +24,12 @@ public class CustomerDao {
         String updateSql = "UPDATE customers SET address = ? WHERE user_id = ?";
 
         try (Connection con = mysql.openConnection()) {
-            
+
             Users user = UserSession.getCurrentUser();
 
             if (user == null || user.getUser_id() <= 0) {
                 throw new IllegalStateException("Invalid user session");
             }
-
 
             // Check if customer already exists
             PreparedStatement ps = con.prepareStatement(selectSql);
@@ -65,5 +64,3 @@ public class CustomerDao {
         return -1;
     }
 }
-    
-

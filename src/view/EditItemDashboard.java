@@ -168,7 +168,7 @@ public class EditItemDashboard extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        btnCancel.addActionListener(e -> dispose());
+        dispose();
         
     }//GEN-LAST:event_btnCancelActionPerformed
 

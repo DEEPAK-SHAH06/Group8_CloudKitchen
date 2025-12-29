@@ -53,8 +53,7 @@ public class OrderController {
 
         int confirm = JOptionPane.showConfirmDialog(
                 null, "Cancel this order?", "Confirm",
-                JOptionPane.YES_NO_OPTION
-        );
+                JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
             int orderId = (int) table.getValueAt(row, 0);
@@ -63,4 +62,3 @@ public class OrderController {
         }
     }
 }
-

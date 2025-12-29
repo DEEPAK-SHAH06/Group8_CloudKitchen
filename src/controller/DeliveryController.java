@@ -9,8 +9,6 @@ package controller;
  * @author deepakshah
  */
 
-
-
 import dao.DeliveryDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,28 +21,24 @@ import view.Editdeliveryperson;
 
 public class DeliveryController {
 
-    private  DeliveryDao dao = new DeliveryDao();
-    private  DeliveryTableModel model;
-    private  DeliveryPanel panel;
-    
+    private DeliveryDao dao = new DeliveryDao();
+    private DeliveryTableModel model;
+    private DeliveryPanel panel;
 
-    public DeliveryController(DeliveryPanel panel,DeliveryTableModel model) {
-        this.panel =panel;
+    public DeliveryController(DeliveryPanel panel, DeliveryTableModel model) {
+        this.panel = panel;
         this.model = model;
         this.dao = new DeliveryDao();
         this.panel.addButtonListener(new AddButtonListener());
         this.panel.editButtonListener(new AddEditListener());
         this.panel.deleteButtonListener(new DeleteListener());
-        
+
         loadStaff();
     }
 
     public void loadStaff() {
         model.setStaff(dao.getAllStaff());
     }
-    
-
-   
 
     class AddButtonListener implements ActionListener {
 
@@ -53,7 +47,7 @@ public class DeliveryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            new Adddeliveryperson().setVisible(true);        
+            new Adddeliveryperson().setVisible(true);
         }
     }
 
@@ -63,35 +57,26 @@ public class DeliveryController {
         }
 
         @Override
-        
+
         public void actionPerformed(ActionEvent e) {
-        int row = panel.getSelectedRow();
+            int row = panel.getSelectedRow();
 
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Select a staff first");
-            return;
+            if (row == -1) {
+                JOptionPane.showMessageDialog(null, "Select a staff first");
+                return;
+            }
+
+            DeliveryStaff staff = model.getSelectedStaff(row);
+
+            Editdeliveryperson edit = new Editdeliveryperson(
+                    staff,
+                    () -> model.setStaff(dao.getAllStaff()) // 🔥 refresh table
+            );
+
+            edit.setVisible(true);
         }
-
-        DeliveryStaff staff = model.getSelectedStaff(row);
-
-        Editdeliveryperson edit = new Editdeliveryperson(
-            staff,
-            () -> model.setStaff(dao.getAllStaff()) // 🔥 refresh table
-        );
-
-        edit.setVisible(true);
     }
-    }
-        
-//     private void deleteStaff() {
-//        int row = panel.getSelectedRow();
-//        if (row == -1) return;
-//
-//        DeliveryStaff staff = model.getStaffAt(row);
-//        dao.deleteStaff(staff.getDeliveryStaff_id());
-//        loadStaff();
-//    }
-    
+
     class DeleteListener implements ActionListener {
 
         public DeleteListener() {
@@ -107,16 +92,14 @@ public class DeliveryController {
             }
 
             int confirm = JOptionPane.showConfirmDialog(
-                null,
-                "Are you sure you want to delete?",
-                "Confirm",
-                JOptionPane.YES_NO_OPTION
-            );
+                    null,
+                    "Are you sure you want to delete?",
+                    "Confirm",
+                    JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
 
-                int staffId =
-                    (int) model.getValueAt(row, 0);
+                int staffId = (int) model.getValueAt(row, 0);
 
                 if (dao.deleteStaff(staffId)) {
                     JOptionPane.showMessageDialog(null, "Deleted Successfully");
@@ -124,10 +107,6 @@ public class DeliveryController {
                 }
             }
 
-                }
-            }
+        }
     }
-
-   
-
-
+}

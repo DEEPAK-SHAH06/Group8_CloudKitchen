@@ -29,8 +29,6 @@ public class kitchenDash extends javax.swing.JFrame {
     
     public kitchenDash() {
         initComponents();
-//       kitchenController = new KitchenController(kitchenTable);
-//       kitchenController.loadKitchenOrders();
     }
 
     /**
@@ -150,9 +148,6 @@ public class kitchenDash extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        login loginview = new login();
-        LoginController controller = new LoginController(loginview);
-        controller.open();
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
@@ -190,44 +185,34 @@ public class kitchenDash extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JTable kitchenTable;
     // End of variables declaration//GEN-END:variables
-
-//   DefaultTableModel model = new DefaultTableModel(
-//    new String[]{"Order ID", "Status", "Customer", "Items", "Time"}, 0
-//   );
-//   
-//   kitchenTable.setModel(model);
-   
-    
+ 
     public void populateTable(List<Kitchen> orders) {
-    DefaultTableModel model = (DefaultTableModel) kitchenTable.getModel();
-    model.setRowCount(0);
+        DefaultTableModel model = (DefaultTableModel) kitchenTable.getModel();
+        model.setRowCount(0);
 
-    for (Kitchen k : orders) {
-        model.addRow(new Object[]{
-            k.getOrder_id(),
-            k.getCookingStatus(),
-            k.getCustomer_id(),
-            k.getItemName(),
-            k.getOrderTime()
-        });
-        
-        
+        for (Kitchen k : orders) {
+            model.addRow(new Object[]{
+                k.getOrder_id(),
+                k.getCookingStatus(),
+                k.getCustomer_id(),
+                k.getItemName(),
+                k.getOrderTime()
+            });
+
+
+        }
     }
-}
     
     public JTable getKitchenTable() {
-    return kitchenTable;
-}
+        return kitchenTable;
+    }
 
-public void startCookingListener(ActionListener l) {
-    Startcooking.addActionListener(l);
-}
+    public void startCookingListener(ActionListener l) {
+        Startcooking.addActionListener(l);
+    }
 
-public void markReadyListener(ActionListener l) {
-    Markasready.addActionListener(l);
-}
+    public void markReadyListener(ActionListener l) {
+        Markasready.addActionListener(l);
+    }
 
-
-   
- 
 }

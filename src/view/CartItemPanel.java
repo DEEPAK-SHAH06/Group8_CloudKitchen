@@ -47,24 +47,8 @@ public class CartItemPanel extends javax.swing.JPanel {
         Image img = icon.getImage().getScaledInstance(120, 100, Image.SCALE_SMOOTH);
         lblImage.setIcon(new ImageIcon(img));
 
-//        removeBtn.addActionListener(e -> {
-//            CartManager.getInstance().removeItem(item.getItemId());
-//            SwingUtilities.getWindowAncestor(this).repaint();
-//        });
     }
     
-//    public CartItemPanel(int itemId, String name, double price, String imagePath){
-//        this.itemId = itemId;
-//        this.name = name;
-//        this.price = price;
-//        this.imagePath = imagePath;
-//
-//        initComponents();
-//    }
-
-//    public CartItemPanel(List<Item> item) {
-//        initComponents();
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,13 +140,11 @@ public class CartItemPanel extends javax.swing.JPanel {
 
     private void lblNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNameMouseClicked
         // TODO add your handling code here:
-        
+  
     }//GEN-LAST:event_lblNameMouseClicked
 
     private void lblPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseClicked
-        // TODO add your handling code here:
-        
-//        
+        // TODO add your handling code here:  
     }//GEN-LAST:event_lblPriceMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -184,26 +166,10 @@ public class CartItemPanel extends javax.swing.JPanel {
         parent.repaint();
     }//GEN-LAST:event_removeBtnActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JButton removeBtn;
     // End of variables declaration//GEN-END:variables
-
-//    public void loadCart() {
-//        itemsPanel.removeAll();
-//
-//        CartManager cart = CartManager.getInstance();
-//        itemCountLabel.setText("Items in Cart: " + cart.getItemCount());
-//
-//        for (ProductCardPanel p : cart.getItems()) {
-//            itemsPanel.add(p);
-//        }
-//
-//        revalidate();
-//        repaint();
-//    }
-    
 }

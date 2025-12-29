@@ -15,16 +15,16 @@ import java.sql.*;
  * @author deepakshah
  */
 public class UserDao {
-    
+
     MySqlConnection mysql = new MySqlConnection();
-    
+
     public List<Users> getAllUsers() {
         List<Users> list = new ArrayList<>();
         String sql = "SELECT user_id, username, email, phone, role FROM users";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Users u = new Users();
@@ -40,12 +40,12 @@ public class UserDao {
         }
         return list;
     }
-    
+
     public boolean deleteUser(int userId) {
         String sql = "DELETE FROM users WHERE user_id = ?";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, userId);
             return ps.executeUpdate() > 0;
@@ -55,7 +55,7 @@ public class UserDao {
             return false;
         }
     }
-    
+
     public boolean addUser(Users user) {
         Connection conn = mysql.openConnection();
         String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
@@ -76,7 +76,7 @@ public class UserDao {
             mysql.closeConnection(conn);
         }
     }
-    
+
     public boolean updateUser(Users user) {
         Connection conn = mysql.openConnection();
         String sql = "UPDATE users SET username = ?, email = ?, password = ?, phone = ?, role = ? WHERE user_id = ?";
@@ -98,41 +98,40 @@ public class UserDao {
             mysql.closeConnection(conn);
         }
     }
-    
+
     public int addUserAndReturnId(Users u) {
-    String sql = """
-        INSERT INTO users (username, email, password, phone, role)
-        VALUES (?, ?, ?, ?, ?)
-        """;
+        String sql = """
+                INSERT INTO users (username, email, password, phone, role)
+                VALUES (?, ?, ?, ?, ?)
+                """;
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        ps.setString(1, u.getUsername());
-        ps.setString(2, u.getEmail());
-        ps.setString(3, u.getPassword());
-        ps.setLong(4, u.getPhone());
-        ps.setString(5, u.getRole());
+            ps.setString(1, u.getUsername());
+            ps.setString(2, u.getEmail());
+            ps.setString(3, u.getPassword());
+            ps.setLong(4, u.getPhone());
+            ps.setString(5, u.getRole());
 
-        ps.executeUpdate();
+            ps.executeUpdate();
 
-        ResultSet rs = ps.getGeneratedKeys();
-        if (rs.next()) {
-            return rs.getInt(1); // user_id
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1); // user_id
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        return -1;
     }
-    return -1;
-}
-    
-    
+
     public void updatePhone(int userId, long phone) {
         String sql = "UPDATE users SET phone = ? WHERE user_id = ?";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setLong(1, phone);
             ps.setInt(2, userId);

@@ -73,8 +73,7 @@ public class DeliveryDashboardController {
         List<DeliveryOrder> list = dao.getDeliveryOrdersByStaff(deliveryStaffId);
         view.getTable().setModel(new DeliveryDashboardTableModel(list));
     }
-    
-    
+
     private void updateStatus(String status) {
         int row = view.getTable().getSelectedRow();
         if (row == -1) {
@@ -98,4 +97,3 @@ public class DeliveryDashboardController {
         }
     }
 }
-

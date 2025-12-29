@@ -259,68 +259,66 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     
     private void update() {
 
-    if (staff == null || staff.getDeliveryStaff_id() <= 0) {
-        JOptionPane.showMessageDialog(this, "Invalid staff ID");
-        return;
+        if (staff == null || staff.getDeliveryStaff_id() <= 0) {
+            JOptionPane.showMessageDialog(this, "Invalid staff ID");
+            return;
+        }
+
+        // ---------- PHONE ----------
+        String phoneText = Phone.getText().trim();
+        if (phoneText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Phone cannot be empty");
+            return;
+        }
+
+        long phone;
+        try {
+            phone = Long.parseLong(phoneText);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid phone number");
+            return;
+        }
+
+        // ---------- PASSWORD ----------
+        String rawPassword = Password.getText().trim();
+        if (rawPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+
+        String hashedPassword = PasswordUtil.hashPassword(rawPassword);
+
+        boolean updated = dao.updateDeliveryStaff(
+            staff.getDeliveryStaff_id(),
+            Vechiletype.getText().trim(),
+            Shift.getText().trim(),
+            Email.getText().trim(),
+            Staftname.getText().trim(),
+            phone,                 //  FIX: use value from text field
+            hashedPassword
+        );
+
+        if (updated) {
+            JOptionPane.showMessageDialog(this, "Updated Successfully");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Update failed");
+        }
     }
 
-    // ---------- PHONE ----------
-    String phoneText = Phone.getText().trim();
-    if (phoneText.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Phone cannot be empty");
-        return;
-    }
 
-    long phone;
-    try {
-        phone = Long.parseLong(phoneText);
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Invalid phone number");
-        return;
-    }
-
-    // ---------- PASSWORD ----------
-    String rawPassword = Password.getText().trim();
-    if (rawPassword.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Password cannot be empty");
-        return;
-    }
-
-    String hashedPassword = PasswordUtil.hashPassword(rawPassword);
-
-    boolean updated = dao.updateDeliveryStaff(
-        staff.getDeliveryStaff_id(),
-        Vechiletype.getText().trim(),
-        Shift.getText().trim(),
-        Email.getText().trim(),
-        Staftname.getText().trim(),
-        phone,                 // ✅ FIX: use value from text field
-        hashedPassword
-    );
-
-    if (updated) {
-        JOptionPane.showMessageDialog(this, "Updated Successfully");
-        dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "Update failed");
-    }
-}
-
-
-
-    
     private void loadPersonDetails() {
-    if (staff != null) {
-        Staftname.setText(staff.getName());
-        Phone.setText(String.valueOf(staff.getPhone()));
-        Shift.setText(staff.getShift());
-        Vechiletype.setText(staff.getVehicleType());
-    }
+        if (staff != null) {
+            Staftname.setText(staff.getName());
+            Phone.setText(String.valueOf(staff.getPhone()));
+            Shift.setText(staff.getShift());
+            Vechiletype.setText(staff.getVehicleType());
+        }
 
-    if (user != null) {
-        Email.setText(user.getEmail());
-        
+        if (user != null) {
+            Email.setText(user.getEmail());
+
+        }
     }
-}
     
 }

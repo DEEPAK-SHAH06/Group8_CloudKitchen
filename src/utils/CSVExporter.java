@@ -32,7 +32,7 @@ public class CSVExporter {
 
                 TableModel model = table.getModel();
 
-                // ✅ Write column headers
+                //  Write column headers
                 for (int col = 0; col < model.getColumnCount(); col++) {
                     csvWriter.write(model.getColumnName(col));
                     if (col < model.getColumnCount() - 1) {
@@ -41,7 +41,7 @@ public class CSVExporter {
                 }
                 csvWriter.write("\n");
 
-                // ✅ Write rows
+                //  Write rows
                 for (int row = 0; row < model.getRowCount(); row++) {
                     for (int col = 0; col < model.getColumnCount(); col++) {
                         Object value = model.getValueAt(row, col);

@@ -27,7 +27,7 @@ public class MainPageController {
     private ItemController controller;
     private JPanel panelProducts;
     private Item selectedItemForEdit = null;
-    
+
     private MainPage mainpageview;
 
     public MainPageController(MainPage mainpageview) {
@@ -38,62 +38,63 @@ public class MainPageController {
         mainpageview.loginListener(new addLoginListener());
         loadAllProducts();
     }
-    
-    public void open(){
+
+    public void open() {
         this.mainpageview.setVisible(true);
     }
-    
-    public void close(){
+
+    public void close() {
         this.mainpageview.dispose();
     }
-    
-    public void loadAllProducts(){
+
+    public void loadAllProducts() {
         List<Item> item = itemDao.getAllItems();
         JPanel panel = mainpageview.getItemPanel();
-        
+
         panel.removeAll();
-        
-        for(Item it: item){
+
+        for (Item it : item) {
             ProductCardPanel card = new ProductCardPanel();
             card.loadData(it);
             panel.add(card);
         }
-        
+
         panel.revalidate();
         panel.repaint();
     }
-    public void loadProducts(List<Item> items){
+
+    public void loadProducts(List<Item> items) {
         JPanel panel = mainpageview.getItemPanel();
-        
+
         panel.removeAll();
-        
-        for(Item it: items){
+
+        for (Item it : items) {
             ProductCardPanel card = new ProductCardPanel();
             card.loadData(it);
             panel.add(card);
         }
-        
+
         panel.revalidate();
         panel.repaint();
     }
-    
+
     public List<Item> searchItems(String keyword) {
         return itemDao.searchItems(keyword);
     }
 
-    // logic to load products based on category 
+    // logic to load products based on category
     public void loadProductsByCategory(String category) {
         List<Item> itemsByCategory = itemDao.getItemsByCategory(category);
         JPanel panel = mainpageview.getItemPanel();
-        
+
         panel.removeAll();
-        
-        for(Item it: itemsByCategory){
+
+        for (Item it : itemsByCategory) {
             ProductCardPanel card = new ProductCardPanel();
             card.loadData(it);
             panel.add(card);
         }
-        
+
         panel.revalidate();
         panel.repaint();
     }
@@ -106,7 +107,7 @@ public class MainPageController {
         @Override
         public void actionPerformed(ActionEvent e) {
             UserSession.logout();
-            JOptionPane.showMessageDialog(mainpageview,"Logged out successfully");
+            JOptionPane.showMessageDialog(mainpageview, "Logged out successfully");
             mainpageview.updateHeader();
         }
     }
@@ -118,16 +119,18 @@ public class MainPageController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-                login lc = new login();
-                LoginController log = new LoginController(lc);
-                log.close();
-                log.open();        }
+            login lc = new login();
+            LoginController log = new LoginController(lc);
+            log.close();
+            log.open();
+        }
     }
 
     class searchListener implements ActionListener {
 
         public searchListener() {
         }
+
         // In actionPerformed, add a debug print:
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -152,7 +155,7 @@ public class MainPageController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try{
+            try {
                 String category = mainpageview.getCategoryCombo().getSelectedItem().toString();
 
                 if (category.equals("Categories")) {
@@ -160,12 +163,10 @@ public class MainPageController {
                 } else {
                     loadProductsByCategory(category);
                 }
-            }catch(Exception ex){
-                System.out.println("Search Error: "+ ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Search Error: " + ex.getMessage());
             }
         }
     }
 
-    
 }
-

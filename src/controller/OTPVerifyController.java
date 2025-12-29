@@ -29,8 +29,12 @@ public class OTPVerifyController {
     class VerifyListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Verify Button Clicked...");
             String enteredOtp = ovp.getTxtOTP().getText().trim();
+
+            if (enteredOtp.isEmpty()) {
+                JOptionPane.showMessageDialog(ovp, "Please enter OTP");
+                return;
+            }
 
             if (OTPStore.verifyOTP(email, enteredOtp)) {
                 OTPStore.clearOTP(email);
@@ -42,7 +46,9 @@ public class OTPVerifyController {
             } else {
                 JOptionPane.showMessageDialog(ovp, "Invalid OTP");
             }
+            System.out.println("Email used for verification: " + email);
+            System.out.println("Entered OTP: " + enteredOtp);
+
         }
     }
 }
-

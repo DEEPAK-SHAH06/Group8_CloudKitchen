@@ -46,7 +46,7 @@ public class ReportTableModel extends AbstractTableModel {
 
         return switch (c) {
             case 0 -> rep.getReport_id();
-            case 1 -> rep.getStartDate() + " to " + rep.getEndDate(); // ✅ DATE RANGE
+            case 1 -> rep.getStartDate() + " to " + rep.getEndDate(); // DATE RANGE
             case 2 -> rep.getTotalOrder();
             case 3 -> rep.getTotalRevenue();
             case 4 -> rep.getMostSoldItem();

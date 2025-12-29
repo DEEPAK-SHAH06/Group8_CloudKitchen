@@ -9,6 +9,7 @@ import dao.DeliveryAssignmentDao;
 import dao.DeliveryDao;
 import dao.OrderDao;
 import database.Refreshable;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -199,12 +200,4 @@ public class OrderPanel extends javax.swing.JPanel{
         List<Order> orders = orderDao.getAllOrders();
         orderTableModel.setOrders(orders);
     }
-
-//    @Override
-//    public void refreshTable() {
-//        loadOrders();
-//        System.out.println("Orders Refreshed");
-//    }
-
-    
 }

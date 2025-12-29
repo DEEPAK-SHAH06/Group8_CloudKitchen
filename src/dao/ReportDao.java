@@ -9,7 +9,6 @@ package dao;
  * @author deepakshah
  */
 
-
 import database.MySqlConnection;
 import model.Reports;
 import java.util.*;
@@ -25,8 +24,8 @@ public class ReportDao {
         String sql = "SELECT * FROM reports ORDER BY start_date DESC";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Reports r = new Reports();
@@ -48,4 +47,3 @@ public class ReportDao {
         return list;
     }
 }
-

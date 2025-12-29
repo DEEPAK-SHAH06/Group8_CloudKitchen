@@ -4,7 +4,6 @@
  */
 package controller;
 
-import dao.AdminDao;
 import dao.UserDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import javax.swing.JTable;
 import model.Users;
 import tablemodel.UserTableModel;
 import view.Adduser;
-import view.AdminUsersTableModel;
 import view.Edituserinfo;
 import view.UserPanel;
 
@@ -23,7 +21,7 @@ import view.UserPanel;
  */
 public class UserTController {
 
-     private final UserDao dao = new UserDao();
+    private final UserDao dao = new UserDao();
     private final UserTableModel model;
     private final JTable table;
     private final UserPanel panel;
@@ -75,8 +73,7 @@ public class UserTController {
                 null,
                 "Delete user: " + u.getUsername() + "?",
                 "Confirm",
-                JOptionPane.YES_NO_OPTION
-        );
+                JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
             if (dao.deleteUser(u.getUser_id())) {
@@ -108,10 +105,10 @@ public class UserTController {
         }
     }
 
-     class editUserListener implements ActionListener{
+    class editUserListener implements ActionListener {
 
         public editUserListener() {
-            
+
         }
 
         @Override

@@ -186,9 +186,6 @@ public class AdminDashboard1 extends javax.swing.JFrame {
             refreshTimer.stop();
         }
 
-        login loginview = new login();
-        LoginController controller = new LoginController(loginview);
-        controller.open();
         this.dispose();
     }//GEN-LAST:event_logOutbtnActionPerformed
 

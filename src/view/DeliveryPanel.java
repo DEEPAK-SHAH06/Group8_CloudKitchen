@@ -28,7 +28,7 @@ public class DeliveryPanel extends javax.swing.JPanel implements Refreshable{
         model = new DeliveryTableModel(new ArrayList<>());
         table.setModel(model);
 
-        // ✅ CREATE CONTROLLER AFTER UI IS READY
+        // CREATE CONTROLLER AFTER UI IS READY
         controller = new DeliveryController(this, model);
     }
     

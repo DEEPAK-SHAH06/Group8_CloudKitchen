@@ -21,7 +21,6 @@ public class EmailSender {
 
     /**
      * Send a plain text email via Gmail SMTP (example).
-     * Make sure you added the com.sun.mail implementation and activation jars to classpath.
      */
     public static void sendEmail(String toEmail, String subject, String body) throws MessagingException {
 

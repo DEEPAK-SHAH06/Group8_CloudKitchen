@@ -9,7 +9,6 @@ package controller;
  * @author deepakshah
  */
 
-
 import dao.ItemDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,10 +53,6 @@ public class ItemController {
         Item item = dao.getAllItems().get(row);
         new EditItemDashboard(item).setVisible(true);
     }
-    
-    // Afteer closing ADD/Edit window, reload table;
-    //table.setModel(loadItems());
-
 
     // ================= DELETE =================
     public void deleteItem() {
@@ -72,8 +67,7 @@ public class ItemController {
                 null,
                 "Are you sure you want to delete this item?",
                 "Confirm",
-                JOptionPane.YES_NO_OPTION
-        );
+                JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
             int itemId = (int) table.getValueAt(row, 0);
@@ -82,7 +76,6 @@ public class ItemController {
         }
     }
 
-    
     public List<Item> searchItems(String keyword) {
         return dao.searchItems(keyword);
     }
@@ -90,12 +83,9 @@ public class ItemController {
     public List<Item> filterByCategory(String category) {
         return dao.getItemsByCategory(category);
     }
-    
-    public ItemController(ItemPanel panel){
+
+    public ItemController(ItemPanel panel) {
         this.panel = panel;
-        
+
     }
-
- 
 }
-

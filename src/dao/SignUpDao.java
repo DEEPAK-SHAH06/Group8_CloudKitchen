@@ -21,61 +21,32 @@ import model.Users;
 public class SignUpDao {
 
     MySqlConnection mysql = new MySqlConnection();
-    
-//    public int signUp(Users user) {
-//
-//    Connection conn = mysql.openConnection();
-//    String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
-//
-//    try (PreparedStatement pstm =
-//         conn.prepareStatement(sql)) {
-//
-//        pstm.setString(1, user.getUsername());
-//        pstm.setString(2, user.getEmail());
-//        pstm.setString(3, user.getPassword());
-//        pstm.setString(4, "CUSTOMER");
-//
-//        pstm.executeUpdate();
-//
-//        ResultSet rs = pstm.getGeneratedKeys();
-//        if (rs.next()) {
-//            return rs.getInt(1);
-//        }
-//
-//    } catch (SQLException e) {
-//        throw new RuntimeException(e);
-//    } finally {
-//        mysql.closeConnection(conn);
-//    }
-//    return -1;
-//}
 
     public void signUp(Users user) {
-    Connection conn = mysql.openConnection();
-    String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
-    
-    try (PreparedStatement pstm =
-         conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        Connection conn = mysql.openConnection();
+        String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
 
-        pstm.setString(1, user.getUsername());
-        pstm.setString(2, user.getEmail());
-        pstm.setString(3, user.getPassword());
-        pstm.setString(4, "CUSTOMER");
+        try (PreparedStatement pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        pstm.executeUpdate();
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, "CUSTOMER");
 
-        //  GET GENERATED USER_ID
-        ResultSet rs = pstm.getGeneratedKeys();
-        if (rs.next()) {
-            user.setUser_id(rs.getInt(1));
+            pstm.executeUpdate();
+
+            // GET GENERATED USER_ID
+            ResultSet rs = pstm.getGeneratedKeys();
+            if (rs.next()) {
+                user.setUser_id(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            mysql.closeConnection(conn);
         }
-
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    } finally {
-        mysql.closeConnection(conn);
     }
-}
 
     public boolean checkExists(Users user) {
 

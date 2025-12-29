@@ -123,18 +123,14 @@ public class ResetPassword extends javax.swing.JFrame {
         btnResetPassword.addActionListener(listener);
     }
     
-//    public javax.swing.JTextField getTxtEmail(){
-//        return txtEmail;
-//    }
     public javax.swing.JTextField getTxtNewPassword(){
         return txtNewPassword;
     }
     public javax.swing.JTextField getTxtConfirmPassword(){
         return txtConfirmPassword;
     }
-
-    
+  
     public String getEmail() {
-    return email;
-}
+        return email;
+    }
 }

@@ -130,15 +130,15 @@ public class UserPanel extends javax.swing.JPanel implements Refreshable{
     private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 
-public void userAddbtn(ActionListener listener){
-    addUserbtn.addActionListener(listener);
-}
-public void userDeleteBtn(ActionListener listener){
-    deletebtn.addActionListener(listener);
-}
-public void userEditBtn(ActionListener listener){
-    editInfobtn.addActionListener(listener);
-}
+    public void userAddbtn(ActionListener listener){
+        addUserbtn.addActionListener(listener);
+    }
+    public void userDeleteBtn(ActionListener listener){
+        deletebtn.addActionListener(listener);
+    }
+    public void userEditBtn(ActionListener listener){
+        editInfobtn.addActionListener(listener);
+    }
 
     @Override
     public void refreshTable() {

@@ -27,18 +27,22 @@ public class ItemTableModel extends AbstractTableModel {
         this.items = items;
     }
 
+    @Override
     public int getRowCount() {
         return items.size();
     }
 
+    @Override
     public int getColumnCount() {
         return columns.length;
     }
 
+    @Override
     public String getColumnName(int col) {
         return columns[col];
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Item i = items.get(row);
         return switch (col) {

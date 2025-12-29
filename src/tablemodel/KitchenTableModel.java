@@ -72,13 +72,13 @@ public class KitchenTableModel extends AbstractTableModel{
         }
     }
 
-    // 🔄 Used when refreshing table data
+    // Used when refreshing table data
     public void setKitchenOrders(List<Kitchen> kitchenOrders) {
         this.kitchenOrders = kitchenOrders;
         fireTableDataChanged();
     }
 
-    // 🧠 Helpful for controller (row selection)
+    //  Helpful for controller (row selection)
     public Kitchen getKitchenAt(int row) {
         return kitchenOrders.get(row);
     }

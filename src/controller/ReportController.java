@@ -9,7 +9,6 @@ package controller;
  * @author deepakshah
  */
 
-
 import dao.ReportDao;
 import tablemodel.ReportTableModel;
 
@@ -26,4 +25,3 @@ public class ReportController {
         model.setReports(dao.getReports());
     }
 }
-

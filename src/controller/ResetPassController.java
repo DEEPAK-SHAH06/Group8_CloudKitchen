@@ -28,11 +28,12 @@ public class ResetPassController {
         this.logindao = new LoginDao();
         rp.ResetButtonListener(new AddResetButtonListener());
     }
-    
-    public void open(){
+
+    public void open() {
         this.rp.setVisible(true);
     }
-    public void close(){
+
+    public void close() {
         this.rp.dispose();
     }
 
@@ -65,5 +66,3 @@ public class ResetPassController {
         }
     }
 }
-
-

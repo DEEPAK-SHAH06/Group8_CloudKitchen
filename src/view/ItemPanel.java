@@ -132,14 +132,6 @@ public class ItemPanel extends javax.swing.JPanel implements Refreshable{
         controller.loadItems();
         System.out.println("Items Refreshed");
     }
+    
 
-//public void addItemListener(ActionListener listener){
-//    btnAdd.addActionListener(listener);
-//}
-//public void editItemListener(ActionListener listener){
-//    btnEdit.addActionListener(listener);
-//}
-//public void deleteItemListener(ActionListener listener){
-//    btnDelete.addActionListener(listener);
-//}
 }

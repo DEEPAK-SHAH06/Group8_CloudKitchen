@@ -14,10 +14,10 @@ import view.MainPage;
  * @author deepakshah
  */
 public class DescriptionDashboardController {
-    
+
     private DescriptionDash descriptionview;
-    
-    public DescriptionDashboardController(DescriptionDash descriptionview){
+
+    public DescriptionDashboardController(DescriptionDash descriptionview) {
         this.descriptionview = descriptionview;
         descriptionview.backButtonListener(new AddBackButtonListener());
     }
@@ -34,5 +34,5 @@ public class DescriptionDashboardController {
             controller.open();
         }
     }
-    
+
 }

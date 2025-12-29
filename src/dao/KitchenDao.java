@@ -19,27 +19,25 @@ import java.util.List;
 public class KitchenDao {
 
     MySqlConnection mysql = new MySqlConnection();
-    
-   
-    
+
     public List<KitchenOrder> getKitchenOrders() {
 
         List<KitchenOrder> list = new ArrayList<>();
 
         String sql = """
-            SELECT k.kitchen_id, o.order_id, u.username, i.item_name,
-                   k.cooking_status, k.order_time
-            FROM kitchen k
-            JOIN orders o ON k.order_id = o.order_id
-            JOIN customers c ON o.customer_id = c.customer_id
-            JOIN users u ON c.user_id = u.user_id
-            JOIN items i ON k.item_id = i.item_id
-            ORDER BY k.order_time DESC
-        """;
+                    SELECT k.kitchen_id, o.order_id, u.username, i.item_name,
+                           k.cooking_status, k.order_time
+                    FROM kitchen k
+                    JOIN orders o ON k.order_id = o.order_id
+                    JOIN customers c ON o.customer_id = c.customer_id
+                    JOIN users u ON c.user_id = u.user_id
+                    JOIN items i ON k.item_id = i.item_id
+                    ORDER BY k.order_time DESC
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 list.add(new KitchenOrder(
@@ -48,8 +46,7 @@ public class KitchenDao {
                         rs.getString("username"),
                         rs.getString("item_name"),
                         rs.getString("cooking_status"),
-                        rs.getTimestamp("order_time").toLocalDateTime()
-                ));
+                        rs.getTimestamp("order_time").toLocalDateTime()));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +60,7 @@ public class KitchenDao {
         String sql = "UPDATE kitchen SET cooking_status=? WHERE kitchen_id=?";
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, status);
             ps.setInt(2, kitchenId);
@@ -73,19 +70,17 @@ public class KitchenDao {
             e.printStackTrace();
         }
     }
-    
-    
-    // For Cart : 
-    
-    
+
+    // For Cart :
+
     public void addKitchenItem(int orderId, int itemId) {
         String sql = """
-            INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
-            VALUES (?, ?, 'PREPARING', NOW())
-        """;
+                    INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
+                    VALUES (?, ?, 'PREPARING', NOW())
+                """;
 
         try (Connection con = mysql.openConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, orderId);
             ps.setInt(2, itemId);
@@ -95,53 +90,50 @@ public class KitchenDao {
             e.printStackTrace();
         }
     }
-    
-//    private static final String INSERT_KITCHEN_ORDER =
-//        "INSERT INTO kitchen_orders (order_id, item_id, status) VALUES (?, ?, ?)";
 
     public boolean addKitchenOrder(int orderId, int itemId) {
 
-    String sql = """
-        INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
-        VALUES (?, ?, 'PREPARING', NOW())
-    """;
+        String sql = """
+                    INSERT INTO kitchen (order_id, item_id, cooking_status, order_time)
+                    VALUES (?, ?, 'PREPARING', NOW())
+                """;
 
-    try (Connection conn = mysql.openConnection();
-         PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = mysql.openConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
 
-        ps.setInt(1, orderId);
-        ps.setInt(2, itemId);
+            ps.setInt(1, orderId);
+            ps.setInt(2, itemId);
 
-        return ps.executeUpdate() > 0;
+            return ps.executeUpdate() > 0;
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
-    
+
     public boolean isOrderFullyCooked(int orderId) {
 
-    String sql = """
-        SELECT COUNT(*) 
-        FROM kitchen 
-        WHERE order_id = ? AND cooking_status != 'COOKED'
-    """;
+        String sql = """
+                    SELECT COUNT(*)
+                    FROM kitchen
+                    WHERE order_id = ? AND cooking_status != 'COOKED'
+                """;
 
-    try (Connection con = mysql.openConnection();
-         PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = mysql.openConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
 
-        ps.setInt(1, orderId);
-        ResultSet rs = ps.executeQuery();
+            ps.setInt(1, orderId);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            return rs.getInt(1) == 0; // 0 = all cooked
+            if (rs.next()) {
+                return rs.getInt(1) == 0; // 0 = all cooked
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        return false;
     }
-    return false;
-}
 
 }

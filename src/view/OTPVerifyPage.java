@@ -18,7 +18,7 @@ public class OTPVerifyPage extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OTPVerifyPage.class.getName());
 
     /**
-     * Creates new form Resetpassword
+     * Creates new form OTPVerifyPage
      */
     private String email;
 

@@ -35,10 +35,6 @@ public class DescriptionDash extends javax.swing.JFrame {
         initComponents();
     }
     
-//    public DescriptionDash(Item item) {
-//        initComponents();
-//    }
-//    
     private Item product;
     private KitchenDao kitchendao;
     
@@ -165,8 +161,7 @@ public class DescriptionDash extends javax.swing.JFrame {
     }//GEN-LAST:event_phoneActionPerformed
 
     private void addTocardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocardButtonActionPerformed
-        // TODO add your handling code here:
-        //CartManager.getInstance().addItem(product);
+
         CartItem cartItem = new CartItem(
             product.getItem_id(),
             product.getItemName(),
@@ -174,14 +169,11 @@ public class DescriptionDash extends javax.swing.JFrame {
             product.getImagePath()
         );
 
-    CartManager.getInstance().addItem(cartItem);
+        CartManager.getInstance().addItem(cartItem);
 
-        JOptionPane.showMessageDialog(this, "Added to Cart 🛒");
-        MainPage mp = new MainPage();
-        mp.updateHeader();
-
-
-
+            JOptionPane.showMessageDialog(this, "Added to Cart 🛒");
+            MainPage mp = new MainPage();
+            mp.updateHeader();
     }//GEN-LAST:event_addTocardButtonActionPerformed
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
@@ -297,11 +289,15 @@ private void loadProductDetails() {
     );
 
     ImageIcon icon = new ImageIcon(product.getImagePath());
-    Image img = icon.getImage().getScaledInstance(backgroundImage.getWidth(),
-            backgroundImage.getHeight(),
-            Image.SCALE_SMOOTH
+
+    // ✅ Scale to imagePizaa label size
+    Image scaledImg = icon.getImage().getScaledInstance(
+        imagePizaa.getWidth(),
+        imagePizaa.getHeight(),
+        Image.SCALE_SMOOTH
     );
-    imagePizaa.setIcon(new ImageIcon(img));
+
+    imagePizaa.setIcon(new ImageIcon(scaledImg));
 }
 
 

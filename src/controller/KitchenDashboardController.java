@@ -9,7 +9,6 @@ package controller;
  * @author deepakshah
  */
 
-
 import dao.KitchenDao;
 import dao.OrderDao;
 import model.KitchenOrder;
@@ -25,8 +24,6 @@ public class KitchenDashboardController {
 
     private final kitchenDash view;
     private final KitchenDao dao = new KitchenDao();
-    
-    
 
     public KitchenDashboardController(kitchenDash view) {
         this.view = view;
@@ -37,14 +34,14 @@ public class KitchenDashboardController {
         view.markReadyListener(markReady());
     }
 
-    public void open(){
+    public void open() {
         this.view.setVisible(true);
     }
-    
-    public void close(){
+
+    public void close() {
         this.view.dispose();
     }
-    
+
     private void loadTable() {
         List<KitchenOrder> orders = dao.getKitchenOrders();
         view.getKitchenTable().setModel(new KitchenDashboardTableModel(orders));
@@ -65,8 +62,7 @@ public class KitchenDashboardController {
             return;
         }
 
-        KitchenDashboardTableModel model =
-                (KitchenDashboardTableModel) view.getKitchenTable().getModel();
+        KitchenDashboardTableModel model = (KitchenDashboardTableModel) view.getKitchenTable().getModel();
 
         KitchenOrder order = model.getOrderAt(row);
 
@@ -86,4 +82,3 @@ public class KitchenDashboardController {
         loadTable();
     }
 }
-

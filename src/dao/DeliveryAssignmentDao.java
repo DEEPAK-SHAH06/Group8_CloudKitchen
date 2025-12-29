@@ -34,7 +34,7 @@ public class DeliveryAssignmentDao {
     }
 
     public void updateOrderStatus(int orderId) {
-        String sql = "UPDATE orders SET order_status='OUT_FOR_DELIVERY' WHERE order_id=?";
+        String sql = "UPDATE orders SET order_status='ASSIGNED_FOR_DELIVERY' WHERE order_id=?";
 
         try (Connection con = mysql.openConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {

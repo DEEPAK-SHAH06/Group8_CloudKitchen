@@ -50,7 +50,6 @@ public class AdminDashboard1 extends javax.swing.JFrame {
         manageOrdersbtn = new javax.swing.JButton();
         manageDeliverybtn = new javax.swing.JButton();
         reportbtn = new javax.swing.JButton();
-        backbtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         logOutbtn = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
@@ -129,20 +128,6 @@ public class AdminDashboard1 extends javax.swing.JFrame {
         getContentPane().add(reportbtn);
         reportbtn.setBounds(870, 250, 120, 21);
 
-        backbtn.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
-        backbtn.setText("< Back");
-        backbtn.setBorder(null);
-        backbtn.setBorderPainted(false);
-        backbtn.setContentAreaFilled(false);
-        backbtn.setFocusPainted(false);
-        backbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backbtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(backbtn);
-        backbtn.setBounds(30, 20, 53, 21);
-
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 51));
         jLabel3.setText("ADMIN DASHBOARD");
@@ -195,10 +180,6 @@ public class AdminDashboard1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_reportbtnActionPerformed
 
-    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backbtnActionPerformed
-
     private void logOutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutbtnActionPerformed
         // TODO add your handling code here:
         if (refreshTimer != null) {
@@ -237,7 +218,6 @@ public class AdminDashboard1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backbtn;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

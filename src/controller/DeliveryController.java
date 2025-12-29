@@ -63,14 +63,23 @@ public class DeliveryController {
         }
 
         @Override
+        
         public void actionPerformed(ActionEvent e) {
-            int row = panel.getSelectedRow();
-            if (row == -1) {
-                JOptionPane.showMessageDialog(null, "Select a staff first");
-                return;
-            }
-            DeliveryStaff staff = model.getSelectedStaff(row);
-            new Editdeliveryperson(staff).setVisible(true);
+        int row = panel.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select a staff first");
+            return;
+        }
+
+        DeliveryStaff staff = model.getSelectedStaff(row);
+
+        Editdeliveryperson edit = new Editdeliveryperson(
+            staff,
+            () -> model.setStaff(dao.getAllStaff()) // 🔥 refresh table
+        );
+
+        edit.setVisible(true);
     }
     }
         

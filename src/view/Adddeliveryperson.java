@@ -9,6 +9,7 @@ import dao.DeliveryDao;
 import dao.UserDao;
 import javax.swing.JOptionPane;
 import model.Users;
+import utils.PasswordUtil;
 
 /**
  *
@@ -189,12 +190,12 @@ public class Adddeliveryperson extends javax.swing.JFrame {
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         // TODO add your handling code here:
-        Add.addActionListener(e-> save());
+        save();
     }//GEN-LAST:event_AddActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-        cancelBtn.addActionListener(e-> dispose());
+        dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
@@ -251,22 +252,37 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 private void save() {
-        Users u = new Users();
-        u.setUsername(Staftname.getText());
-        u.setEmail(Email.getText());
-        u.setPhone(Long.parseLong(Phone.getText()));
-        u.setRole("DELIVERY");
+    Users u = new Users();
+    u.setUsername(Staftname.getText());
+    u.setEmail(Email.getText());
+    u.setPhone(Long.parseLong(Phone.getText()));
+    u.setRole("DELIVERY");
 
-        int userId = userDao.addUserAndReturnId(u);
-
-        deliveryDao.addDeliveryStaff(
-                userId,
-                Vechiletype.getText(),
-                Shift.getText()
-        );
-
-        JOptionPane.showMessageDialog(this, "Delivery Person Added");
-        dispose();
+    // FIX: set password (HASH IT)
+    String rawPassword = Password.getText().trim();
+    if (rawPassword.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Password cannot be empty");
+        return;
     }
+
+    u.setPassword(PasswordUtil.hashPassword(rawPassword));
+
+    int userId = userDao.addUserAndReturnId(u);
+
+    if (userId == -1) {
+        JOptionPane.showMessageDialog(this, "Failed to create user");
+        return;
+    }
+
+    deliveryDao.addDeliveryStaff(
+        userId,
+        Vechiletype.getText(),
+        Shift.getText()
+    );
+
+    JOptionPane.showMessageDialog(this, "Delivery Person Added");
+    dispose();
+}
+
     
 }

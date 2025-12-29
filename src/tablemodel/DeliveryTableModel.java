@@ -67,5 +67,15 @@ public class DeliveryTableModel extends AbstractTableModel {
     public String getColumnName(int c) {
         return cols[c];
     }
+    
+    private int deliveryStaff_id;
+
+    public int getDeliveryStaff_id() {
+        return deliveryStaff_id;
+    }
+
+    public void setDeliveryStaff_id(int deliveryStaff_id) {
+        this.deliveryStaff_id = deliveryStaff_id;
+    }
 }
 

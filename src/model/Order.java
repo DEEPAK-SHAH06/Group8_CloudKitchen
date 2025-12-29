@@ -28,6 +28,8 @@ public class Order {
         CONFIRMED,
         PREPARING,
         OUT_FOR_DELIVERY,
+        ON_THE_WAY,
+        ASSIGNED_FOR_DELIVERY,
         DELIVERED,
         CANCELLED
     }

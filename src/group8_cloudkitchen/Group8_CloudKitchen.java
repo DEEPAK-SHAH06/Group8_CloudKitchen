@@ -59,7 +59,7 @@ public class Group8_CloudKitchen {
         
 //        DeliveryDash dash = new DeliveryDash();
 //        DeliveryDashboardController controller =new DeliveryDashboardController(dash);
-//        dash.setVisible(true);
+//        controller.open();
 //        kitchenDash dash = new kitchenDash();
 //        KitchenDashboardController controller =new KitchenDashboardController(dash);
 //        dash.setVisible(true);

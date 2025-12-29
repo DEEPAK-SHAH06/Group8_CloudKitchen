@@ -19,8 +19,6 @@
           <Component id="jScrollPane1" alignment="1" pref="920" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="assignToKitchenbtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="assignDeliveryPerson" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="cancelOrderbtn" min="-2" max="-2" attributes="0"/>
@@ -36,7 +34,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancelOrderbtn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="assignDeliveryPerson" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="assignToKitchenbtn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -63,20 +60,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="assignToKitchenbtn">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="99" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Assign To Kitchen"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assignToKitchenbtnActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="cancelOrderbtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

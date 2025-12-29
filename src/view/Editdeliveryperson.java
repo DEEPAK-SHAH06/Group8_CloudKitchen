@@ -9,6 +9,7 @@ import dao.DeliveryDao;
 import javax.swing.JOptionPane;
 import model.DeliveryStaff;
 import model.Users;
+import utils.PasswordUtil;
 
 /**
  *
@@ -22,19 +23,22 @@ public class Editdeliveryperson extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
-    private final DeliveryDao dao = new DeliveryDao();
+    private DeliveryDao dao; 
     private DeliveryStaff staff;
     private Users user;
+    private Runnable onUpdate;
+
     public Editdeliveryperson() {
         initComponents();
     }
     
-    public Editdeliveryperson(DeliveryStaff staff) { 
-        this.staff =staff;
+    public Editdeliveryperson(DeliveryStaff staff, Runnable onUpdate) {
+        this.staff = staff;
+        this.dao = new DeliveryDao();
+        this.user = dao.getUserById(staff.getUser_id()); // ✅ LOAD USER
         initComponents();
         loadPersonDetails();
-        
-    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,12 +196,12 @@ public class Editdeliveryperson extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
-        Edit.addActionListener(e -> update());
+       update();
     }//GEN-LAST:event_EditActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
-        cancelBtn.addActionListener(e-> dispose());
+        dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
@@ -252,28 +256,71 @@ public class Editdeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 
-
+    
     private void update() {
-        dao.updateDeliveryStaff(
-                staff.getDeliveryStaff_id(),
-                Vechiletype.getText(),
-                Shift.getText()
-        );
 
+    if (staff == null || staff.getDeliveryStaff_id() <= 0) {
+        JOptionPane.showMessageDialog(this, "Invalid staff ID");
+        return;
+    }
+
+    // ---------- PHONE ----------
+    String phoneText = Phone.getText().trim();
+    if (phoneText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Phone cannot be empty");
+        return;
+    }
+
+    long phone;
+    try {
+        phone = Long.parseLong(phoneText);
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Invalid phone number");
+        return;
+    }
+
+    // ---------- PASSWORD ----------
+    String rawPassword = Password.getText().trim();
+    if (rawPassword.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Password cannot be empty");
+        return;
+    }
+
+    String hashedPassword = PasswordUtil.hashPassword(rawPassword);
+
+    boolean updated = dao.updateDeliveryStaff(
+        staff.getDeliveryStaff_id(),
+        Vechiletype.getText().trim(),
+        Shift.getText().trim(),
+        Email.getText().trim(),
+        Staftname.getText().trim(),
+        phone,                 // ✅ FIX: use value from text field
+        hashedPassword
+    );
+
+    if (updated) {
         JOptionPane.showMessageDialog(this, "Updated Successfully");
         dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Update failed");
     }
+}
+
+
+
     
-    private void loadPersonDetails(){
-        if (staff!= null) {
-            Staftname.setText(staff.getName());
-            //Phone.setText(staff.getPhone());          
-            //Email.setText(user.getEmail());
-            //Password.setText(user.getPassword());
-            Shift.setText(staff.getShift());
-            Vechiletype.setText(staff.getVehicleType());
-            
-        }
+    private void loadPersonDetails() {
+    if (staff != null) {
+        Staftname.setText(staff.getName());
+        Phone.setText(String.valueOf(staff.getPhone()));
+        Shift.setText(staff.getShift());
+        Vechiletype.setText(staff.getVehicleType());
     }
+
+    if (user != null) {
+        Email.setText(user.getEmail());
+        
+    }
+}
     
 }

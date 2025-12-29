@@ -34,7 +34,7 @@ public class DeliveryDashboardController {
         loadTable();
         startAutoRefresh(); // 🔁 auto refresh
 
-        view.pickedUpListener(e -> updateStatus("PREPARING"));
+        view.pickedUpListener(e -> updateStatus("ON_THE_WAY"));
         view.enRouteListener(e -> updateStatus("OUT_FOR_DELIVERY"));
         view.deliveredListener(e -> updateStatus("DELIVERED"));
         view.backBtnListener(new Addbackbtnlistener());
@@ -60,11 +60,6 @@ public class DeliveryDashboardController {
             refreshTimer.stop();
         }
     }
-
-//    private void loadTable() {
-//        List<DeliveryOrder> list = dao.getDeliveryOrders();
-//        view.getTable().setModel(new DeliveryDashboardTableModel(list));
-//    }
 
     private void loadTable() {
         int userId = UserSession.getUserId();
@@ -104,69 +99,3 @@ public class DeliveryDashboardController {
     }
 }
 
-//
-//public class DeliveryDashboardController {
-//    
-//    private DeliveryDao dao = new DeliveryDao();
-//    private DeliveryDash view;
-//
-//    public DeliveryDashboardController(DeliveryDash view) {
-//        this.view = view;
-//
-//        loadTable();
-//
-//        view.pickedUpListener(e -> updateStatus("PREPARING"));
-//        view.enRouteListener(e -> updateStatus("OUT_FOR_DELIVERY"));
-//        view.deliveredListener(e -> updateStatus("DELIVERED"));
-//        view.backBtnListener(new Addbackbtnlistener());
-//    }
-//    
-//    public void open(){
-//        this.view.setVisible(true);
-//    }
-//    
-//    public void close(){
-//        this.view.dispose();
-//    }
-//
-//    private void loadTable() {
-//        int userId = UserSession.getUserId();
-//        int deliveryStaffId = dao.getDeliveryStaffIdByUserId(userId);
-//
-//        if (deliveryStaffId == -1) {
-//            JOptionPane.showMessageDialog(view, "Delivery staff not found");
-//            return;
-//        }
-//
-//        List<DeliveryOrder> list = dao.getDeliveryOrdersByStaff(deliveryStaffId);
-//        view.getTable().setModel(new DeliveryDashboardTableModel(list));
-//    }
-//
-//
-//    private void updateStatus(String status) {
-//        int row = view.getTable().getSelectedRow();
-//        if (row == -1) {
-//            JOptionPane.showMessageDialog(view, "Select an order first");
-//            return;
-//        }
-//
-//        int orderId = (int) view.getTable().getValueAt(row, 0);
-//        dao.updateOrderStatus(orderId, status);
-//        loadTable();
-//    }
-//
-//    class Addbackbtnlistener implements ActionListener {
-//
-//        public Addbackbtnlistener() {
-//        }
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            login lc = new login();
-//            LoginController log = new LoginController(lc);
-//            log.close();
-//            log.open();
-//        }
-//    }
-//    
-//}

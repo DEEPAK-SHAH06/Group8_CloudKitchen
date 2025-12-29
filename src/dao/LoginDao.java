@@ -28,10 +28,7 @@ public class LoginDao {
     try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
         ps.setString(1, email);
-
-        String hashed = PasswordUtil.hashPassword(password); // ✅ hash ONCE here
-        ps.setString(2, hashed);
-
+        ps.setString(2, PasswordUtil.hashPassword(password)); // hash ONCE
         ps.setString(3, role);
 
         ResultSet rs = ps.executeQuery();
@@ -52,6 +49,7 @@ public class LoginDao {
     }
     return null;
 }
+
 
 
     

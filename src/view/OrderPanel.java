@@ -35,9 +35,9 @@ public class OrderPanel extends javax.swing.JPanel{
         OrderController controller = new OrderController(orderTable);
         controller.loadOrders();
 
-        assignToKitchenbtn.addActionListener(e -> {
-            controller.assignToKitchen(orderTable.getSelectedRow());
-        });
+//        assignToKitchenbtn.addActionListener(e -> {
+//            controller.assignToKitchen(orderTable.getSelectedRow());
+//        });
 
         cancelOrderbtn.addActionListener(e -> {
             controller.cancelOrder(orderTable.getSelectedRow());
@@ -59,7 +59,6 @@ public class OrderPanel extends javax.swing.JPanel{
 
         jScrollPane1 = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
-        assignToKitchenbtn = new javax.swing.JButton();
         cancelOrderbtn = new javax.swing.JButton();
         assignDeliveryPerson = new javax.swing.JButton();
 
@@ -102,15 +101,6 @@ public class OrderPanel extends javax.swing.JPanel{
         });
         jScrollPane1.setViewportView(orderTable);
 
-        assignToKitchenbtn.setBackground(new java.awt.Color(153, 204, 0));
-        assignToKitchenbtn.setForeground(new java.awt.Color(255, 255, 255));
-        assignToKitchenbtn.setText("Assign To Kitchen");
-        assignToKitchenbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignToKitchenbtnActionPerformed(evt);
-            }
-        });
-
         cancelOrderbtn.setBackground(new java.awt.Color(255, 51, 0));
         cancelOrderbtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelOrderbtn.setText("Cancel Order");
@@ -131,8 +121,6 @@ public class OrderPanel extends javax.swing.JPanel{
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(assignToKitchenbtn)
-                .addGap(28, 28, 28)
                 .addComponent(assignDeliveryPerson)
                 .addGap(31, 31, 31)
                 .addComponent(cancelOrderbtn)
@@ -145,15 +133,10 @@ public class OrderPanel extends javax.swing.JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assignDeliveryPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assignToKitchenbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(assignDeliveryPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void assignToKitchenbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignToKitchenbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assignToKitchenbtnActionPerformed
 
     private void assignDeliveryPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDeliveryPersonActionPerformed
         // TODO add your handling code here:
@@ -197,7 +180,6 @@ public class OrderPanel extends javax.swing.JPanel{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignDeliveryPerson;
-    private javax.swing.JButton assignToKitchenbtn;
     private javax.swing.JButton cancelOrderbtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable orderTable;

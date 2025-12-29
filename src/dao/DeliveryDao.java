@@ -15,6 +15,7 @@ import model.DeliveryStaff;
 import java.sql.*;
 import java.util.*;
 import model.DeliveryOrder;
+import model.Users;
 
 public class DeliveryDao {
     
@@ -99,11 +100,20 @@ public class DeliveryDao {
         return false;
     }
     
-    public boolean updateDeliveryStaff(int deliveryStaffId, String vehicleType, String shift) {
+    //need to add more parameter in update DeliveryStaff...
+    
+    public boolean updateDeliveryStaff(int deliveryStaffId, String vehicleType, String shift, String email, String staffname,Long Phone, String hashedPassword) {
+    
     String sql = """
-        UPDATE delivery_staff
-        SET vehicle_type = ?, shift = ?
-        WHERE deliveryStaff_id = ?
+        UPDATE delivery_staff ds
+        JOIN users u ON ds.user_id = u.user_id
+        SET ds.vehicle_type = ?,
+            ds.shift = ?,
+            u.email = ?,
+            u.username = ?,
+            u.phone=?,
+            u.password = ?
+        WHERE ds.deliveryStaff_id = ?
         """;
 
     try (Connection con = mysql.openConnection();
@@ -111,7 +121,11 @@ public class DeliveryDao {
 
         ps.setString(1, vehicleType);
         ps.setString(2, shift);
-        ps.setInt(3, deliveryStaffId);
+        ps.setString(3, email);
+        ps.setString(4, staffname);
+        ps.setLong(5, Phone);
+        ps.setString(6, hashedPassword); // ✅ already hashed
+        ps.setInt(7, deliveryStaffId);
 
         return ps.executeUpdate() > 0;
 
@@ -120,6 +134,9 @@ public class DeliveryDao {
     }
     return false;
 }
+
+
+
 
     
     
@@ -215,8 +232,27 @@ public class DeliveryDao {
     
     
     public int getDeliveryStaffIdByUserId(int userId) {
-    String sql = "SELECT deliveryStaff_id FROM delivery_staff WHERE user_id=?";
+        String sql = "SELECT deliveryStaff_id FROM delivery_staff WHERE user_id=?";
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("deliveryStaff_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     
+    public Users getUserById(int userId) {
+    String sql = "SELECT user_id, username, email FROM users WHERE user_id = ?";
+
     try (Connection con = mysql.openConnection();
          PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -224,12 +260,17 @@ public class DeliveryDao {
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
-            return rs.getInt("deliveryStaff_id");
+            Users u = new Users();
+            u.setUser_id(rs.getInt("user_id"));
+            u.setUsername(rs.getString("username"));
+            u.setEmail(rs.getString("email"));
+            return u;
         }
+
     } catch (Exception e) {
         e.printStackTrace();
     }
-    return -1;
+    return null;
 }
 
     

@@ -54,6 +54,14 @@ public class ResetPassword extends javax.swing.JFrame {
         txtNewPassword.setBounds(600, 390, 130, 30);
 
         txtConfirmPassword.setText("Confirm Password");
+        txtConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtConfirmPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtConfirmPasswordFocusLost(evt);
+            }
+        });
         getContentPane().add(txtConfirmPassword);
         txtConfirmPassword.setBounds(600, 440, 130, 30);
 
@@ -85,6 +93,20 @@ public class ResetPassword extends javax.swing.JFrame {
     private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
 
     }//GEN-LAST:event_btnResetPasswordActionPerformed
+
+    private void txtConfirmPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtConfirmPasswordFocusGained
+        // TODO add your handling code here:
+        if(txtNewPassword.getText().equals("Confirm Password")){
+            txtNewPassword.setText("");
+        }
+    }//GEN-LAST:event_txtConfirmPasswordFocusGained
+
+    private void txtConfirmPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtConfirmPasswordFocusLost
+        // TODO add your handling code here:
+        if(txtNewPassword.getText().equals("")){
+            txtNewPassword.setText("Confirm Password");
+        }
+    }//GEN-LAST:event_txtConfirmPasswordFocusLost
 
     /**
      * @param args the command line arguments

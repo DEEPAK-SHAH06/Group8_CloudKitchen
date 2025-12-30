@@ -20,6 +20,7 @@ public class ResetPassController {
 
     private final ResetPassword rp;
     private final LoginDao logindao;
+    //private  login loginView;
     private final String email; // ✅ stored properly
 
     public ResetPassController(ResetPassword rp, String email) {
@@ -58,7 +59,9 @@ public class ResetPassController {
 
             if (updated) {
                 JOptionPane.showMessageDialog(rp, "Password reset successful!");
-                new login().setVisible(true);
+                login loginView = new login();
+                LoginController controller = new LoginController(loginView);
+                controller.open();
                 rp.dispose();
             } else {
                 JOptionPane.showMessageDialog(rp, "Something went wrong.");

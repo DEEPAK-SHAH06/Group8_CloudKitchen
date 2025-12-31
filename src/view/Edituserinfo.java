@@ -59,6 +59,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -82,7 +83,7 @@ public class Edituserinfo extends javax.swing.JFrame {
         getContentPane().add(Email);
         Email.setBounds(550, 350, 260, 40);
 
-        Edit.setBackground(new java.awt.Color(255, 0, 51));
+        Edit.setBackground(new java.awt.Color(0, 153, 255));
         Edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
         Edit.setText("Edit");

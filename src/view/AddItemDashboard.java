@@ -53,6 +53,8 @@ public class AddItemDashboard extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -85,7 +87,7 @@ public class AddItemDashboard extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(500, 80, 480, 80);
 
-        btnAdd.setBackground(new java.awt.Color(255, 51, 51));
+        btnAdd.setBackground(new java.awt.Color(51, 153, 255));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");

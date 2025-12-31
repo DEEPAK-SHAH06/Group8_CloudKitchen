@@ -45,7 +45,6 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Add = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         Staftname = new javax.swing.JTextField();
         Vechiletype = new javax.swing.JTextField();
         Phone = new javax.swing.JTextField();
@@ -62,29 +61,29 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Satf_name");
+        jLabel2.setText("Staff_name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(420, 250, 90, 30);
+        jLabel2.setBounds(410, 250, 100, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Phone");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 320, 50, 22);
+        jLabel3.setBounds(410, 320, 80, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 380, 50, 22);
+        jLabel4.setBounds(420, 380, 60, 22);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Password");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(430, 450, 80, 22);
+        jLabel5.setBounds(410, 450, 90, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Shift");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(460, 510, 40, 22);
+        jLabel6.setBounds(430, 510, 40, 22);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Vechile_type");
@@ -96,18 +95,13 @@ public class Adddeliveryperson extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(430, 90, 560, 80);
 
-        Add.setBackground(new java.awt.Color(255, 51, 51));
+        Add.setBackground(new java.awt.Color(51, 153, 255));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
         Add.setText("Add");
         Add.addActionListener(this::AddActionPerformed);
         getContentPane().add(Add);
         Add.setBounds(520, 640, 90, 40);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Shift");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 510, 40, 22);
 
         Staftname.setBackground(new java.awt.Color(204, 204, 204));
         Staftname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -247,7 +241,6 @@ public class Adddeliveryperson extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 

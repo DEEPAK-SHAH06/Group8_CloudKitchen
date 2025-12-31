@@ -8,6 +8,7 @@ import controller.CartManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.CartItem;
+import utils.UserSession;
 
 /**
  *
@@ -42,26 +43,37 @@ public class CartPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         cartPanel = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
+        totalLabel = new javax.swing.JLabel();
+        clearCartBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("My Cart");
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         itemCountLabel.setText("Items in cart : 0");
-        jPanel1.add(itemCountLabel);
+        jPanel1.add(itemCountLabel, java.awt.BorderLayout.CENTER);
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(160, 160));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(700, 400));
+        jScrollPane1.setRequestFocusEnabled(false);
 
-        cartPanel.setLayout(new javax.swing.BoxLayout(cartPanel, javax.swing.BoxLayout.Y_AXIS));
+        cartPanel.setLayout(new java.awt.GridLayout(0, 4, 10, 10));
         jScrollPane1.setViewportView(cartPanel);
 
-        jPanel1.add(jScrollPane1);
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
 
         backButton.setText("< Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
+            }
+        });
+
+        clearCartBtn.setText("Clear Cart");
+        clearCartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearCartBtnActionPerformed(evt);
             }
         });
 
@@ -72,21 +84,35 @@ public class CartPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(104, 104, 104)
+                        .addComponent(clearCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(backButton)))
-                .addContainerGap(369, Short.MAX_VALUE))
+                        .addComponent(backButton)
+                        .addGap(198, 198, 198)
+                        .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(backButton)
-                .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(clearCartBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,6 +122,12 @@ public class CartPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void clearCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearCartBtnActionPerformed
+        // TODO add your handling code here:
+        CartManager.getCartForCurrentUser().clear();
+        reloadCart();
+    }//GEN-LAST:event_clearCartBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,22 +157,37 @@ public class CartPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JPanel cartPanel;
+    private javax.swing.JButton clearCartBtn;
     private javax.swing.JLabel itemCountLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
     private void loadCart() {
-        cartPanel.removeAll();
+    cartPanel.removeAll();
 
-        CartManager cart = CartManager.getInstance();
-        itemCountLabel.setText("Items: " + cart.getItemCount());
+    if (!UserSession.isLoggedIn()) {
+        itemCountLabel.setText("Please login to view cart");
+        return;
+    }
+
+    CartManager cart = CartManager.getCartForCurrentUser();
+        itemCountLabel.setText("Items in cart: " + cart.getItemCount());
+        totalLabel.setText("Total: Rs. " + cart.getTotalAmount());
+
 
         for (CartItem item : cart.getItems()) {
-            cartPanel.add(new CartItemPanel(item));
+            cartPanel.add(new CartItemPanel(item, this));
         }
 
         cartPanel.revalidate();
         cartPanel.repaint();
     }
+
+    
+    public void reloadCart() {
+        loadCart();
+    }
+    
 }

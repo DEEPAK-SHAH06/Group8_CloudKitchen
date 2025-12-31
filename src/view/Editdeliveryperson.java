@@ -69,6 +69,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -107,7 +108,7 @@ public class Editdeliveryperson extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(380, 320, 80, 22);
 
-        Edit.setBackground(new java.awt.Color(255, 51, 51));
+        Edit.setBackground(new java.awt.Color(0, 153, 255));
         Edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
         Edit.setText("Edit");

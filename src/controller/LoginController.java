@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.CartDao;
 import dao.LoginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,8 @@ import utils.UserSession;
 import view.MainPage;
 import view.login;
 import java.sql.*;
+import java.util.List;
+import model.CartItem;
 import view.AdminDashboard1;
 import view.kitchenDash;
 import utils.AuthConstants;
@@ -129,6 +132,13 @@ public class LoginController {
                         MainPage mp = new MainPage();
                         MainPageController controller = new MainPageController(mp);
                         controller.open();
+                        // restore cart logic
+                        CartManager cart = CartManager.getCartForCurrentUser();
+                        List<CartItem> savedItems = new CartDao().loadCart(user.getUser_id());
+
+                        cart.clear();
+                        savedItems.forEach(cart::addItem);
+
                     }
 
                     loginView.dispose();

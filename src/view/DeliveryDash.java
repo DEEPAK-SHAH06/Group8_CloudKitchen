@@ -42,6 +42,8 @@ public class DeliveryDash extends javax.swing.JFrame {
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
@@ -113,7 +115,7 @@ public class DeliveryDash extends javax.swing.JFrame {
         enRouteButton.setBackground(new java.awt.Color(0, 0, 0));
         enRouteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         enRouteButton.setForeground(new java.awt.Color(255, 255, 255));
-        enRouteButton.setText("Ent-Route");
+        enRouteButton.setText("En-Route");
         getContentPane().add(enRouteButton);
         enRouteButton.setBounds(920, 710, 120, 40);
 

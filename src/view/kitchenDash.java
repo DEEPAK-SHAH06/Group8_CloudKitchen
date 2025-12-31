@@ -49,6 +49,8 @@ public class kitchenDash extends javax.swing.JFrame {
         BackgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
+        setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         KitchenIcon.setBackground(new java.awt.Color(255, 255, 255));

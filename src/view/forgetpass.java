@@ -41,23 +41,24 @@ public class forgetpass extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1050, 750));
+        setMinimumSize(new java.awt.Dimension(720, 510));
+        setPreferredSize(new java.awt.Dimension(720, 510));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Serif", 3, 17)); // NOI18N
         jLabel2.setText("Forget Password?");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(460, 310, 140, 25);
+        jLabel2.setBounds(300, 230, 140, 25);
 
         jLabel3.setFont(new java.awt.Font("Serif", 2, 12)); // NOI18N
         jLabel3.setText("Please enter your registered email address we will get back to you with");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(360, 330, 310, 20);
+        jLabel3.setBounds(210, 260, 310, 20);
 
         jLabel4.setFont(new java.awt.Font("Serif", 2, 12)); // NOI18N
         jLabel4.setText("          the reset password link and confirmation OTP thanks.");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(360, 350, 300, 15);
+        jLabel4.setBounds(210, 280, 300, 15);
 
         txtEmail.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         txtEmail.setText("    E-mail Or Username");
@@ -80,17 +81,17 @@ public class forgetpass extends javax.swing.JFrame {
         });
         txtEmail.addActionListener(this::txtEmailActionPerformed);
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(430, 390, 170, 30);
+        txtEmail.setBounds(280, 320, 170, 30);
 
         btnSendCode.setBackground(new java.awt.Color(255, 0, 51));
         btnSendCode.setForeground(new java.awt.Color(255, 255, 255));
         btnSendCode.setText("Send Code");
         getContentPane().add(btnSendCode);
-        btnSendCode.setBounds(460, 440, 100, 23);
+        btnSendCode.setBounds(310, 370, 100, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, -10, 1050, 680);
+        jLabel1.setBounds(0, -80, 720, 660);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

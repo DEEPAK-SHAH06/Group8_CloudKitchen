@@ -59,6 +59,7 @@ public class EditItemDashboard extends javax.swing.JFrame {
         brackgroundimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -91,7 +92,7 @@ public class EditItemDashboard extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(500, 80, 480, 80);
 
-        btnSave.setBackground(new java.awt.Color(255, 51, 51));
+        btnSave.setBackground(new java.awt.Color(0, 153, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");

@@ -72,7 +72,7 @@ public class Adduser extends javax.swing.JFrame {
         getContentPane().add(Email);
         Email.setBounds(550, 350, 260, 40);
 
-        addBtn.setBackground(new java.awt.Color(255, 0, 51));
+        addBtn.setBackground(new java.awt.Color(0, 153, 255));
         addBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");

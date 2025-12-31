@@ -292,7 +292,7 @@ public void updateHeader() {
 }
 public void updateCartCount() {
     cartCountLabel.setText(
-        String.valueOf(CartManager.getInstance().getItemCount())
+        String.valueOf(CartManager.getCartForCurrentUser().getItemCount())
     );
 }
 

@@ -28,6 +28,9 @@ public class CartItem {
     public double getPrice() { return price; }
     public String getImagePath() { return imagePath; }
     public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
 
     public void increaseQty() {
         quantity++;
@@ -35,6 +38,10 @@ public class CartItem {
 
     public double getTotalPrice() {
         return price * quantity;
+    }
+
+    public void decreaseQty() {
+        if (quantity > 1) quantity--;
     }
 }
 

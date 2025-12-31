@@ -15,23 +15,37 @@ import model.Item;
  */
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import model.Users;
+import utils.UserSession;
+import view.CartPage;
 import view.ProductCardPanel;
 
 public class CartManager {
 
-    private static CartManager instance;
+//    private CartPage cartpage;
+    private static final Map<Integer, CartManager> userCarts = new HashMap<>();
+
     private final List<CartItem> items = new ArrayList<>();
 
-    private CartManager() {
-    }
+    private CartManager() {}
 
-    public static CartManager getInstance() {
-        if (instance == null)
-            instance = new CartManager();
-        return instance;
+    public static CartManager getCartForCurrentUser() {
+        Users user = UserSession.getCurrentUser();
+
+        if (user == null) {
+            throw new IllegalStateException("User not logged in");
+            //JOptionPane.showMessageDialog(cartpage, "User not logged in");
+        }
+
+        return userCarts.computeIfAbsent(
+            user.getUser_id(),
+            id -> new CartManager()
+        );
     }
 
     public void addItem(CartItem newItem) {
@@ -44,12 +58,16 @@ public class CartManager {
         items.add(newItem);
     }
 
+    public void removeItem(int itemId) {
+        items.removeIf(item -> item.getItemId() == itemId);
+    }
+
     public List<CartItem> getItems() {
         return items;
     }
 
     public int getItemCount() {
-        return items.size();
+        return items.stream().mapToInt(CartItem::getQuantity).sum();
     }
 
     public double getTotalAmount() {
@@ -61,8 +79,5 @@ public class CartManager {
     public void clear() {
         items.clear();
     }
-
-    public void removeItem(int itemId) {
-        items.remove(itemId);
-    }
 }
+

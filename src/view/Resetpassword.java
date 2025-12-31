@@ -47,11 +47,13 @@ public class ResetPassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(722, 513));
+        setPreferredSize(new java.awt.Dimension(722, 513));
         getContentPane().setLayout(null);
 
         txtNewPassword.setText("New Password");
         getContentPane().add(txtNewPassword);
-        txtNewPassword.setBounds(600, 390, 130, 30);
+        txtNewPassword.setBounds(300, 260, 130, 30);
 
         txtConfirmPassword.setText("Confirm Password");
         txtConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -63,7 +65,7 @@ public class ResetPassword extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtConfirmPassword);
-        txtConfirmPassword.setBounds(600, 440, 130, 30);
+        txtConfirmPassword.setBounds(300, 310, 130, 30);
 
         btnResetPassword.setBackground(new java.awt.Color(0, 153, 255));
         btnResetPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,17 +76,17 @@ public class ResetPassword extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnResetPassword);
-        btnResetPassword.setBounds(620, 510, 80, 30);
+        btnResetPassword.setBounds(320, 380, 80, 30);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel2.setText("Change Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(560, 330, 230, 40);
+        jLabel2.setBounds(260, 200, 230, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(300, 120, 720, 514);
+        jLabel1.setBounds(0, 0, 720, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

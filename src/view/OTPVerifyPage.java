@@ -50,6 +50,8 @@ public class OTPVerifyPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(716, 514));
+        setPreferredSize(new java.awt.Dimension(716, 514));
         getContentPane().setLayout(null);
 
         btnVerify.setBackground(new java.awt.Color(218, 41, 41));
@@ -57,12 +59,12 @@ public class OTPVerifyPage extends javax.swing.JFrame {
         btnVerify.setText("Verify");
         btnVerify.addActionListener(this::btnVerifyActionPerformed);
         getContentPane().add(btnVerify);
-        btnVerify.setBounds(620, 420, 75, 30);
+        btnVerify.setBounds(320, 280, 75, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         jLabel2.setText("Enter Your Code: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(600, 350, 120, 16);
+        jLabel2.setBounds(300, 210, 120, 16);
 
         txtOTP.setBackground(new java.awt.Color(204, 204, 204));
         txtOTP.setBorder(new javax.swing.border.AbstractBorder() {
@@ -75,20 +77,20 @@ public class OTPVerifyPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtOTP);
-        txtOTP.setBounds(580, 380, 170, 30);
+        txtOTP.setBounds(280, 240, 170, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Resend Code");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(620, 470, 90, 16);
+        jLabel3.setBounds(320, 330, 90, 16);
 
         jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("CheckBox.icon.checkmarkColor"));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgetpass.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(300, 130, 714, 514);
+        jLabel1.setBounds(0, 0, 714, 514);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

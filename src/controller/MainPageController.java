@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.CartDao;
 import dao.ItemDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Item;
+import model.Users;
 import utils.UserSession;
 import view.MainPage;
 import view.ProductCardPanel;
@@ -106,6 +108,10 @@ public class MainPageController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            Users user = UserSession.getCurrentUser();
+            CartManager cart = CartManager.getCartForCurrentUser();
+
+            new CartDao().saveCart(user.getUser_id(), cart.getItems());
             UserSession.logout();
             JOptionPane.showMessageDialog(mainpageview, "Logged out successfully");
             mainpageview.updateHeader();

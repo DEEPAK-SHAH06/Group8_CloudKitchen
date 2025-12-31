@@ -243,7 +243,7 @@ public class ProductCardPanel extends javax.swing.JPanel {
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         // TODO add your handling code here:
         setBackground(java.awt.Color.WHITE);
-    repaint();
+        repaint();
     }//GEN-LAST:event_formMouseExited
 
 

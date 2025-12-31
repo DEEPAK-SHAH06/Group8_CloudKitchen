@@ -69,6 +69,7 @@ public class DescriptionDash extends javax.swing.JFrame {
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1273, 789));
         setPreferredSize(new java.awt.Dimension(1273, 789));
         getContentPane().setLayout(null);
 
@@ -169,7 +170,7 @@ public class DescriptionDash extends javax.swing.JFrame {
             product.getImagePath()
         );
 
-        CartManager.getInstance().addItem(cartItem);
+        CartManager.getCartForCurrentUser().addItem(cartItem);
 
             JOptionPane.showMessageDialog(this, "Added to Cart 🛒");
             MainPage mp = new MainPage();
@@ -208,7 +209,7 @@ public class DescriptionDash extends javax.swing.JFrame {
         int orderId = orderDao.createOrder(customerId, product.getPrice());
 
         // 2. For each cart item → insert into kitchen
-        for (CartItem item : CartManager.getInstance().getItems()) {
+        for (CartItem item : CartManager.getCartForCurrentUser().getItems()) {
             kitchendao.addKitchenOrder(orderId, item.getItemId());
         }
 
@@ -226,9 +227,9 @@ public class DescriptionDash extends javax.swing.JFrame {
 
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
         // TODO add your handling code here:
-        MainPage mp = new MainPage();
-        MainPageController controller = new MainPageController(mp);
-        controller.open();
+//        MainPage mp = new MainPage();
+//        MainPageController controller = new MainPageController(mp);
+//        controller.open();
         this.dispose();
     }//GEN-LAST:event_backLabelMouseClicked
 
